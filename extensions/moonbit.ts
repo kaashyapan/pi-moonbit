@@ -177,7 +177,7 @@ export default async function (pi: ExtensionAPI) {
   // without needing to know in advance that this extension gates on PATH.
   pi.registerCommand("moon-doctor", {
     description:
-      "Check whether the MoonBit toolchain (`moon`) is reachable on PATH and whether moon-ide/moon-check tools are active",
+      "MoonBit doctor: Check whether the MoonBit toolchain (`moon`) is reachable on PATH and whether moon-ide/moon-check tools are active",
     handler: async (_args, ctx) => {
       const result = await checkMoonAvailable(ctx.cwd);
       if (result.available) {
@@ -209,7 +209,7 @@ export default async function (pi: ExtensionAPI) {
     name: "moon_peek_def",
     label: "MoonBit: Peek Definition",
     description:
-      "Resolve a MoonBit symbol's definition and show source context. Prefer this over grepping .mbt files for a declaration. Provide either `symbol` (e.g. 'Array::length', '@pkg.foo') or `loc`, or both to disambiguate.",
+      "MoonBit: Peek Definition - Resolve a MoonBit symbol's definition and show source context. Prefer this over grepping .mbt files for a declaration. Provide either `symbol` (e.g. 'Array::length', '@pkg.foo') or `loc`, or both to disambiguate.",
     parameters: Type.Object({
       symbol: Type.Optional(
         Type.String({
@@ -231,7 +231,7 @@ export default async function (pi: ExtensionAPI) {
     name: "moon_find_references",
     label: "MoonBit: Find References",
     description:
-      "Find all usages of a MoonBit symbol across dependents. Prefer this over grepping for a name — it's compiler-resolved, so it correctly follows type-directed dispatch that text search can't. Provide `symbol`. Note: current moon ide find-references does not yet support -loc.",
+      "MoonBit: Find References - Find all usages of a MoonBit symbol across dependents. Prefer this over grepping for a name — it's compiler-resolved, so it correctly follows type-directed dispatch that text search can't. Provide `symbol`. Note: current moon ide find-references does not yet support -loc.",
     parameters: Type.Object({
       symbol: Type.Optional(
         Type.String({ description: "Symbol query, e.g. 'println', '@pkg.foo'." }),
@@ -251,7 +251,7 @@ export default async function (pi: ExtensionAPI) {
     name: "moon_hover",
     label: "MoonBit: Hover Info",
     description:
-      "Show the type and docs for whatever is at a source position. Requires `loc` with a line number.",
+      "MoonBit: Hover Info - Show the type and docs for whatever is at a source position. Requires `loc` with a line number.",
     parameters: Type.Object({
       loc: Type.String({
         description: "Source location, path:line[:col], 1-based. Line is required.",
@@ -272,7 +272,7 @@ export default async function (pi: ExtensionAPI) {
     name: "moon_outline",
     label: "MoonBit: Outline",
     description:
-      "Summarize the structure (types, functions, etc.) of a MoonBit file or package. Use this to orient in a file instead of reading it whole or grepping for declarations. Pass a file or directory path; omit to outline the current package.",
+      "MoonBit: Outline - Summarize the structure (types, functions, etc.) of a MoonBit file or package. Use this to orient in a file instead of reading it whole or grepping for declarations. Pass a file or directory path; omit to outline the current package.",
     parameters: Type.Object({
       path: Type.Optional(
         Type.String({
@@ -293,7 +293,7 @@ export default async function (pi: ExtensionAPI) {
     name: "moon_rename",
     label: "MoonBit: Rename Symbol",
     description:
-      "Compute semantic rename edits for a MoonBit symbol across the workspace. Defaults to a dry run (returns the edit set without writing). Set apply: true only after reviewing the dry-run output, since this rewrites files on disk.",
+      "MoonBit: Rename Symbol - Compute semantic rename edits for a MoonBit symbol across the workspace. Defaults to a dry run (returns the edit set without writing). Set apply: true only after reviewing the dry-run output, since this rewrites files on disk.",
     parameters: Type.Object({
       old_name: Type.String({ description: "Current symbol name." }),
       new_name: Type.String({ description: "New symbol name." }),
@@ -318,7 +318,7 @@ export default async function (pi: ExtensionAPI) {
   pi.registerTool({
     name: "moon_analyze",
     label: "MoonBit: Analyze API Usage",
-    description: "Report public API usage counts for a symbol or the package.",
+    description: "MoonBit: Analyze API Usage - Report public API usage counts for a symbol or the package.",
     parameters: Type.Object({
       symbol: Type.Optional(Type.String({ description: "Symbol query to scope the analysis." })),
     }),
@@ -334,7 +334,7 @@ export default async function (pi: ExtensionAPI) {
     name: "moon_doc",
     label: "MoonBit: Search Docs",
     description:
-      "Search exported APIs and documentation across the workspace and its dependencies, e.g. `@json`. Prefer this over guessing API signatures from memory.",
+      "MoonBit: Search Docs - Search exported APIs and documentation across the workspace and its dependencies, e.g. `@json`. Prefer this over guessing API signatures from memory.",
     parameters: Type.Object({
       query: Type.String({ description: "Doc/API search query, e.g. '@json' or a function name." }),
     }),
@@ -348,7 +348,7 @@ export default async function (pi: ExtensionAPI) {
     name: "moon_check",
     label: "MoonBit: Check (static analysis)",
     description:
-      "Run moon_check to verify syntax and type correctness without building object files. Always run this after editing MoonBit source and before moon_test — it's much cheaper than a full build and catches errors early. Returns diagnostics grouped by level (error/warning) with counts, not raw NDJSON.",
+      "MoonBit: Check (static analysis) - Run moon_check to verify syntax and type correctness without building object files. Always run this after editing MoonBit source and before moon_test — it's much cheaper than a full build and catches errors early. Returns diagnostics grouped by level (error/warning) with counts, not raw NDJSON.",
     parameters: Type.Object({
       package: Type.Optional(
         Type.String({ description: "Limit the check to a specific package, passed as -p <package>." }),
@@ -430,7 +430,7 @@ export default async function (pi: ExtensionAPI) {
     name: "moon_test",
     label: "MoonBit: Test",
     description:
-      "Run `moon test` for the current module or a scoped package. Prefer moon_check first (cheaper).",
+      "MoonBit: Test - Run `moon test` for the current module or a scoped package. Prefer moon_check first (cheaper).",
     parameters: Type.Object({
       package: Type.Optional(
         Type.String({ description: "Limit to a package (-p <package>)." }),
@@ -506,7 +506,7 @@ export default async function (pi: ExtensionAPI) {
     name: "moon_fmt_info",
     label: "MoonBit: Format + Info",
     description:
-      "Formats source in place, then regenerates public interface (.mbti) files. Run this after edits are done and moon_check is clean, not mid-edit.",
+      "MoonBit: Format - Formats source in place, then regenerates public interface (.mbti) files. Run this after edits are done and moon_check is clean, not mid-edit.",
     parameters: Type.Object({
       package: Type.Optional(
         Type.String({
