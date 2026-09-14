@@ -1,7 +1,7 @@
 {
-    "name": "moonbit",
+    "name": "pi-moonbit",
     "version": "0.0.1",
-    "description": "Brings moonbit tool chain goodies as tools",
+    "description": "For MoonBit language. Brings moonbit tool chain goodies like peek-def and docs as harness tools.",
     "license": "BSD-3-Clause",
     "author": "kaashyapan",
     "repository": {
