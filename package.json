@@ -1,0 +1,50 @@
+{
+    "name": "moonbit",
+    "version": "0.0.1",
+    "description": "Brings moonbit tool chain goodies as tools",
+    "license": "BSD-3-Clause",
+    "author": "kaashyapan",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kaashyapan/pi-moonbit.git"
+    },
+    "homepage": "https://github.com/kaashyapan/pi-moonbit",
+    "bugs": {
+        "url": "https://github.com/kaashyapan/pi-moonbit/issues"
+    },
+    "type": "module",
+    "sideEffects": false,
+    "engines": {
+        "node": ">=22.19.0"
+    },
+    "keywords": [
+        "pi-package",
+        "pi",
+        "harness",
+        "moonbit"
+    ],
+    "pi": {
+        "extensions": [
+            "./extensions/moonbit.ts"
+        ]
+    },
+    "files": [
+        "LICENSE",
+        "README.md",
+        "extensions",
+        "tsconfig.json"
+    ],
+    "peerDependencies": {
+        "@earendil-works/pi-coding-agent": "*",
+        "@earendil-works/pi-tui": "*"
+    },
+    "devDependencies": {
+        "@types/node": "^24.12.4",
+        "typescript": "^5.9.3"
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit",
+        "pack:dry": "npm pack --dry-run",
+        "verify": "npm run typecheck && npm run pack:dry"
+    }
+}
