@@ -1,0 +1,5 @@
+supported_targets = "+all"
+
+import {
+  "moonbitlang/core/strconv",
+}

@@ -1,0 +1,88 @@
+name: Publish Package to npmjs
+
+# Publishes on v* tags (or manually). The verify job gates publishing: the
+# package is pure TypeScript source that pi loads directly (no build step),
+# so "verified" means: typechecks clean, the full test suite passes against
+# a real MoonBit toolchain, and the tarball actually contains every module
+# that package.json's pi.extensions entry point needs.
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    # Pinned image with a known-good moon + bun toolchain baked in. The
+    # public moon install script only ever serves "latest" (older versions
+    # 403), which made CI silently drift onto whatever moon shipped that
+    # day. Pinning the container is what actually fixes the version, not
+    # just re-running the same curl | bash against a different tag.
+    container:
+      image: sundernarayanaswamy/moonbit-lang:v0.10.12
+      options: --user root
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Log toolchain versions
+        run: |
+          moon version
+          bun --version
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # The test suite is integration-grade: it executes the registered
+      # tool handlers against real `moon` runs (check/test/ide) on the
+      # fixture modules, so the toolchain must be on PATH — which also
+      # dogfoods the extension's own runtime dependency. `moon` and `bun`
+      # both already live on PATH inside this image.
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Test
+        run: bun test
+
+      # Fail the release if a module is missing from package.json "files" —
+      # e.g. after a refactor splits moonbit.ts into a new file.
+      - name: Verify package contents
+        run: |
+          bun pm pack --dry-run | tee pack-output.log
+          for f in \
+            extensions/moonbit.ts \
+            extensions/shared.ts \
+            extensions/diagnostics.ts \
+            extensions/ide-tools.ts \
+            extensions/check-tool.ts \
+            extensions/test-tools.ts \
+            extensions/bash-redirect.ts \
+            extensions/doctor.ts \
+            extensions/moonexec.ts \
+            tsconfig.json; do
+            grep -q "packed.*${f}$" pack-output.log || {
+              echo "MISSING from package tarball: ${f}"; exit 1; }
+          done
+          # the extension entry point referenced by pi.extensions must ship
+          grep -q "packed.*extensions/moonbit.ts$" pack-output.log || {
+            echo "Entry point extensions/moonbit.ts is not packaged"; exit 1; }
+
+  publish:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write   # Required for provenance
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,5 @@
+members = [
+  "app",
+  "dep-noisy",
+  "dep-broken",
+]
