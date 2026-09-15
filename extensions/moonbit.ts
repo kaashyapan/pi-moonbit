@@ -32,7 +32,7 @@
 //   underlying `moon` process is killed via the signal option on execFile.
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { execFile } from "node:child_process";
+import { isToolCallEventType } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 import { checkMoonAvailable } from "./doctor";
 import { runMoon } from "./moonexec";
@@ -40,6 +40,38 @@ import { runMoon } from "./moonexec";
 const MAX_OUTPUT_CHARS = 20_000;
 const TIMEOUT_MS = 30_000;
 const TEST_TIMEOUT_MS = 120_000;
+// --- bash → tool redirection ----------------------------------------------
+// Tool descriptions are only a soft nudge — models reach for `bash` anyway
+// since it feels more familiar/flexible than picking the "right" tool. The
+// `tool_call` event fires before a tool executes and can block it, which
+// turns the nudge into a hard rule: if the model tries to run a `moon`
+// subcommand we have a dedicated tool for, the bash call is blocked and the
+// reason names the tool to use instead. This is only registered once the
+// moon_* tools themselves are active (see the startupCheck gate below) —
+// blocking bash with no working replacement would just strand the model.
+interface BashRedirect {
+  match: RegExp;
+  tool: string;
+  note: string;
+}
+
+const BASH_REDIRECTS: BashRedirect[] = [
+  { match: /\bmoon\s+check\b/, tool: "moon_check", note: "it parses the NDJSON output into a summarized diagnostic list and accepts `package` to scope it." },
+  { match: /\bmoon\s+test\b/, tool: "moon_test", note: "it applies the configured default target and reports pass/fail clearly; use its `package`, `target`, or `update` params instead of flags." },
+  { match: /\bmoon\s+fmt\b/, tool: "moon_fmt_info", note: "it runs fmt then info as the standard handoff sequence in one call." },
+  { match: /\bmoon\s+info\b/, tool: "moon_fmt_info", note: "it runs fmt then info as the standard handoff sequence in one call." },
+  { match: /\bmoon\s+ide\s+peek-def\b/, tool: "moon_peek_def", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
+  { match: /\bmoon\s+ide\s+find-references\b/, tool: "moon_find_references", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
+  { match: /\bmoon\s+ide\s+hover\b/, tool: "moon_hover", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
+  { match: /\bmoon\s+ide\s+outline\b/, tool: "moon_outline", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
+  { match: /\bmoon\s+ide\s+rename\b/, tool: "moon_rename", note: "it dry-runs by default and only rewrites files when called with apply: true." },
+  { match: /\bmoon\s+ide\s+analyze\b/, tool: "moon_analyze", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
+  { match: /\bmoon\s+ide\s+doc\b/, tool: "moon_doc", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
+];
+
+function findBashRedirect(command: string): BashRedirect | undefined {
+  return BASH_REDIRECTS.find((r) => r.match.test(command));
+}
 
 
 interface MoonIdeResult {
@@ -204,6 +236,21 @@ export default async function (pi: ExtensionAPI) {
     // re-check after fixing PATH, then /reload to register them.
     return;
   }
+
+  // Hard-block bash calls that duplicate a registered moon_* tool. Fires
+  // before the bash tool executes; returning { block: true, reason } stops
+  // it and surfaces `reason` to the model in place of a result, so it
+  // self-corrects to the named tool on the next turn instead of getting a
+  // normal (successful) bash result that reinforces the bash habit.
+  pi.on("tool_call", (event) => {
+    if (!isToolCallEventType("bash", event)) return;
+    const redirect = findBashRedirect(event.input.command ?? "");
+    if (!redirect) return;
+    return {
+      block: true,
+      reason: `Use the ${redirect.tool} tool instead of running this via bash — ${redirect.note}`,
+    };
+  });
 
   pi.registerTool({
     name: "moon_peek_def",
