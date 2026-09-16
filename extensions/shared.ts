@@ -40,43 +40,15 @@ function shapeMoonIdeResult(args: string[], r: Awaited<ReturnType<typeof runMoon
 // Runs `moon ide <args>` and best-effort parses stdout as JSON. Subcommands
 // that don't support --json return plain text — the json field is null then
 // and toContent falls back to the raw text.
-//
-// Tools pass --no-check so an ide call doesn't pay for a full project
-// check. But --no-check needs prior check state (_build/packages.json) and
-// fails on a cold module — e.g. a fresh checkout before the first
-// `moon check`. In that case retry once WITH the check; the warm path stays
-// fast, the cold path still works.
-//
-// The cold-state failure surface varies by moon version and subcommand
-// (observed across 0.1.20260904–0.1.20260915):
-//   "Error: .../_build/packages.json: No such file or directory"  (classic)
-//   "Error: no metadata is available for any backend"             (rename, newer moon)
-// and at least one build segfaulted outright (exit 139, no output at all).
-// Retry when any of these shapes show up after a --no-check failure.
-const COLD_STATE_MARKERS = ["packages.json", "no metadata is available"];
-
-function looksLikeColdStateFailure(result: MoonIdeResult, args: string[]): boolean {
-  if (result.ok || result.aborted || !args.includes("--no-check")) return false;
-  const text = result.raw + result.stderr;
-  if (COLD_STATE_MARKERS.some((m) => text.includes(m))) return true;
-  // Segfault class: the child died without producing any output. Only retry
-  // when there's genuinely nothing to lose by re-running with the check.
-  return result.raw.trim() === "" && result.stderr.trim() === "";
-}
 
 export async function runMoonIde(
   args: string[],
   cwd?: string,
   signal?: AbortSignal,
 ): Promise<MoonIdeResult> {
-  const first = shapeMoonIdeResult(args, await runMoon(["ide", ...args], { cwd, signal, timeout: TIMEOUT_MS }));
-  if (!looksLikeColdStateFailure(first, args)) {
-    return first;
-  }
-  const withoutNoCheck = args.filter((a) => a !== "--no-check");
   return shapeMoonIdeResult(
-    withoutNoCheck,
-    await runMoon(["ide", ...withoutNoCheck], { cwd, signal, timeout: TIMEOUT_MS }),
+    args,
+    await runMoon(["ide", ...args], { cwd, signal, timeout: TIMEOUT_MS }),
   );
 }
 

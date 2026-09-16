@@ -13,8 +13,8 @@ export function registerErrorTools(pi: ExtensionAPI) {
     label: "MoonBit: Explain error",
     description:
       "Ask for detailed explanation for an integer error code that was received from moon_check." +
-      "Call this if the cause of error is not clear from the moon_check diagnostic message." +
-      "Do not make assumptions about error messages until you read this.",
+      "Call this if the cause of error is not understood from the moon_check diagnostic message." +
+      "Do not make assumptions about errors until you read this.",
     parameters: Type.Object({
       error_code: Type.Integer({
         description:

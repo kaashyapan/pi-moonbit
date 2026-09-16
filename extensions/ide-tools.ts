@@ -1,10 +1,10 @@
 // The `moon ide` navigation tools: peek-def, find-references, hover,
 // outline, rename, analyze, doc.
 //
-// Every tool passes --no-check so an ide call doesn't pay for a full
-// project check (moon_check owns that job). On a cold module — no prior
-// check state — the ide runner in shared.ts transparently retries once
-// with the check.
+// Every tool runs the underlying project check: the ide subcommands read
+// their symbol/type index from prior check state (_build/), and running
+// them without it produces silently wrong results — e.g. peek-def reports
+// "No symbols found matching 'X'" for symbols that exist on a cold module.
 //
 // `moon ide` subcommands differ in --json support: on moon 0.1.20260904
 // only peek-def, find-references and hover accept it, while outline, doc,
@@ -41,7 +41,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
     promptSnippet:
       "moon_peek_def replaces `moon ide peek-def` — use it instead of grepping or shelling out.",
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
-      const args = ["peek-def", "--no-check", "--json"];
+      const args = ["peek-def", "--json"];
       if (params.symbol) args.splice(1, 0, params.symbol);
       if (params.loc) args.push("--loc", params.loc);
       return toContent(await runMoonIde(args, ctx?.cwd, signal));
@@ -71,7 +71,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
       "moon_find_references replaces grep/`moon ide find-references` for symbol usage search.",
 
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
-      const args = ["find-references", "--no-check", "--json"];
+      const args = ["find-references", "--json"];
       if (params.symbol) args.splice(1, 0, params.symbol);
       if (params.loc) args.push("--loc", params.loc);
       return toContent(await runMoonIde(args, ctx?.cwd, signal));
@@ -100,7 +100,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
     ],
     promptSnippet: "moon_type_info is the hover equivalent — always prefer it over reading source to infer a type.",
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
-      const args = ["hover", "--no-check", "--json", "--loc", params.loc];
+      const args = ["hover", "--json", "--loc", params.loc];
       if (params.symbol) args.splice(1, 0, params.symbol);
       return toContent(await runMoonIde(args, ctx?.cwd, signal));
     },
@@ -128,7 +128,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
     promptSnippet: "moon_outline replaces reading-the-whole-file-to-orient — call it first.",
 
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
-      const args = ["outline", "--no-check"];
+      const args = ["outline"];
       if (params.path) args.push(params.path);
       return toContent(await runMoonIde(args, ctx?.cwd, signal));
     },
@@ -163,7 +163,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
       // NOTE: `moon ide rename` rejects --json (moon 0.1.20260904); its
       // output is a patch-style edit list (or an apply summary).
-      const args = ["rename", params.old_name, params.new_name, "--no-check", "--loc", params.loc];
+      const args = ["rename", params.old_name, params.new_name, "--loc", params.loc];
       if (params.apply) args.push("--apply");
       const result = await runMoonIde(args, ctx?.cwd, signal);
       if (!params.apply && result.ok && !result.aborted) {
@@ -196,7 +196,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
     ],
     promptSnippet: "moon_analyze replaces grep-for-usage-counts with compiler-verified numbers.",
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
-      const args = ["analyze", "--no-check"];
+      const args = ["analyze"];
       if (params.path) args.push(params.path);
       return toContent(await runMoonIde(args, ctx?.cwd, signal));
     },
@@ -218,7 +218,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
     ],
     promptSnippet: "moon_doc replaces guessing API signatures from memory — always check here first.",
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
-      return toContent(await runMoonIde(["doc", "--no-check", params.query], ctx?.cwd, signal));
+      return toContent(await runMoonIde(["doc", params.query], ctx?.cwd, signal));
     },
   });
 }

@@ -21,12 +21,10 @@ export function registerTestTools(pi: ExtensionAPI) {
     name: "moon_test",
     label: "MoonBit: Test",
     description:
-      "Run MoonBit tests for the current module or a scoped package. Do NOT run `moon test` via " +
-      "bash for this — call this tool instead; failures are reported with isError: true so you " +
-      "treat them as something to fix, and results stay comparable across runs via an explicit " +
-      "target. Always runs against an explicit backend target (default wasm-gc — same default as " +
-      "moon_check, so the two agree; pass the same target to both if you override it). Prefer " +
-      "moon_check first — it's cheaper and catches type/syntax errors before you pay for a test run.",
+      "Do NOT run `moon test` via bash — call this tool instead. " +
+      "Failures are reported with isError: true, so treat them as something to fix. " +
+      "If you edited files across multiple packages, run one moon_test call per package, " +
+      "or omit package to test everything if unsure. Always prefer specifying the package that has changed. ",
     parameters: Type.Object({
       target: Type.Optional(
         Type.String({
@@ -35,7 +33,7 @@ export function registerTestTools(pi: ExtensionAPI) {
         }),
       ),
       package: Type.Optional(
-        Type.String({ description: "Limit to a package (-p <package>)." }),
+        Type.String({ description: "Package to be tested (-p <package>)." }),
       ),
       update: Type.Optional(
         Type.Boolean({
