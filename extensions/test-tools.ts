@@ -21,7 +21,12 @@ export function registerTestTools(pi: ExtensionAPI) {
     name: "moon_test",
     label: "MoonBit: Test",
     description:
-      "MoonBit: Test - Run `moon test` for the current module or a scoped package. Always runs against an explicit backend target (default wasm — pass the same target you used for moon_check). Prefer moon_check first (cheaper).",
+      "Run MoonBit tests for the current module or a scoped package. Do NOT run `moon test` via " +
+      "bash for this — call this tool instead; failures are reported with isError: true so you " +
+      "treat them as something to fix, and results stay comparable across runs via an explicit " +
+      "target. Always runs against an explicit backend target (default wasm-gc — same default as " +
+      "moon_check, so the two agree; pass the same target to both if you override it). Prefer " +
+      "moon_check first — it's cheaper and catches type/syntax errors before you pay for a test run.",
     parameters: Type.Object({
       target: Type.Optional(
         Type.String({
@@ -39,9 +44,14 @@ export function registerTestTools(pi: ExtensionAPI) {
         }),
       ),
     }),
-    promptGuidelines: [`Test should only be run for one target`,
-      "Test should only be run against package in which files have been edited",
+    promptGuidelines: [
+      "Use this tool, not bash, to run tests.",
+      "Run moon_check first — cheaper, and catches errors that would fail every test anyway.",
+      "Run against one target at a time; pass the same target you used for moon_check.",
+      "Scope with `package` to the package(s) you actually edited, rather than testing the whole module by default.",
     ],
+    promptSnippet:
+      "moon_test replaces `moon test` — run moon_check first, then this, against a consistent target.",
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
       // always test against an explicit target (default wasm), mirroring
       // moon_check — otherwise moon resolves the target from moon.pkg /

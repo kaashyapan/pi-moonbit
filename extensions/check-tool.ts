@@ -19,7 +19,14 @@ export function registerCheckTool(pi: ExtensionAPI) {
     name: "moon_check",
     label: "MoonBit: Check (static analysis)",
     description:
-      "MoonBit: Check (static analysis) - Run moon_check to verify syntax and type correctness without building object files. Always run this after editing MoonBit source and before moon_test — it's much cheaper than a full build and catches errors early. Returns diagnostics grouped by level (error/warning) with counts. Diagnostics from dependency code (workspace siblings, .mooncakes) are partitioned out: dependency warnings are summarized as counts, dependency errors are always shown; pass includeDeps to list them all. Always checked against a backend target (default wasm-gc).",
+      "Static analysis for MoonBit source — type and syntax checking without a full build. " +
+      "Do NOT run `moon check` via bash for this; call this tool instead. It parses the NDJSON " +
+      "output, filters out dependency noise, and returns structured error/warning counts that " +
+      "raw bash output does not give you. Run this after every source edit, before moon_test — " +
+      "it's cheaper than a full build and catches errors earlier. Dependency warnings (workspace " +
+      "siblings, .mooncakes) are hidden behind a count by default; dependency errors always show. " +
+      "Checked against an explicit backend target (default wasm-gc) so results are reproducible.",
+
     parameters: Type.Object({
       target: Type.Optional(
         Type.String({
@@ -37,13 +44,14 @@ export function registerCheckTool(pi: ExtensionAPI) {
         }),
       ),
     }),
-    promptGuidelines: [`Follow this sequence`,
-      "1. Edit source",
-      "2. `moon_check --diagnostic - limit 1` (Check if there are errors)",
-      "3. `moon_check` (cheap, catch type/syntax errors)",
-      "4. `moon_test` (after check is clean)",
-      "5. `moon_fmt_info` before handoff`",
-      "Returns a json response."],
+    promptSnippet:
+      "moon_check replaces `moon check` — always prefer it over running the command in bash.",
+    promptGuidelines: [
+      "Use this tool, not bash, for `moon check`.",
+      "Typical sequence: edit source -> moon_check -> moon_test -> moon_fmt_info before handoff.",
+      "Pass `target` only when the result must match a specific backend other than wasm-gc.",
+      "Pass `includeDeps: true` only if you need to see hidden dependency warnings, not by default.",
+    ],
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
       // always check against an explicit target: moon's default target
       // resolution (moon.pkg preferred_target / platform default) makes
@@ -136,25 +144,25 @@ export function registerCheckTool(pi: ExtensionAPI) {
         content: [{ type: "text" as const, text: truncate(lines.join("\n")) }],
         details: totalErrors > 0
           ? failureFlagged({
-              ok: true,
-              target,
-              errorCount: totalErrors,
-              warningCount: ws.warnings.length,
-              depErrorCount: dep.errors.length,
-              depWarningCount: dep.warnings.length,
-              includeDeps: showDeps,
-              hasErrors: totalErrors > 0,
-            })
+            ok: true,
+            target,
+            errorCount: totalErrors,
+            warningCount: ws.warnings.length,
+            depErrorCount: dep.errors.length,
+            depWarningCount: dep.warnings.length,
+            includeDeps: showDeps,
+            hasErrors: totalErrors > 0,
+          })
           : {
-              ok: true,
-              target,
-              errorCount: totalErrors,
-              warningCount: ws.warnings.length,
-              depErrorCount: dep.errors.length,
-              depWarningCount: dep.warnings.length,
-              includeDeps: showDeps,
-              hasErrors: totalErrors > 0,
-            },
+            ok: true,
+            target,
+            errorCount: totalErrors,
+            warningCount: ws.warnings.length,
+            depErrorCount: dep.errors.length,
+            depWarningCount: dep.warnings.length,
+            includeDeps: showDeps,
+            hasErrors: totalErrors > 0,
+          },
       };
     },
   });

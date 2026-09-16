@@ -23,18 +23,73 @@ interface BashRedirect {
 
 // Patterns are anchored to a command position; findBashRedirect applies
 // them per separator-split segment, not to the raw command string.
+
 export const BASH_REDIRECTS: BashRedirect[] = [
-  { match: /^moon\s+check\b/, tool: "moon_check", note: "it parses the NDJSON output into a summarized diagnostic list and accepts `package` to scope it." },
-  { match: /^moon\s+test\b/, tool: "moon_test", note: "it applies the configured default target and reports pass/fail clearly; use its `package`, `target`, or `update` params instead of flags." },
-  { match: /^moon\s+fmt\b/, tool: "moon_fmt_info", note: "it runs fmt then info as the standard handoff sequence in one call." },
-  { match: /^moon\s+info\b/, tool: "moon_fmt_info", note: "it runs fmt then info as the standard handoff sequence in one call." },
-  { match: /^moon\s+ide\s+peek-def\b/, tool: "moon_peek_def", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
-  { match: /^moon\s+ide\s+find-references\b/, tool: "moon_find_references", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
-  { match: /^moon\s+ide\s+hover\b/, tool: "moon_type_info", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
-  { match: /^moon\s+ide\s+outline\b/, tool: "moon_outline", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
-  { match: /^moon\s+ide\s+rename\b/, tool: "moon_rename", note: "it dry-runs by default and only rewrites files when called with apply: true." },
-  { match: /^moon\s+ide\s+analyze\b/, tool: "moon_analyze", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
-  { match: /^moon\s+ide\s+doc\b/, tool: "moon_doc", note: "it wraps this with JSON parsing, cwd handling, and cancellation support." },
+  {
+    match: /^moon\s+check\b/,
+    tool: "moon_check",
+    note: "it parses the raw NDJSON into a summarized error/warning count and filters out "
+      + "dependency noise, which bash output does not do.",
+  },
+  {
+    match: /^moon\s+test\b/,
+    tool: "moon_test",
+    note: "it runs against an explicit, consistent target and reports pass/fail via isError, "
+      + "so failures aren't missed in raw output.",
+  },
+  {
+    match: /^moon\s+fmt\b/,
+    tool: "moon_fmt_info",
+    note: "it runs fmt then info as one handoff — running fmt alone via bash skips the "
+      + "interface-file regeneration step.",
+  },
+  {
+    match: /^moon\s+info\b/,
+    tool: "moon_fmt_info",
+    note: "it runs fmt before info, which running info alone via bash would skip.",
+  },
+  {
+    match: /^moon\s+ide\s+peek-def\b/,
+    tool: "moon_peek_def",
+    note: "it resolves the correct project root for the current session — a bare bash call "
+      + "uses your shell's cwd, which is wrong in multi-root workspaces.",
+  },
+  {
+    match: /^moon\s+ide\s+find-references\b/,
+    tool: "moon_find_references",
+    note: "it resolves the correct project root for the current session — a bare bash call "
+      + "uses your shell's cwd, which is wrong in multi-root workspaces.",
+  },
+  {
+    match: /^moon\s+ide\s+hover\b/,
+    tool: "moon_type_info",
+    note: "it's the only supported way to get hover info without an interactive editor, and "
+      + "resolves the correct project root automatically.",
+  },
+  {
+    match: /^moon\s+ide\s+outline\b/,
+    tool: "moon_outline",
+    note: "it resolves the correct project root for the current session — a bare bash call "
+      + "uses your shell's cwd, which is wrong in multi-root workspaces.",
+  },
+  {
+    match: /^moon\s+ide\s+rename\b/,
+    tool: "moon_rename",
+    note: "it dry-runs by default — a raw bash call has no equivalent safeguard and can "
+      + "rewrite files immediately.",
+  },
+  {
+    match: /^moon\s+ide\s+analyze\b/,
+    tool: "moon_analyze",
+    note: "it resolves the correct project root for the current session — a bare bash call "
+      + "uses your shell's cwd, which is wrong in multi-root workspaces.",
+  },
+  {
+    match: /^moon\s+ide\s+doc\b/,
+    tool: "moon_doc",
+    note: "it resolves the correct project root for the current session — a bare bash call "
+      + "uses your shell's cwd, which is wrong in multi-root workspaces.",
+  },
 ];
 
 // Removes single/double-quoted segments (content, not just delimiters) so
@@ -64,4 +119,11 @@ export function findBashRedirect(command: string): BashRedirect | undefined {
   const unquoted = stripQuotedSegments(command);
   const segments = unquoted.split(/[;&|()`]|\$\(|\n/).map((s) => s.trim());
   return BASH_REDIRECTS.find((r) => segments.some((s) => r.match.test(s)));
+}
+
+export function redirectMessage(shell: "bash" | "powershell", redirect: BashRedirect): string {
+  return (
+    `Blocked — this command was not run. Call the ${redirect.tool} tool now instead of ${shell}: `
+    + `${redirect.note}`
+  );
 }

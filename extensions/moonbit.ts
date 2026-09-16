@@ -43,7 +43,7 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { isToolCallEventType } from "@earendil-works/pi-coding-agent";
 import { checkMoonAvailable } from "./doctor";
-import { findBashRedirect } from "./bash-redirect";
+import { findBashRedirect, redirectMessage } from "./bash-redirect";
 import { FAILURE_FLAG } from "./shared";
 import { registerCheckTool } from "./check-tool";
 import { registerIdeTools } from "./ide-tools";
@@ -118,7 +118,7 @@ export function registerMoonTools(pi: ExtensionAPI) {
       if (!redirect) return;
       return {
         block: true,
-        reason: `Use the ${redirect.tool} tool instead of running this via bash — ${redirect.note}`,
+        reason: redirectMessage("bash", redirect),
       };
     }
     // Windows: the model can route moon subcommands through powershell to
@@ -128,7 +128,7 @@ export function registerMoonTools(pi: ExtensionAPI) {
       if (!redirect) return;
       return {
         block: true,
-        reason: `Use the ${redirect.tool} tool instead of running this via powershell — ${redirect.note}`,
+        reason: redirectMessage("powershell", redirect),
       };
     }
   });
