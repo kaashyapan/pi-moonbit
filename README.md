@@ -4,13 +4,19 @@ Wraps `moon ide` subcommands (plus `check`, `test`, and the `fmt`+`info`
 handoff) as discrete Pi tools, so the model reaches for compiler-aware
 navigation instead of grepping `.mbt` source.
 
+[https://www.npmjs.com/package/pi-moonbit](https://www.npmjs.com/package/pi-moonbit)
+
 ## Install
 
-Project-local (recommended to start). The extension is modular, so copy the
-whole `extensions/` directory — `moonbit.ts` imports the other modules:
+One of
 
 ```bash
 pi install npm:pi-moonbit
+
+pi install git:git@github.com:kaashyapan/pi-moonbit.git
+
+pi install https://github.com/kaashyapan/pi-moonbit.git
+
 ```
 
 ## Caveat
