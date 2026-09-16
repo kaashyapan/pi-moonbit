@@ -71,7 +71,7 @@ when the session is not already inside a MoonBit module).
 a single JSON document, so it gets its own parsing path. A non-zero exit
 code is *normal* ("the package has errors") — only a spawn failure is a
 true execution error. Compile errors are still flagged via `isError: true`
-on the tool result. Optionally pass `package` (`-p <package>`).
+on the tool result.
 
 Checks always run against an explicit backend target, **defaulting to
 `wasm-gc`** (`moon check --target wasm-gc`). Without this, moon resolves the
@@ -85,8 +85,7 @@ specific backend; the chosen target is echoed in the result's
 
 `moon check` reports diagnostics for the whole module **and** for
 dependency code it builds along the way — `moon.work` sibling members
-(e.g. `../crescent`) and packages under `.mooncakes/`. Since moon has no
-scoping flag for this (`-p` still includes dependencies), `moon_check`
+(e.g. `../crescent`) and packages under `.mooncakes/`. `moon_check`
 partitions the parsed diagnostics by ownership itself:
 
 - **Ownership boundary** is the nearest ancestor directory containing a

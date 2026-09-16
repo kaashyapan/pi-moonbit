@@ -82,8 +82,8 @@ export function registerIdeTools(pi: ExtensionAPI) {
     name: "moon_type_info",
     label: "MoonBit: Type Info",
     description:
-      "Show the type and documentation for whatever is at a source position. This is the only way " +
-      "to get hover-equivalent info for an LLM (there's no interactive hover) — do NOT try to infer " +
+      "Type inference and documentation for whatever is at a specific position. " +
+      " — do NOT try to infer " +
       "the type by reading surrounding source via bash/cat; call this tool with `loc` instead. " +
       "Requires `loc` with a line number; add `symbol` only to disambiguate multiple items on one line.",
     parameters: Type.Object({
@@ -213,7 +213,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
       query: Type.String({ description: "Doc/API search query, e.g. '@json' or a function name." }),
     }),
     promptGuidelines: [
-      "Call this before using an API you're not 100% certain of the current signature for.",
+      "Call this before using an API you're not 100% certain of the current signature.",
       "Query can be a package (e.g. '@json') or a function/type name.",
     ],
     promptSnippet: "moon_doc replaces guessing API signatures from memory — always check here first.",
