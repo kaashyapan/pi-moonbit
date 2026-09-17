@@ -5,7 +5,8 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 import { failureFlagged } from "./shared";
-import { ERROR_MESSAGES } from "./error-msgs";
+import fs from 'fs';
+import path from 'path';
 
 export function registerErrorTools(pi: ExtensionAPI) {
   pi.registerTool({
@@ -29,8 +30,8 @@ export function registerErrorTools(pi: ExtensionAPI) {
       "moon_explain_error - Returns a detailed explanation of the error code.",
     async execute(_toolCallId, params, _signal, _onUpdate, _ctx) {
       const code = params.error_code;
-      const message = ERROR_MESSAGES[code];
-      if (message === undefined) {
+      let content = getErrorDetail(code)
+      if (content == null) {
         const text =
           `Error code ${code} was not found in the explanations database. ` +
           "Treat the moon_check diagnostic message itself as authoritative.";
@@ -38,11 +39,22 @@ export function registerErrorTools(pi: ExtensionAPI) {
           content: [{ type: "text" as const, text }],
           details: failureFlagged({ ok: false, error_code: code, error: `Error code ${code} was not found` }),
         };
-      }
-      return {
-        content: [{ type: "text" as const, text: message }],
-        details: { ok: true, error_code: code },
-      };
+      } else
+        return {
+          content: [{ type: "text" as const, text: content }],
+          details: { ok: true, error_code: code },
+        };
     },
   });
+}
+
+
+function getErrorDetail(code: number): string | null {
+  const file_name = "E" + code.toString().padStart(4, "0") + ".md";
+  const filePath = path.join(__dirname, "./error_codes", file_name);
+  if (fs.existsSync(filePath)) {
+    const content = fs.readFileSync(filePath, 'utf-8')
+    return content
+  }
+  return null
 }

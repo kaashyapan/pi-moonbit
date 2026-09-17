@@ -5,7 +5,6 @@
 import { describe, expect, test, beforeAll } from "bun:test";
 import moonbitExtension from "../extensions/moonbit.ts";
 import { FAILURE_FLAG } from "../extensions/shared.ts";
-import { ERROR_MESSAGES } from "../extensions/error-msgs.ts";
 
 const tools = new Map<string, any>();
 const commands = new Map<string, any>();
@@ -36,7 +35,7 @@ describe("moon_explain_error tool", () => {
 
   test("returns the explanation for a known code", async () => {
     const res = await execute({ error_code: 1 });
-    expect(res.content[0].text).toBe(ERROR_MESSAGES[1]);
+    expect(res.content[0].text).toStartWith("# E0001")
     expect(res.details).toEqual({ ok: true, error_code: 1 });
     expect(res.details[FAILURE_FLAG]).toBeUndefined();
   });
