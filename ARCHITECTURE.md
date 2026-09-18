@@ -43,7 +43,7 @@ itself.
 - `moon_rename` — compute rename edits (dry run unless `apply: true`)
 - `moon_analyze` — public API usage counts
 - `moon_doc` — search exported APIs/docs
-- `moon_error_explain` - Explain an error code
+- `moon_explain_error` — Explain an error code.
 
 **Build / quality**
 
@@ -54,6 +54,27 @@ itself.
 (All of the above are gated behind the `moon version` check — see
 "Toolchain gating" above.)
 
+### Module targeting via moon_mod_filepath
+
+Every tool except `moon_explain_error` takes a **required**
+`moon_mod_filepath` parameter — the absolute path of the module's `moon.mod`
+file. The tool strips the trailing `/moon.mod` and invokes moon with its
+global `-C <DIR>` option (`moon -C <module-dir> check …`), which changes the
+working directory before the subcommand runs. This identifies *which*
+MoonBit module to operate on — critical in multi-root workspaces and when
+the session's cwd is not the module root — and makes relative paths in other
+parameters resolve against the module root. `moon_check` also uses the
+derived module dir as the dependency-filtering ownership boundary.
+
+The path is validated before moon is spawned: empty/relative values and
+nonexistent directories, non-directories, and directories without a
+`moon.mod` all produce a failed tool result naming the exact problem and
+asking the model to locate the real moon.mod. This validation must happen in
+the extension: a nonexistent dir only yields a cryptic moon error, and
+`moon ide` against a directory without a moon.mod misleadingly reports
+"No symbols found matching 'X'" — which a model can misread as "the symbol
+doesn't exist in my code".
+
 ### Cancellation
 
 Every tool honours the Pi `AbortSignal`. If the user/model cancels a call,
@@ -62,9 +83,10 @@ the underlying `moon` process is aborted and the tool returns a short
 
 ### Working directory
 
-Every tool passes the Pi session's `ctx.cwd` into the subprocess so `moon`
-runs in the correct project root (important for multi-root workspaces and
-when the session is not already inside a MoonBit module).
+Every tool passes the module directory (derived from the required
+`moon_mod_filepath`, see above) to the subprocess via `moon -C <DIR>`, so
+`moon` runs against the correct project root (important for multi-root
+workspaces and when the session is not already inside a MoonBit module).
 
 ### moon_check specifics
 
@@ -108,9 +130,9 @@ partitions the parsed diagnostics by ownership itself:
   ```
 - **Escape hatch**: pass `includeDeps: true` to list the previously hidden
   dependency warnings too (rendered as `[dependency warning ...]`).
-- **Fail open**: if no `moon.mod` can be found from the session's working
-  directory, nothing is hidden — filtering only applies when ownership can
-  be determined.
+- **Always determined**: the ownership boundary is the module directory from
+  the required `moon_mod_filepath`, validated (exists, contains `moon.mod`)
+  before the run — so partitioning never has a "unknown boundary" state.
 
 The structured result mirrors the split: `errorCount`/`hasErrors` cover all
 diagnostics (any error makes `isError: true`), while `warningCount` counts

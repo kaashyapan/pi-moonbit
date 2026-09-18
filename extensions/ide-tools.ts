@@ -14,7 +14,14 @@
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { LocParam, runMoonIde, toContent } from "./shared";
+import {
+  LocParam,
+  MoonModFilePathParam,
+  invalidMoonModResult,
+  runMoonIde,
+  toContent,
+  validatedMoonModDir,
+} from "./shared";
 
 export function registerIdeTools(pi: ExtensionAPI) {
   pi.registerTool({
@@ -26,6 +33,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
       "can't follow type-directed dispatch or re-exports. Provide `symbol` (e.g. 'Array::length', " +
       "'@pkg.foo'), `loc` (path[:line[:col]]), or both to disambiguate an overloaded or shadowed name.",
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       symbol: Type.Optional(
         Type.String({
           description: "Symbol query, e.g. 'foo', '@pkg.foo', 'Type::member'.",
@@ -44,7 +52,9 @@ export function registerIdeTools(pi: ExtensionAPI) {
       const args = ["peek-def", "--json"];
       if (params.symbol) args.splice(1, 0, params.symbol);
       if (params.loc) args.push("--loc", params.loc);
-      return toContent(await runMoonIde(args, ctx?.cwd, signal));
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
+      return toContent(await runMoonIde(args, mod.dir, signal));
     },
   });
 
@@ -57,6 +67,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
       "type-directed dispatch and trait implementations that text search misses entirely. " +
       "Provide `symbol` (e.g. 'println', '@pkg.foo'), optionally `loc` to disambiguate.",
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       symbol: Type.Optional(
         Type.String({ description: "Symbol query, e.g. 'println', '@pkg.foo'." }),
       ),
@@ -74,7 +85,9 @@ export function registerIdeTools(pi: ExtensionAPI) {
       const args = ["find-references", "--json"];
       if (params.symbol) args.splice(1, 0, params.symbol);
       if (params.loc) args.push("--loc", params.loc);
-      return toContent(await runMoonIde(args, ctx?.cwd, signal));
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
+      return toContent(await runMoonIde(args, mod.dir, signal));
     },
   });
 
@@ -87,6 +100,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
       "the type by reading surrounding source via bash/cat; call this tool with `loc` instead. " +
       "Requires `loc` with a line number; add `symbol` only to disambiguate multiple items on one line.",
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       loc: Type.String({
         description: "Source location, path:line[:col], 1-based. Line is required.",
       }),
@@ -102,7 +116,9 @@ export function registerIdeTools(pi: ExtensionAPI) {
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
       const args = ["hover", "--json", "--loc", params.loc];
       if (params.symbol) args.splice(1, 0, params.symbol);
-      return toContent(await runMoonIde(args, ctx?.cwd, signal));
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
+      return toContent(await runMoonIde(args, mod.dir, signal));
     },
   });
 
@@ -114,6 +130,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
       "the whole file or grep for declarations to orient yourself — call this tool first. Pass a " +
       "file or directory `path`; omit to outline the current package.",
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       path: Type.Optional(
         Type.String({
           description:
@@ -130,7 +147,9 @@ export function registerIdeTools(pi: ExtensionAPI) {
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
       const args = ["outline"];
       if (params.path) args.push(params.path);
-      return toContent(await runMoonIde(args, ctx?.cwd, signal));
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
+      return toContent(await runMoonIde(args, mod.dir, signal));
     },
   });
 
@@ -143,6 +162,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
       "tool resolves correctly. Defaults to a dry run (returns the edit set without writing); set " +
       "apply: true only after reviewing the dry-run output, since that rewrites files on disk.",
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       old_name: Type.String({ description: "Current symbol name." }),
       new_name: Type.String({ description: "New symbol name." }),
       loc: Type.String({ description: "Location disambiguating which declaration to rename, path[:line]." }),
@@ -165,7 +185,9 @@ export function registerIdeTools(pi: ExtensionAPI) {
       // output is a patch-style edit list (or an apply summary).
       const args = ["rename", params.old_name, params.new_name, "--loc", params.loc];
       if (params.apply) args.push("--apply");
-      const result = await runMoonIde(args, ctx?.cwd, signal);
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
+      const result = await runMoonIde(args, mod.dir, signal);
       if (!params.apply && result.ok && !result.aborted) {
         result.raw =
           "[DRY RUN — no files written; call again with apply: true to rewrite]\n" + result.raw;
@@ -182,6 +204,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
       "this tool gives compiler-verified counts. Pass a package directory (`path`) to scope the " +
       "report; omit to analyze all local packages in the module.",
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       path: Type.Optional(
         Type.String({
           description:
@@ -198,7 +221,9 @@ export function registerIdeTools(pi: ExtensionAPI) {
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
       const args = ["analyze"];
       if (params.path) args.push(params.path);
-      return toContent(await runMoonIde(args, ctx?.cwd, signal));
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
+      return toContent(await runMoonIde(args, mod.dir, signal));
     },
   });
 
@@ -210,6 +235,7 @@ export function registerIdeTools(pi: ExtensionAPI) {
       "guess an API's signature from memory or training data — MoonBit APIs change between " +
       "versions; call this tool to confirm the actual current signature and docs.",
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       query: Type.String({ description: "Doc/API search query, e.g. '@json' or a function name." }),
     }),
     promptGuidelines: [
@@ -218,7 +244,9 @@ export function registerIdeTools(pi: ExtensionAPI) {
     ],
     promptSnippet: "moon_doc replaces guessing API signatures from memory — always check here first.",
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
-      return toContent(await runMoonIde(["doc", params.query], ctx?.cwd, signal));
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
+      return toContent(await runMoonIde(["doc", params.query], mod.dir, signal));
     },
   });
 }

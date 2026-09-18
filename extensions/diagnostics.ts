@@ -27,7 +27,7 @@ export interface CheckDiagnostic {
 
 export function runMoonCheck(
   args: string[],
-  cwd?: string,
+  dir: string,
   signal?: AbortSignal,
 ): Promise<{
   spawnFailed: boolean;
@@ -38,7 +38,7 @@ export function runMoonCheck(
   spawnMessage?: string;
   timeoutMs: number;
 }> {
-  return runMoon(["check", "--output-json", ...args], { cwd, signal }).then((r) => ({
+  return runMoon(["check", "--output-json", ...args], { dir, signal }).then((r) => ({
     spawnFailed: r.spawnFailed,
     timedOut: r.timedOut,
     aborted: r.aborted,
@@ -73,22 +73,11 @@ export function parseCheckOutput(stdout: string): { diagnostics: CheckDiagnostic
 
 const MOONCAKES_SEGMENT = "/.mooncakes/";
 
-// Nearest ancestor (including cwd itself) containing a moon.mod file.
-// That module root is the ownership boundary; everything outside it is a
-// dependency — including moon.work sibling members (e.g. ../crescent),
-// which the agent working in this module shouldn't edit even though the
-// workspace links them. Returns undefined when no module root is found,
-// in which case the caller fails open (nothing is hidden).
-export function findModuleRoot(cwd?: string): string | undefined {
-  if (!cwd) return undefined;
-  let dir = path.resolve(cwd);
-  for (;;) {
-    if (existsSync(path.join(dir, "moon.mod"))) return dir;
-    const parent = path.dirname(dir);
-    if (parent === dir) return undefined;
-    dir = parent;
-  }
-}
+// Ownership boundary: the module directory derived from the tool's required
+// moon_mod_filepath parameter (validated before the run), passed by
+// moon_check. Everything outside it is a dependency — including moon.work
+// sibling members (e.g. ../crescent), which the agent working in this module
+// shouldn't edit even though the workspace links them.
 
 export function isDependencyPath(filePath: string, moduleRoot?: string): boolean {
   if (filePath.includes(MOONCAKES_SEGMENT)) return true;

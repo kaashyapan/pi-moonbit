@@ -11,7 +11,15 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 import { runMoon } from "./moonexec";
-import { abortedContent, failureFlagged, truncate } from "./shared";
+import {
+  MoonModFilePathParam,
+  abortedContent,
+  failureFlagged,
+  invalidMoonModResult,
+  moonModDir,
+  truncate,
+  validatedMoonModDir,
+} from "./shared";
 
 // test builds can be slow on first run; give them their own budget.
 const TEST_TIMEOUT_MS = 120_000;
@@ -26,6 +34,7 @@ export function registerTestTools(pi: ExtensionAPI) {
       "If you edited files across multiple packages, run one moon_test call per package, " +
       "or omit package to test everything if unsure. Always prefer specifying the package that has changed. ",
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       target: Type.Optional(
         Type.String({
           description:
@@ -59,8 +68,10 @@ export function registerTestTools(pi: ExtensionAPI) {
       if (params.package) args.push("-p", params.package);
       if (params.update) args.push("--update");
 
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
       const result = await runMoon(args, {
-        cwd: ctx?.cwd,
+        dir: mod.dir,
         signal,
         timeout: TEST_TIMEOUT_MS,
       });
@@ -115,6 +126,7 @@ export function registerTestTools(pi: ExtensionAPI) {
     description:
       "MoonBit: Format - Formats source in place, then regenerates public interface (.mbti) files. Run this after edits are done and moon_check is clean, not mid-edit.",
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       package: Type.Optional(
         Type.String({
           description: "Optional package scope for moon info (-p <package>). fmt always runs module-wide.",
@@ -125,7 +137,9 @@ export function registerTestTools(pi: ExtensionAPI) {
       const sections: string[] = [];
 
       // 1) moon fmt
-      const fmt = await runMoon(["fmt"], { cwd: ctx?.cwd, signal });
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
+      const fmt = await runMoon(["fmt"], { dir: mod.dir, signal });
       if (fmt.aborted) return abortedContent();
       if (fmt.spawnFailed) {
         return {
@@ -175,7 +189,7 @@ export function registerTestTools(pi: ExtensionAPI) {
       const infoArgs = ["info"];
       if (params.package) infoArgs.push("-p", params.package);
 
-      const info = await runMoon(infoArgs, { cwd: ctx?.cwd, signal });
+      const info = await runMoon(infoArgs, { dir: mod.dir, signal });
       if (info.aborted) return abortedContent();
       if (info.spawnFailed) {
         return {

@@ -22,9 +22,10 @@
 //   retrying or misdiagnose the failure as a code problem. The always-
 //   registered `moon-doctor` command lets a human re-check reachability
 //   (e.g. after fixing PATH) without needing to know that's what's wrong.
-// - All tool execute handlers receive the full Pi signature and pass
-//   `ctx.cwd` into subprocesses so they run in the session's working
-//   directory (critical for multi-root / non-module contexts).
+// - All tool execute handlers receive the full Pi signature. The model must
+//   pass `moon_mod_filepath` (absolute path of the module's moon.mod) on every
+//   tool except moon_explain_error; the derived module dir is passed to moon
+//   as `-C <DIR>` so runs target the right module regardless of session cwd.
 // - AbortSignal is honoured: if the model/user cancels a tool call, the
 //   underlying `moon` process is killed via the signal option on execFile.
 //
@@ -87,7 +88,7 @@ export default async function (pi: ExtensionAPI) {
     description:
       "MoonBit doctor: Check whether the MoonBit toolchain (`moon`) is reachable on PATH and whether moon-ide/moon-check tools are active",
     handler: async (_args, ctx) => {
-      const result = await checkMoonAvailable(ctx.cwd);
+      const result = await checkMoonAvailable();
       if (result.available) {
         const toolsLive = startupCheck.available;
         ctx.ui.notify(

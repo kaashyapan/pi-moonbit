@@ -6,13 +6,20 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 import type { CheckDiagnostic } from "./diagnostics";
 import {
-  findModuleRoot,
   hiddenDepSummary,
   parseCheckOutput,
   partitionDiagnostics,
   runMoonCheck,
 } from "./diagnostics";
-import { abortedContent, failureFlagged, truncate } from "./shared";
+import {
+  MoonModFilePathParam,
+  invalidMoonModResult,
+  abortedContent,
+  failureFlagged,
+  moonModDir,
+  truncate,
+  validatedMoonModDir,
+} from "./shared";
 
 export function registerCheckTool(pi: ExtensionAPI) {
   pi.registerTool({
@@ -28,6 +35,7 @@ export function registerCheckTool(pi: ExtensionAPI) {
       "Checked against an explicit backend target (default wasm-gc) so results are reproducible.",
 
     parameters: Type.Object({
+      moon_mod_filepath: MoonModFilePathParam,
       target: Type.Optional(
         Type.String({
           description:
@@ -59,7 +67,9 @@ export function registerCheckTool(pi: ExtensionAPI) {
       const target = params.target ?? "wasm-gc";
       const args = ["--target", target];
       if (params.package) args.push("-p", params.package);
-      const result = await runMoonCheck(args, ctx?.cwd, signal);
+      const mod = validatedMoonModDir(params.moon_mod_filepath);
+      if (!mod.ok) return invalidMoonModResult(params.moon_mod_filepath, mod.error);
+      const result = await runMoonCheck(args, mod.dir, signal);
 
       if (result.aborted) return abortedContent();
 
@@ -88,7 +98,9 @@ export function registerCheckTool(pi: ExtensionAPI) {
       }
 
       const { diagnostics, unparsedLines } = parseCheckOutput(result.stdout);
-      const moduleRoot = findModuleRoot(ctx?.cwd);
+      // The module dir passed via -C is the ownership boundary; no need to
+      // walk up from the session cwd (the model may sit outside the module).
+      const moduleRoot = moonModDir(params.moon_mod_filepath);
       const { workspace, dependency } = partitionDiagnostics(diagnostics, moduleRoot);
       const showDeps = params.includeDeps === true;
 

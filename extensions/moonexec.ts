@@ -26,9 +26,21 @@ interface MoonRunResult {
 
 export function runMoon(
     args: string[],
-    opts: { cwd?: string; signal?: AbortSignal; timeout?: number } = {},
+    opts: { dir: string; signal?: AbortSignal; timeout?: number },
 ): Promise<MoonRunResult> {
-    const { cwd, signal, timeout = TIMEOUT_MS } = opts;
+    const { dir, signal, timeout = TIMEOUT_MS } = opts;
+    // moon's global -C <DIR> changes the working directory before the
+    // subcommand runs (must precede the subcommand). Every moon_* tool passes
+    // the module directory derived from the required moon_mod_filepath param
+    // so paths resolve against the module root regardless of session cwd.
+    // dir is mandatory: a moon invocation without it would silently run
+    // against whatever directory the session happens to be in.
+    if (typeof dir !== "string" || !dir.trim()) {
+        throw new TypeError(
+            "runMoon: dir is required — pass the module directory derived from the tool's moon_mod_filepath parameter.",
+        );
+    }
+    const fullArgs = ["-C", dir, ...args];
     return new Promise((resolve) => {
         if (signal?.aborted) {
             resolve({
@@ -44,8 +56,8 @@ export function runMoon(
         }
         execFile(
             "moon",
-            args,
-            { cwd, timeout, maxBuffer: 10 * 1024 * 1024, signal },
+            fullArgs,
+            { timeout, maxBuffer: 10 * 1024 * 1024, signal },
             (error, stdout, stderr) => {
                 const out = stdout?.toString() ?? "";
                 const err = stderr?.toString() ?? "";

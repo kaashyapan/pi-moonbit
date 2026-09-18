@@ -10,18 +10,23 @@
 //
 
 import { describe, expect, test, beforeAll } from "bun:test";
+import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import moonbitExtension from "../extensions/moonbit.ts";
 import {
   dependencyOrigin,
-  findModuleRoot,
   hiddenDepSummary,
   isDependencyPath,
   parseCheckOutput,
   partitionDiagnostics,
   type CheckDiagnostic,
 } from "../extensions/diagnostics.ts";
-import { FAILURE_FLAG, truncate } from "../extensions/shared.ts";
+import {
+  FAILURE_FLAG,
+  moonModDir,
+  truncate,
+} from "../extensions/shared.ts";
 
 // ---------------------------------------------------------------------------
 // Harness: stub ExtensionAPI that captures registrations
@@ -53,7 +58,13 @@ async function execute(
 ) {
   const tool = tools.get(name);
   if (!tool) throw new Error(`tool ${name} not registered`);
-  return await tool.execute("test-call-id", params, undefined, undefined, ctx);
+  // Simulate the model: moon_mod_filepath is required on every tool except
+  // moon_explain_error and must be the absolute path of the module's moon.mod.
+  const fullParams = {
+    moon_mod_filepath: path.join(ctx.cwd ?? process.cwd(), "moon.mod"),
+    ...params,
+  };
+  return await tool.execute("test-call-id", fullParams, undefined, undefined, ctx);
 }
 
 beforeAll(async () => {
@@ -133,11 +144,111 @@ describe("truncate", () => {
   });
 });
 
+describe("moonModDir", () => {
+  test("strips a trailing /moon.mod and resolves to an absolute dir", () => {
+    expect(moonModDir("/home/me/proj/moon.mod")).toBe("/home/me/proj");
+    expect(moonModDir("/home/me/proj/")).toBe("/home/me/proj");
+    expect(moonModDir("/home/me/proj/MOON.MOD")).toBe("/home/me/proj");
+    // tolerant of a bare directory too (model already stripped the filename)
+    expect(moonModDir("/home/me/proj")).toBe("/home/me/proj");
+  });
+
+  test("rejects empty, blank, and relative inputs instead of silently resolving", () => {
+    // empty/blank would otherwise become the session cwd — the wrong module
+    expect(() => moonModDir("")).toThrow();
+    expect(() => moonModDir("   ")).toThrow();
+    expect(() => moonModDir(undefined as unknown as string)).toThrow();
+    // relative paths would silently resolve against the extension process cwd
+    expect(() => moonModDir("proj")).toThrow();
+    expect(() => moonModDir("./proj")).toThrow();
+    expect(() => moonModDir("./fixtures/moon-sample/moon.mod")).toThrow();
+  });
+});
+
+describe("invalid moon_mod_filepath handling", () => {
+  test(
+    "moon_check returns an actionable failure result for a nonexistent path",
+    async () => {
+      const res = await execute(
+        "moon_check",
+        { moon_mod_filepath: "/definitely/not/here/moon.mod" },
+        { cwd: "/tmp" },
+      );
+      expect(res.details[FAILURE_FLAG]).toBe(true);
+      expect(res.details.ok).toBe(false);
+      const text = res.content[0].text as string;
+      expect(text).toContain("Invalid moon_mod_filepath");
+      expect(text).toContain("nonexistent");
+      expect(text).toContain("/definitely/not/here");
+    },
+    30_000,
+  );
+
+  test(
+    "directory without a moon.mod says so explicitly (moon would mislead)",
+    async () => {
+      const nomod = fs.mkdtempSync(path.join(os.tmpdir(), "moon-nomod-"));
+      try {
+        const res = await execute(
+          "moon_check",
+          { moon_mod_filepath: path.join(nomod, "moon.mod") },
+          { cwd: "/tmp" },
+        );
+        expect(res.details[FAILURE_FLAG]).toBe(true);
+        expect(res.content[0].text).toContain("No moon.mod found");
+      } finally {
+        fs.rmSync(nomod, { recursive: true, force: true });
+      }
+    },
+    30_000,
+  );
+
+  test(
+    "an ide tool surfaces the same error instead of moon's misleading symbol output",
+    async () => {
+      const res = await execute(
+        "moon_peek_def",
+        { moon_mod_filepath: "/definitely/not/here/moon.mod", symbol: "S3Config" },
+        { cwd: "/tmp" },
+      );
+      expect(res.details[FAILURE_FLAG]).toBe(true);
+      // must NOT contain moon's "No symbols found" — that would read as a
+      // legitimate "symbol doesn't exist" answer
+      expect(res.content[0].text).toContain("Invalid moon_mod_filepath");
+      expect(res.content[0].text).not.toContain("No symbols found");
+    },
+    30_000,
+  );
+
+  test("valid path still passes validation and reaches moon", async () => {
+    const res = await execute("moon_check", {}, { cwd: FIXTURE_DIR });
+    expect(res.details.ok).toBe(true);
+    expect(res.details[FAILURE_FLAG]).toBeUndefined();
+  }, 120_000);
+});
+
 // ---------------------------------------------------------------------------
 // moon_check (integration, real moon against the fixture module)
 // ---------------------------------------------------------------------------
 
 describe("moon_check tool", () => {
+  test(
+    "runs against the moon_mod_filepath module even when session cwd is elsewhere",
+    async () => {
+      // moon -C <module dir> must redirect the run away from the session cwd.
+      const res = await execute(
+        "moon_check",
+        { moon_mod_filepath: path.join(FIXTURE_DIR, "moon.mod") },
+        { cwd: path.dirname(FIXTURE_DIR) },
+      );
+      expect(res.details.ok).toBe(true);
+      expect(res.details.errorCount).toBe(0);
+      expect(res.details.warningCount).toBe(1); // the moon-sample module's warning
+      expect(res.content[0].text).toContain("Unused package 'moonbitlang/core/json'");
+    },
+    120_000,
+  );
+
   test(
     "whole module: warning-only report is not an error",
     async () => {
@@ -238,13 +349,6 @@ describe("moon_check tool", () => {
 // ---------------------------------------------------------------------------
 
 describe("ownership partitioning helpers", () => {
-  test("findModuleRoot walks up to the nearest moon.mod", () => {
-    expect(findModuleRoot(FIXTURE_DIR)).toBe(FIXTURE_DIR);
-    expect(findModuleRoot(path.join(FIXTURE_DIR, "types"))).toBe(FIXTURE_DIR);
-    expect(findModuleRoot(undefined)).toBeUndefined();
-    expect(findModuleRoot("/nonexistent-root-for-tests/deep")).toBeUndefined();
-  });
-
   test("isDependencyPath: outside the module or under .mooncakes", () => {
     const root = "/ws/app";
     expect(isDependencyPath("/ws/app/src/lib.mbt", root)).toBe(false);

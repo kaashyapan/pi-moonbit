@@ -44,7 +44,13 @@ async function execute(
 ) {
   const tool = tools.get(name);
   if (!tool) throw new Error(`tool ${name} not registered`);
-  return await tool.execute("test-call-id", params, undefined, undefined, ctx);
+  // Simulate the model: moon_mod_filepath is required on every tool except
+  // moon_explain_error and must be the absolute path of the module's moon.mod.
+  const fullParams = {
+    moon_mod_filepath: path.join(ctx.cwd ?? process.cwd(), "moon.mod"),
+    ...params,
+  };
+  return await tool.execute("test-call-id", fullParams, undefined, undefined, ctx);
 }
 
 beforeAll(async () => {
@@ -90,7 +96,7 @@ describe("moon_fmt_info tool", () => {
   test("fixture survives a fmt round-trip unchanged", async () => {
     // run fmt via the same exec path the tool uses, then confirm no diff
     const { runMoon } = await import("../extensions/moonexec.ts");
-    await runMoon(["fmt"], { cwd: FIXTURE_DIR });
+    await runMoon(["fmt"], { dir: FIXTURE_DIR });
     const proc = Bun.spawnSync(["git", "status", "--porcelain", "."], {
       cwd: FIXTURE_DIR,
     });

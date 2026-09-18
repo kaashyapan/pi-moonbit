@@ -4,6 +4,12 @@ Wraps `moon ide` subcommands (plus `check`, `test`, and the `fmt`+`info`
 handoff) as discrete Pi tools, so the model reaches for compiler-aware
 navigation instead of grepping `.mbt` source.
 
+Every tool except `moon_explain_error` takes a **required `moon_mod_filepath`**
+parameter: the absolute path of the module's `moon.mod` file. The tool strips
+the trailing `/moon.mod` and runs the underlying command as
+`moon -C <module-dir> …`, so relative paths resolve against the module root
+regardless of the session's working directory.
+
 [https://www.npmjs.com/package/pi-moonbit](https://www.npmjs.com/package/pi-moonbit)
 
 ## Install
@@ -30,7 +36,7 @@ pi install https://github.com/kaashyapan/pi-moonbit.git
 - `moon_rename` — compute rename edits (dry run unless `apply: true`)
 - `moon_analyze` — public API usage counts
 - `moon_doc` — search exported APIs/docs
-- `moon_error_explain` - Explain an error code
+- `moon_explain_error` — Explain an error code
 
 **Build / quality**
 
@@ -52,6 +58,7 @@ pi install https://github.com/kaashyapan/pi-moonbit.git
 4. The error explain tool will placed to save a lot of tokens, where the model only needs to look up the error code necessary instead of running an explain on the entire project.
 5. Better tool reliability. You can be more sure that the model will use the tool for the purpose.
 Higher chances of it picking moon ide over grep on the entire codebase. Verify with tool-stats.
+6. Works for multi-root workspaces.
 
 ## Important
 

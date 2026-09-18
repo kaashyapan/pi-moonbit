@@ -70,7 +70,7 @@ describe("moonexec.runMoon + doctor", () => {
     const { runMoon } = await import("../extensions/moonexec.ts");
     const controller = new AbortController();
     controller.abort();
-    const res = await runMoon(["version"], { signal: controller.signal });
+    const res = await runMoon(["version"], { dir: FIXTURE_DIR, signal: controller.signal });
     expect(res.aborted).toBe(true);
     expect(res.ok).toBe(false);
     expect(res.spawnFailed).toBe(false);
@@ -79,7 +79,7 @@ describe("moonexec.runMoon + doctor", () => {
 
   test("non-zero exit is a normal result, not a spawn failure", async () => {
     const { runMoon } = await import("../extensions/moonexec.ts");
-    const res = await runMoon(["nonexistent-subcommand-xyz"], { cwd: FIXTURE_DIR });
+    const res = await runMoon(["nonexistent-subcommand-xyz"], { dir: FIXTURE_DIR });
     expect(res.ok).toBe(false);
     expect(res.spawnFailed).toBe(false);
     expect(res.timedOut).toBe(false);
@@ -90,7 +90,7 @@ describe("moonexec.runMoon + doctor", () => {
   test("timeout kill sets timedOut, not spawnFailed", async () => {
     // `moon version` is fast, but a tiny execFile timeout still fires first
     const { runMoon } = await import("../extensions/moonexec.ts");
-    const res = await runMoon(["version"], { cwd: FIXTURE_DIR, timeout: 1 });
+    const res = await runMoon(["version"], { dir: FIXTURE_DIR, timeout: 1 });
     expect(res.ok).toBe(false);
     expect(res.timedOut).toBe(true);
     expect(res.spawnFailed).toBe(false);
@@ -99,7 +99,7 @@ describe("moonexec.runMoon + doctor", () => {
 
   test("checkMoonAvailable reports the reachable toolchain", async () => {
     const { checkMoonAvailable } = await import("../extensions/doctor.ts");
-    const res = await checkMoonAvailable(FIXTURE_DIR);
+    const res = await checkMoonAvailable();
     expect(res.available).toBe(true);
     expect(res.version).toMatch(/^moon \d/);
   }, 30_000);
