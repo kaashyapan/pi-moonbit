@@ -1,0 +1,13 @@
+import {
+  "kaashyapan/moonext/internal/generated/earendil_works__pi_coding_agent" @pi,
+  "mizchi/js_node/os",
+  "mizchi/js_node/path",
+  "mizchi/js_node/fs",
+  "mizchi/js_core",
+}
+
+pkgtype(kind: "foreign_library")
+
+supported_targets = "js"
+
+warnings = "-29-20"

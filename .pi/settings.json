@@ -1,0 +1,9 @@
+{
+    "skills": [
+        "~/myskills/skills/moonbit-agent-guide",
+        "~/myskills/skills/moonbit-js-interop"
+    ],
+    "packages": [
+        "git:git@github.com:kaashyapan/pi-moonbit.git"
+    ]
+}

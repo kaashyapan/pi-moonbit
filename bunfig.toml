@@ -1,5 +1,10 @@
-# bun test discovers only tests/ — the fixture modules under fixtures/
-# generate *_test.js files in their _build on js-target runs, which bun
-# would otherwise pick up and try to execute.
+# Restrict test discovery to tests/ and skip generated MoonBit build output.
+#
+# `moon build` (and `moon test` run against the fixtures) emits generated
+# *_test.js driver files under _build/ for the bundled MoonBit packages. Bun
+# would otherwise pick those up and fail trying to execute them as its own
+# tests. The fixtures under tests/fixtures/ have their own _build directories,
+# hence the recursive pattern.
 [test]
 root = "tests"
+pathIgnorePatterns = ["**/_build/**"]

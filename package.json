@@ -1,7 +1,7 @@
 {
-    "name": "pi-moonbit",
-    "version": "0.0.6",
-    "description": "For MoonBit language. Brings moonbit tool chain goodies like peek-def and docs as harness tools.",
+    "name": "moonext",
+    "version": "0.0.7",
+    "description": "Pi extension for MoonBit language. Brings moonbit tool chain goodies like peek-def and docs as harness tools.",
     "license": "BSD-3-Clause",
     "author": "kaashyapan",
     "repository": {
@@ -21,32 +21,39 @@
         "pi-package",
         "pi",
         "harness",
+        "pi-moonbit",
         "moonbit"
     ],
     "pi": {
         "extensions": [
-            "./extensions/moonbit.ts"
+            "./extensions/index.js"
         ]
     },
     "files": [
         "LICENSE",
         "README.md",
-        "extensions",
-        "tsconfig.json"
+        "README.mbt.md",
+        "extensions"
     ],
     "peerDependencies": {
-        "@earendil-works/pi-coding-agent": "*",
-        "@earendil-works/pi-tui": "*"
+        "@earendil-works/pi-coding-agent": "^0.85.1",
+        "@earendil-works/pi-tui": "^0.85.1"
     },
     "devDependencies": {
-        "@types/bun": "^1.4.2",
-        "@types/node": "^24.12.4",
-        "typescript": "^5.9.3"
+        "@earendil-works/pi-coding-agent": "^0.85.1",
+        "@earendil-works/pi-tui": "^0.85.1",
+        "@tsmbt-bridge/earendil_works__pi_coding_agent": "file:./internal/generated/earendil_works__pi_coding_agent",
+        "@tsmbt-bridge/earendil_works__pi_tui": "file:./internal/generated/earendil_works__pi_tui"
     },
     "scripts": {
-        "typecheck": "tsc --noEmit",
+        "build:moon": "moon build --release",
+        "build:js": "bun build _build/js/release/build/src/src.js --outfile ./extensions/moonext.js --minify --target=node --external '@earendil-works/*' --external 'typebox'",
+        "build": "bun run build:moon && bun run build:js",
         "test": "bun test",
         "pack:dry": "bun pm pack --dry-run",
-        "verify": "bun run typecheck && bun run test && bun run pack:dry"
+        "pack": "bun pm pack",
+        "verify": "bun run test && bun run pack:dry",
+        "publish": "bun run test && bun run pack:dry",
+        "pretest": "bun run build"
     }
 }

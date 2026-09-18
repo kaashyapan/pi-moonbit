@@ -1,0 +1,2301 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "kaashyapan/moonext/internal/generated/earendil_works__pi_tui"
+
+// Values
+pub fn allocateImageId() -> Double
+
+pub fn calculateImageRows(ImageDimensions, Double, CellDimensions?) -> Double
+
+pub fn compositeTuiLine(String, String, Double, Double, Double) -> String
+
+pub fn decodeKittyPrintable(String) -> String?
+
+pub fn deleteAllKittyImages() -> String
+
+pub fn deleteKittyImage(Double) -> String
+
+pub fn detectCapabilities((() -> Bool)?) -> TerminalCapabilities
+
+pub fn encodeITerm2(String, JSValue?) -> String
+
+pub fn encodeKitty(String, JSValue?) -> String
+
+pub fn fuzzyFilter(Array[JSValue], String, (JSValue) -> String) -> Array[JSValue]
+
+pub fn fuzzyMatch(String, String) -> FuzzyMatch
+
+pub fn getCapabilities() -> TerminalCapabilities
+
+pub fn getCellDimensions() -> CellDimensions
+
+pub fn getGifDimensions(String) -> ImageDimensions?
+
+pub fn getImageDimensions(String, String) -> ImageDimensions?
+
+pub fn getJpegDimensions(String) -> ImageDimensions?
+
+pub fn getKeybindings() -> KeybindingsManager
+
+pub fn getOsc8LinkAtColumn(String, Double) -> String?
+
+pub fn getPngDimensions(String) -> ImageDimensions?
+
+pub fn getWebpDimensions(String) -> ImageDimensions?
+
+pub fn get_cursor_marker() -> JSValue
+
+pub fn get_key() -> JSValue
+
+pub fn get_tokens() -> JSValue
+
+pub fn get_tui_keybindings() -> JSValue
+
+pub fn hyperlink(String, String) -> String
+
+pub fn imageFallback(String, ImageDimensions?, String?) -> String
+
+pub fn isFocusable(Component?) -> Bool
+
+pub fn isKeyRelease(String) -> Bool
+
+pub fn isKeyRepeat(String) -> Bool
+
+pub fn isKittyProtocolActive() -> Bool
+
+pub fn isViewportTUI(TUI) -> Bool
+
+pub fn key_id_from_base_key(BaseKey) -> KeyId
+
+pub fn key_id_from_modified_key_id(ModifiedKeyId) -> KeyId
+
+pub fn matchesKey(String, KeyId) -> Bool
+
+pub fn maybe_promise_from_promise(Promise[JSValue]) -> MaybePromise
+
+pub fn new_box(Double?, Double?, ((String) -> String)?) -> Box
+
+pub fn new_cancellable_loader() -> CancellableLoader
+
+pub fn new_combined_autocomplete_provider(Array[Auto_SlashCommandValue_or_AutocompleteItemValue]?, String, String?) -> CombinedAutocompleteProvider
+
+pub fn new_container() -> Container
+
+pub fn new_editor(TUI, EditorTheme, EditorOptions?) -> Editor
+
+pub fn new_hstack(Array[StackChild]?, StackOptions?) -> HStack
+
+pub fn new_image(String, String, ImageTheme, ImageOptions?, ImageDimensions?) -> Image
+
+pub fn new_input(InputOptions?) -> Input
+
+pub fn new_keybindings_manager(StringRecordOfKeybindingDefinition, StringRecordOfKeyIdOrArrayOfKeyIdOptional?) -> KeybindingsManager
+
+pub fn new_loader(TUI, (String) -> String, (String) -> String, String?, LoaderIndicatorOptions?) -> Loader
+
+pub fn new_markdown(String, Double, Double, MarkdownTheme, DefaultTextStyle?, MarkdownOptions?) -> Markdown
+
+pub fn[ParserOutput, RendererOutput] new_marked(Array[MarkedExtension[ParserOutput, RendererOutput]]) -> Marked[ParserOutput, RendererOutput]
+
+pub fn new_mouse_region(Component, (TuiMouseEvent) -> TuiMouseEventResult?) -> MouseRegion
+
+pub fn new_process_terminal() -> ProcessTerminal
+
+pub fn new_scroll_view(Component, ScrollViewOptions?) -> ScrollView
+
+pub fn new_select_list(Array[SelectItem], Double, SelectListTheme, SelectListLayoutOptions?) -> SelectList
+
+pub fn new_settings_list(Array[SettingItem], Double, SettingsListTheme, (String, String) -> Unit, () -> Unit, SettingsListOptions?) -> SettingsList
+
+pub fn new_spacer(Double?) -> Spacer
+
+pub fn new_stdin_buffer(StdinBufferOptions?) -> StdinBuffer
+
+pub fn new_text(String?, Double?, Double?, ((String) -> String)?) -> Text
+
+pub fn new_truncated_text(String, Double?, Double?) -> TruncatedText
+
+pub fn new_tui_alt_screen(Terminal, Bool?, String?, TuiAltScreenOptions?) -> TuiAltScreen
+
+pub fn new_tui_main_screen() -> TuiMainScreen
+
+pub fn new_vstack(Array[StackChild]?, StackOptions?) -> VStack
+
+pub fn parseKey(String) -> String?
+
+pub fn parseOsc11BackgroundColor(String) -> RgbColor?
+
+pub fn parseTerminalColorSchemeReport(String) -> TerminalColorScheme?
+
+pub fn renderImage(String, ImageDimensions, ImageRenderOptions?) -> JSValue?
+
+pub fn renderLatex(String, RenderLatexOptions?) -> String?
+
+pub fn resetCapabilitiesCache() -> Unit
+
+pub fn run_async(async () -> Unit) -> Unit
+
+pub fn setCapabilities(TerminalCapabilities) -> Unit
+
+pub fn setCapabilityOverrides(TerminalCapabilitiesPartial) -> Unit
+
+pub fn setCellDimensions(CellDimensions) -> Unit
+
+pub fn setKeybindings(KeybindingsManager) -> Unit
+
+pub fn setKittyProtocolActive(Bool) -> Unit
+
+pub fn size_value_from_double(Double) -> SizeValue
+
+pub fn sliceByColumn(String, Double, Double, Bool?) -> String
+
+pub fn stack_child_from_component(Component) -> StackChild
+
+pub fn stack_child_from_stack_entry(StackEntry) -> StackChild
+
+pub fn stripTerminalSequences(String) -> String
+
+pub fn token_from_marked_token(MarkedToken) -> Token
+
+pub fn token_from_tokens_generic(Tokens_Generic) -> Token
+
+pub fn truncateToWidth(String, Double, String?, Bool?) -> String
+
+pub fn tui_input_listener_result_undefined() -> TuiInputListenerResult
+
+pub fn visibleWidth(String) -> Double
+
+pub fn wrapTextWithAnsi(String, Double) -> Array[String]
+
+// Errors
+pub suberror JsRejection {
+  JsRejection(JSValue)
+}
+
+// Types and methods
+#external
+pub type AbortSignal
+
+pub(all) enum Auto_BufferValue_or_StringValue {
+  StringValue(String)
+  BufferValue(Buffer)
+}
+
+pub(all) enum Auto_FalseValue_or_RendererOutputValue {
+  RendererOutputValue(RendererOutput)
+  FalseValue
+}
+
+pub(all) enum Auto_KeyIdValue_or_KeyIdArrayValue {
+  KeyIdValue(KeyId)
+  KeyIdArrayValue(Array[KeyId])
+}
+
+pub(all) enum Auto_MaybePromiseValue_or_MaybePromiseArrayValue {
+  MaybePromiseValue(MaybePromise)
+  MaybePromiseArrayValue(Array[MaybePromise])
+}
+
+pub(all) enum Auto_NumberValue_or_OverlayMarginValue {
+  OverlayMarginValue(OverlayMargin)
+  NumberValue(Double)
+}
+
+pub(all) enum Auto_NumberValue_or_StackEntryBasisMember1Value {
+  NumberValue(Double)
+  StackEntryBasisMember1Value(StackEntryBasisMember1)
+}
+
+pub(all) enum Auto_NumberValue_or_StackEntryOptionsBasisMember1Value {
+  NumberValue(Double)
+  StackEntryOptionsBasisMember1Value(StackEntryOptionsBasisMember1)
+}
+
+pub(all) enum Auto_SlashCommandValue_or_AutocompleteItemValue {
+  AutocompleteItemValue(AutocompleteItem)
+  SlashCommandValue(SlashCommand)
+}
+
+pub(all) enum Auto_TokenArrayValue_or_TokensListValue {
+  TokenArrayValue(Array[Token])
+  TokensListValue(TokensList)
+}
+
+pub(all) enum Auto_TuiMouseEventResultValue_or_TuiMouseDispatchResultValue {
+  TuiMouseDispatchResultValue(TuiMouseDispatchResult)
+  TuiMouseEventResultValue(TuiMouseEventResult)
+}
+
+pub(all) struct AutocompleteItem {
+  value : String
+  label : String
+  description : String?
+}
+
+pub(all) struct AutocompleteProvider {
+  triggerCharacters : Array[String]?
+  getSuggestions : (Array[String], Double, Double, AutocompleteProviderGetSuggestionsOptions) -> Promise[AutocompleteSuggestions?]
+  applyCompletion : (Array[String], Double, Double, AutocompleteItem, String) -> AutocompleteProviderApplyCompletionResult
+  shouldTriggerFileCompletion : ((Array[String], Double, Double) -> Bool)?
+}
+pub fn AutocompleteProvider::applyCompletion(Self, Array[String], Double, Double, AutocompleteItem, String) -> AutocompleteProviderApplyCompletionResult
+pub fn AutocompleteProvider::getSuggestions(Self, Array[String], Double, Double, AutocompleteProviderGetSuggestionsOptions) -> Promise[AutocompleteSuggestions?]
+
+pub(all) struct AutocompleteProviderApplyCompletionResult {
+  lines : Array[String]
+  cursorLine : Double
+  cursorCol : Double
+}
+
+pub(all) struct AutocompleteProviderGetSuggestionsOptions {
+  signal : AbortSignal
+  force : Bool?
+}
+
+pub(all) struct AutocompleteSuggestions {
+  items : Array[AutocompleteItem]
+  prefix : String
+}
+
+#external
+pub type BaseKey
+
+#external
+pub type Box
+pub fn Box::add_child(Self, Component) -> Unit
+pub fn Box::clear(Self) -> Unit
+pub fn Box::get_box_children(Self) -> Array[Component]
+pub fn Box::handle_mouse(Self, TuiMouseEvent) -> TuiMouseDispatchResult?
+pub fn Box::invalidate(Self) -> Unit
+pub fn Box::remove_child(Self, Component) -> Unit
+pub fn Box::render(Self, Double) -> Array[String]
+pub fn Box::set_bg_fn(Self, ((String) -> String)?) -> Unit
+pub fn Box::set_box_children(Self, Array[Component]) -> Unit
+
+#external
+pub type Buffer
+
+#external
+pub type CancellableLoader
+pub fn CancellableLoader::aborted(Self) -> Bool
+pub fn CancellableLoader::dispose(Self) -> Unit
+pub fn CancellableLoader::get_cancellable_loader_aborted(Self) -> Bool
+pub fn CancellableLoader::get_cancellable_loader_on_abort(Self) -> () -> Unit
+pub fn CancellableLoader::get_cancellable_loader_signal(Self) -> AbortSignal
+pub fn CancellableLoader::handle_input(Self, String) -> Unit
+pub fn CancellableLoader::invalidate(Self) -> Unit
+pub fn CancellableLoader::on_abort(Self) -> Unit
+pub fn CancellableLoader::render(Self, Double) -> Array[String]
+pub fn CancellableLoader::set_cancellable_loader_on_abort(Self, () -> Unit) -> Unit
+pub fn CancellableLoader::set_custom_bg_fn(Self, ((String) -> String)?) -> Unit
+pub fn CancellableLoader::set_indicator(Self, LoaderIndicatorOptions?) -> Unit
+pub fn CancellableLoader::set_message(Self, String) -> Unit
+pub fn CancellableLoader::set_text(Self, String) -> Unit
+pub fn CancellableLoader::signal(Self) -> AbortSignal
+pub fn CancellableLoader::start(Self) -> Unit
+pub fn CancellableLoader::stop(Self) -> Unit
+
+pub(all) struct CellDimensions {
+  widthPx : Double
+  heightPx : Double
+}
+
+#external
+pub type CombinedAutocompleteProvider
+pub fn CombinedAutocompleteProvider::apply_completion(Self, Array[String], Double, Double, AutocompleteItem, String) -> JSValue
+pub fn CombinedAutocompleteProvider::get_suggestions(Self, Array[String], Double, Double, CombinedAutocompleteProviderGetSuggestionsOptions) -> Promise[AutocompleteSuggestions?]
+pub fn CombinedAutocompleteProvider::should_trigger_file_completion(Self, Array[String], Double, Double) -> Bool
+
+pub(all) struct CombinedAutocompleteProviderGetSuggestionsOptions {
+  signal : AbortSignal
+  force : Bool?
+}
+
+pub(all) struct Component {
+  render : (Double) -> Array[String]
+  handleInput : ((String) -> Unit)?
+  handleMouse : ((TuiMouseEvent) -> TuiMouseEventResult?)?
+  wantsKeyRelease : Bool?
+  invalidate : () -> Unit
+}
+pub fn Component::invalidate(Self) -> Unit
+pub fn Component::render(Self, Double) -> Array[String]
+
+#external
+pub type Container
+pub fn Container::add_child(Self, Component) -> Unit
+pub fn Container::clear(Self) -> Unit
+pub fn Container::get_container_children(Self) -> Array[Component]
+pub fn Container::handle_mouse(Self, TuiMouseEvent) -> TuiMouseDispatchResult?
+pub fn Container::invalidate(Self) -> Unit
+pub fn Container::remove_child(Self, Component) -> Unit
+pub fn Container::render(Self, Double) -> Array[String]
+pub fn Container::set_container_children(Self, Array[Component]) -> Unit
+
+pub(all) struct DefaultTextStyle {
+  color : ((String) -> String)?
+  bgColor : ((String) -> String)?
+  bold : Bool?
+  italic : Bool?
+  strikethrough : Bool?
+  underline : Bool?
+}
+
+#external
+pub type Editor
+pub fn Editor::add_to_history(Self, String) -> Unit
+pub fn Editor::border_color(Self, String) -> String
+pub fn Editor::get_autocomplete_max_visible(Self) -> Double
+pub fn Editor::get_cursor(Self) -> JSValue
+pub fn Editor::get_editor_border_color(Self) -> (String) -> String
+pub fn Editor::get_editor_disable_submit(Self) -> Bool
+pub fn Editor::get_editor_focused(Self) -> Bool
+pub fn Editor::get_editor_on_change(Self) -> (String) -> Unit
+pub fn Editor::get_editor_on_submit(Self) -> (String) -> Unit
+pub fn Editor::get_expanded_text(Self) -> String
+pub fn Editor::get_lines(Self) -> Array[String]
+pub fn Editor::get_padding_x(Self) -> Double
+pub fn Editor::get_text(Self) -> String
+pub fn Editor::handle_input(Self, String) -> Unit
+pub fn Editor::handle_mouse(Self, TuiMouseEvent) -> TuiMouseEventResult?
+pub fn Editor::insert_text_at_cursor(Self, String) -> Unit
+pub fn Editor::invalidate(Self) -> Unit
+pub fn Editor::is_showing_autocomplete(Self) -> Bool
+pub fn Editor::on_change(Self, String) -> Unit
+pub fn Editor::on_submit(Self, String) -> Unit
+pub fn Editor::render(Self, Double) -> Array[String]
+pub fn Editor::set_autocomplete_max_visible(Self, Double) -> Unit
+pub fn Editor::set_autocomplete_provider(Self, AutocompleteProvider) -> Unit
+pub fn Editor::set_editor_border_color(Self, (String) -> String) -> Unit
+pub fn Editor::set_editor_disable_submit(Self, Bool) -> Unit
+pub fn Editor::set_editor_focused(Self, Bool) -> Unit
+pub fn Editor::set_editor_on_change(Self, (String) -> Unit) -> Unit
+pub fn Editor::set_editor_on_submit(Self, (String) -> Unit) -> Unit
+pub fn Editor::set_padding_x(Self, Double) -> Unit
+pub fn Editor::set_text(Self, String) -> Unit
+
+pub(all) struct EditorComponent {
+  getText : () -> String
+  setText : (String) -> Unit
+  handleInput : (String) -> Unit
+  onSubmit : ((String) -> Unit)?
+  onChange : ((String) -> Unit)?
+  addToHistory : ((String) -> Unit)?
+  insertTextAtCursor : ((String) -> Unit)?
+  getExpandedText : (() -> String)?
+  setAutocompleteProvider : ((AutocompleteProvider) -> Unit)?
+  borderColor : ((String) -> String)?
+  setPaddingX : ((Double) -> Unit)?
+  setAutocompleteMaxVisible : ((Double) -> Unit)?
+  render : (Double) -> Array[String]
+  handleMouse : ((TuiMouseEvent) -> TuiMouseEventResult?)?
+  wantsKeyRelease : Bool?
+  invalidate : () -> Unit
+}
+pub fn EditorComponent::getText(Self) -> String
+pub fn EditorComponent::handleInput(Self, String) -> Unit
+pub fn EditorComponent::invalidate(Self) -> Unit
+pub fn EditorComponent::render(Self, Double) -> Array[String]
+pub fn EditorComponent::setText(Self, String) -> Unit
+
+pub(all) struct EditorOptions {
+  paddingX : Double?
+  autocompleteMaxVisible : Double?
+}
+
+pub(all) struct EditorTheme {
+  borderColor : (String) -> String
+  selectList : SelectListTheme
+}
+pub fn EditorTheme::borderColor(Self, String) -> String
+
+pub(all) struct Focusable {
+  focused : Bool
+}
+
+pub(all) struct FuzzyMatch {
+  matches : Bool
+  score : Double
+}
+
+#external
+pub type HStack
+pub fn HStack::add_child(Self, Component, StackEntryOptions?) -> Unit
+pub fn HStack::clear(Self) -> Unit
+pub fn HStack::get_hstack_children(Self) -> Array[Component]
+pub fn HStack::handle_mouse(Self, TuiMouseEvent) -> TuiMouseDispatchResult?
+pub fn HStack::invalidate(Self) -> Unit
+pub fn HStack::remove_child(Self, Component) -> Unit
+pub fn HStack::render(Self, Double) -> Array[String]
+pub fn HStack::set_hstack_children(Self, Array[Component]) -> Unit
+
+#external
+pub type Image
+pub fn Image::get_image_id(Self) -> Double?
+pub fn Image::invalidate(Self) -> Unit
+pub fn Image::render(Self, Double) -> Array[String]
+
+pub(all) struct ImageDimensions {
+  widthPx : Double
+  heightPx : Double
+}
+
+pub(all) struct ImageOptions {
+  maxWidthCells : Double?
+  maxHeightCells : Double?
+  filename : String?
+  imageId : Double?
+}
+
+pub(all) struct ImageRenderOptions {
+  maxWidthCells : Double?
+  maxHeightCells : Double?
+  preserveAspectRatio : Bool?
+  imageId : Double?
+  moveCursor : Bool?
+}
+
+pub(all) struct ImageTheme {
+  fallbackColor : (String) -> String
+}
+pub fn ImageTheme::fallbackColor(Self, String) -> String
+
+#external
+pub type Input
+pub fn Input::get_input_focused(Self) -> Bool
+pub fn Input::get_input_on_escape(Self) -> () -> Unit
+pub fn Input::get_input_on_submit(Self) -> (String) -> Unit
+pub fn Input::get_value(Self) -> String
+pub fn Input::handle_input(Self, String) -> Unit
+pub fn Input::handle_mouse(Self, TuiMouseEvent) -> TuiMouseEventResult?
+pub fn Input::invalidate(Self) -> Unit
+pub fn Input::on_escape(Self) -> Unit
+pub fn Input::on_submit(Self, String) -> Unit
+pub fn Input::render(Self, Double) -> Array[String]
+pub fn Input::set_input_focused(Self, Bool) -> Unit
+pub fn Input::set_input_on_escape(Self, () -> Unit) -> Unit
+pub fn Input::set_input_on_submit(Self, (String) -> Unit) -> Unit
+pub fn Input::set_value(Self, String) -> Unit
+
+pub(all) struct InputOptions {
+  prompt : String?
+  placeholder : String?
+  placeholderStyle : ((String) -> String)?
+}
+
+#external
+pub type JSValue
+pub fn JSValue::from_array(Array[Self]) -> Self
+pub fn JSValue::from_bool(Bool) -> Self
+pub fn JSValue::from_double(Double) -> Self
+pub fn JSValue::from_int(Int) -> Self
+pub fn JSValue::from_string(String) -> Self
+pub fn JSValue::object_from_pairs(Array[(String, Self)]) -> Self
+
+pub(all) enum KeyEventType {
+  Press
+  Repeat
+  Release
+}
+
+#external
+pub type KeyId
+
+pub(all) enum KeyValueAmpersand {
+  Member
+}
+
+pub(all) enum KeyValueAsterisk {
+  Member
+}
+
+pub(all) enum KeyValueAt {
+  Member
+}
+
+pub(all) enum KeyValueBackslash {
+  Member
+}
+
+pub(all) enum KeyValueBackspace {
+  Backspace
+}
+
+pub(all) enum KeyValueBacktick {
+  Member
+}
+
+pub(all) enum KeyValueCaret {
+  Member
+}
+
+pub(all) enum KeyValueClear {
+  Clear
+}
+
+pub(all) enum KeyValueColon {
+  Member
+}
+
+pub(all) enum KeyValueComma {
+  Member
+}
+
+pub(all) enum KeyValueDelete {
+  Delete
+}
+
+pub(all) enum KeyValueDollar {
+  Dollar
+}
+
+pub(all) enum KeyValueDown {
+  Down
+}
+
+pub(all) enum KeyValueEnd {
+  End
+}
+
+pub(all) enum KeyValueEnter {
+  Enter
+}
+
+pub(all) enum KeyValueEquals {
+  Member
+}
+
+pub(all) enum KeyValueEsc {
+  Esc
+}
+
+pub(all) enum KeyValueEscape {
+  Escape
+}
+
+pub(all) enum KeyValueExclamation {
+  Member
+}
+
+pub(all) enum KeyValueF1 {
+  F1
+}
+
+pub(all) enum KeyValueF10 {
+  F10
+}
+
+pub(all) enum KeyValueF11 {
+  F11
+}
+
+pub(all) enum KeyValueF12 {
+  F12
+}
+
+pub(all) enum KeyValueF2 {
+  F2
+}
+
+pub(all) enum KeyValueF3 {
+  F3
+}
+
+pub(all) enum KeyValueF4 {
+  F4
+}
+
+pub(all) enum KeyValueF5 {
+  F5
+}
+
+pub(all) enum KeyValueF6 {
+  F6
+}
+
+pub(all) enum KeyValueF7 {
+  F7
+}
+
+pub(all) enum KeyValueF8 {
+  F8
+}
+
+pub(all) enum KeyValueF9 {
+  F9
+}
+
+pub(all) enum KeyValueGreaterthan {
+  Member
+}
+
+pub(all) enum KeyValueHash {
+  Member
+}
+
+pub(all) enum KeyValueHome {
+  Home
+}
+
+pub(all) enum KeyValueHyphen {
+  Member
+}
+
+pub(all) enum KeyValueInsert {
+  Insert
+}
+
+pub(all) enum KeyValueLeft {
+  Left
+}
+
+pub(all) enum KeyValueLeftbrace {
+  Member
+}
+
+pub(all) enum KeyValueLeftbracket {
+  Member
+}
+
+pub(all) enum KeyValueLeftparen {
+  Member
+}
+
+pub(all) enum KeyValueLessthan {
+  Member
+}
+
+pub(all) enum KeyValuePageDown {
+  PageDown
+}
+
+pub(all) enum KeyValuePageUp {
+  PageUp
+}
+
+pub(all) enum KeyValuePercent {
+  Member
+}
+
+pub(all) enum KeyValuePeriod {
+  Member
+}
+
+pub(all) enum KeyValuePipe {
+  Member
+}
+
+pub(all) enum KeyValuePlus {
+  Member
+}
+
+pub(all) enum KeyValueQuestion {
+  Member
+}
+
+pub(all) enum KeyValueQuote {
+  Member
+}
+
+pub(all) enum KeyValueReturn {
+  Return
+}
+
+pub(all) enum KeyValueRight {
+  Right
+}
+
+pub(all) enum KeyValueRightbrace {
+  Member
+}
+
+pub(all) enum KeyValueRightbracket {
+  Member
+}
+
+pub(all) enum KeyValueRightparen {
+  Member
+}
+
+pub(all) enum KeyValueSemicolon {
+  Member
+}
+
+pub(all) enum KeyValueSlash {
+  Member
+}
+
+pub(all) enum KeyValueSpace {
+  Space
+}
+
+pub(all) enum KeyValueTab {
+  Tab
+}
+
+pub(all) enum KeyValueTilde {
+  Member
+}
+
+pub(all) enum KeyValueUnderscore {
+  Member
+}
+
+pub(all) enum KeyValueUp {
+  Up
+}
+
+pub(all) enum Keybinding {
+  Tui_editor_cursorUp
+  Tui_editor_cursorDown
+  Tui_editor_historyPrevious
+  Tui_editor_historyNext
+  Tui_editor_cursorLeft
+  Tui_editor_cursorRight
+  Tui_editor_cursorWordLeft
+  Tui_editor_cursorWordRight
+  Tui_editor_cursorLineStart
+  Tui_editor_cursorLineEnd
+  Tui_editor_jumpForward
+  Tui_editor_jumpBackward
+  Tui_editor_pageUp
+  Tui_editor_pageDown
+  Tui_editor_deleteCharBackward
+  Tui_editor_deleteCharForward
+  Tui_editor_deleteWordBackward
+  Tui_editor_deleteWordForward
+  Tui_editor_deleteToLineStart
+  Tui_editor_deleteToLineEnd
+  Tui_editor_yank
+  Tui_editor_yankPop
+  Tui_editor_undo
+  Tui_input_newLine
+  Tui_input_submit
+  Tui_input_tab
+  Tui_input_copy
+  Tui_select_up
+  Tui_select_down
+  Tui_select_pageUp
+  Tui_select_pageDown
+  Tui_select_confirm
+  Tui_select_cancel
+  Tui_altScreen_pageUp
+  Tui_altScreen_pageDown
+  Tui_altScreen_halfPageUp
+  Tui_altScreen_halfPageDown
+  Tui_altScreen_lineUp
+  Tui_altScreen_lineDown
+  Tui_altScreen_previousPrompt
+  Tui_altScreen_nextPrompt
+  Tui_altScreen_search
+  Tui_altScreen_searchNext
+  Tui_altScreen_searchPrevious
+  Tui_altScreen_searchClose
+  Tui_altScreen_top
+  Tui_altScreen_bottom
+}
+
+pub(all) struct KeybindingConflict {
+  key : KeyId
+  keybindings : Array[String]
+}
+
+pub(all) struct KeybindingDefinition {
+  defaultKeys : Auto_KeyIdValue_or_KeyIdArrayValue
+  description : String?
+}
+
+pub(all) struct Keybindings {
+  tui_editor_cursorUp : Bool
+  tui_editor_cursorDown : Bool
+  tui_editor_historyPrevious : Bool
+  tui_editor_historyNext : Bool
+  tui_editor_cursorLeft : Bool
+  tui_editor_cursorRight : Bool
+  tui_editor_cursorWordLeft : Bool
+  tui_editor_cursorWordRight : Bool
+  tui_editor_cursorLineStart : Bool
+  tui_editor_cursorLineEnd : Bool
+  tui_editor_jumpForward : Bool
+  tui_editor_jumpBackward : Bool
+  tui_editor_pageUp : Bool
+  tui_editor_pageDown : Bool
+  tui_editor_deleteCharBackward : Bool
+  tui_editor_deleteCharForward : Bool
+  tui_editor_deleteWordBackward : Bool
+  tui_editor_deleteWordForward : Bool
+  tui_editor_deleteToLineStart : Bool
+  tui_editor_deleteToLineEnd : Bool
+  tui_editor_yank : Bool
+  tui_editor_yankPop : Bool
+  tui_editor_undo : Bool
+  tui_input_newLine : Bool
+  tui_input_submit : Bool
+  tui_input_tab : Bool
+  tui_input_copy : Bool
+  tui_select_up : Bool
+  tui_select_down : Bool
+  tui_select_pageUp : Bool
+  tui_select_pageDown : Bool
+  tui_select_confirm : Bool
+  tui_select_cancel : Bool
+  tui_altScreen_pageUp : Bool
+  tui_altScreen_pageDown : Bool
+  tui_altScreen_halfPageUp : Bool
+  tui_altScreen_halfPageDown : Bool
+  tui_altScreen_lineUp : Bool
+  tui_altScreen_lineDown : Bool
+  tui_altScreen_previousPrompt : Bool
+  tui_altScreen_nextPrompt : Bool
+  tui_altScreen_search : Bool
+  tui_altScreen_searchNext : Bool
+  tui_altScreen_searchPrevious : Bool
+  tui_altScreen_searchClose : Bool
+  tui_altScreen_top : Bool
+  tui_altScreen_bottom : Bool
+}
+
+#external
+pub type KeybindingsManager
+pub fn KeybindingsManager::get_conflicts(Self) -> Array[KeybindingConflict]
+pub fn KeybindingsManager::get_definition(Self, Keybinding) -> KeybindingDefinition
+pub fn KeybindingsManager::get_keys(Self, Keybinding) -> Array[KeyId]
+pub fn KeybindingsManager::get_resolved_bindings(Self) -> StringRecordOfKeyIdOrArrayOfKeyIdOptional
+pub fn KeybindingsManager::get_user_bindings(Self) -> StringRecordOfKeyIdOrArrayOfKeyIdOptional
+pub fn KeybindingsManager::matches(Self, String, Keybinding) -> Bool
+pub fn KeybindingsManager::set_user_bindings(Self, StringRecordOfKeyIdOrArrayOfKeyIdOptional) -> Unit
+
+pub(all) struct LayoutViewport {
+  width : Double
+  height : Double
+}
+
+#external
+pub type Loader
+pub fn Loader::invalidate(Self) -> Unit
+pub fn Loader::render(Self, Double) -> Array[String]
+pub fn Loader::set_custom_bg_fn(Self, ((String) -> String)?) -> Unit
+pub fn Loader::set_indicator(Self, LoaderIndicatorOptions?) -> Unit
+pub fn Loader::set_message(Self, String) -> Unit
+pub fn Loader::set_text(Self, String) -> Unit
+pub fn Loader::start(Self) -> Unit
+pub fn Loader::stop(Self) -> Unit
+
+pub(all) struct LoaderIndicatorOptions {
+  frames : Array[String]?
+  intervalMs : Double?
+}
+
+#external
+pub type Markdown
+pub fn Markdown::invalidate(Self) -> Unit
+pub fn Markdown::render(Self, Double) -> Array[String]
+pub fn Markdown::set_text(Self, String) -> Unit
+
+pub(all) struct MarkdownOptions {
+  preserveOrderedListMarkers : Bool?
+  preserveBackslashEscapes : Bool?
+  transform : ((String, Double) -> String)?
+  renderLatex : Bool?
+}
+
+pub(all) struct MarkdownTheme {
+  heading : (String) -> String
+  link : (String) -> String
+  linkUrl : (String) -> String
+  code : (String) -> String
+  codeBlock : (String) -> String
+  codeBlockBorder : (String) -> String
+  quote : (String) -> String
+  quoteBorder : (String) -> String
+  hr : (String) -> String
+  listBullet : (String) -> String
+  bold : (String) -> String
+  italic : (String) -> String
+  strikethrough : (String) -> String
+  underline : (String) -> String
+  highlightCode : (String, String?) -> Array[String]?
+  codeBlockIndent : String?
+}
+pub fn MarkdownTheme::bold(Self, String) -> String
+pub fn MarkdownTheme::code(Self, String) -> String
+pub fn MarkdownTheme::codeBlock(Self, String) -> String
+pub fn MarkdownTheme::codeBlockBorder(Self, String) -> String
+pub fn MarkdownTheme::heading(Self, String) -> String
+pub fn MarkdownTheme::hr(Self, String) -> String
+pub fn MarkdownTheme::italic(Self, String) -> String
+pub fn MarkdownTheme::link(Self, String) -> String
+pub fn MarkdownTheme::linkUrl(Self, String) -> String
+pub fn MarkdownTheme::listBullet(Self, String) -> String
+pub fn MarkdownTheme::quote(Self, String) -> String
+pub fn MarkdownTheme::quoteBorder(Self, String) -> String
+pub fn MarkdownTheme::strikethrough(Self, String) -> String
+pub fn MarkdownTheme::underline(Self, String) -> String
+
+#external
+pub type Marked[ParserOutput, RendererOutput]
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_defaults(Self[ParserOutput, RendererOutput]) -> MarkedOptions[ParserOutput, RendererOutput]
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_hooks(Self[ParserOutput, RendererOutput]) -> MarkedHooks
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_lexer(Self[ParserOutput, RendererOutput]) -> JSValue
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_options(Self[ParserOutput, RendererOutput]) -> (MarkedOptions[ParserOutput, RendererOutput]) -> This
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_parse(Self[ParserOutput, RendererOutput]) -> JSValue
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_parse_inline(Self[ParserOutput, RendererOutput]) -> JSValue
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_parser(Self[ParserOutput, RendererOutput]) -> MarkedParser
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_renderer(Self[ParserOutput, RendererOutput]) -> MarkedRenderer
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_text_renderer(Self[ParserOutput, RendererOutput]) -> MarkedTextRenderer
+pub fn[ParserOutput, RendererOutput] Marked::get_marked_tokenizer(Self[ParserOutput, RendererOutput]) -> MarkedTokenizer
+pub fn[ParserOutput, RendererOutput] Marked::lexer(Self[ParserOutput, RendererOutput], String, MarkedOptions[ParserOutput, RendererOutput]?) -> TokensList
+pub fn[ParserOutput, RendererOutput] Marked::options(Self[ParserOutput, RendererOutput], MarkedOptions[ParserOutput, RendererOutput]) -> Self[ParserOutput, RendererOutput]
+pub fn[ParserOutput, RendererOutput] Marked::parser(Self[ParserOutput, RendererOutput], Array[Token], MarkedOptions[ParserOutput, RendererOutput]?) -> ParserOutput
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_defaults(Self[ParserOutput, RendererOutput], MarkedOptions[ParserOutput, RendererOutput]) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_hooks(Self[ParserOutput, RendererOutput], MarkedHooks) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_lexer(Self[ParserOutput, RendererOutput], JSValue) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_options(Self[ParserOutput, RendererOutput], (MarkedOptions[ParserOutput, RendererOutput]) -> This) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_parse(Self[ParserOutput, RendererOutput], JSValue) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_parse_inline(Self[ParserOutput, RendererOutput], JSValue) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_parser(Self[ParserOutput, RendererOutput], MarkedParser) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_renderer(Self[ParserOutput, RendererOutput], MarkedRenderer) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_text_renderer(Self[ParserOutput, RendererOutput], MarkedTextRenderer) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_marked_tokenizer(Self[ParserOutput, RendererOutput], MarkedTokenizer) -> Unit
+pub fn[ParserOutput, RendererOutput] Marked::set_options(Self[ParserOutput, RendererOutput], MarkedOptions[ParserOutput, RendererOutput]) -> Self[ParserOutput, RendererOutput]
+pub fn[ParserOutput, RendererOutput] Marked::use_(Self[ParserOutput, RendererOutput], Array[MarkedExtension[ParserOutput, RendererOutput]]) -> Self[ParserOutput, RendererOutput]
+pub fn[ParserOutput, RendererOutput] Marked::walk_tokens(Self[ParserOutput, RendererOutput], Auto_TokenArrayValue_or_TokensListValue, (Token) -> Auto_MaybePromiseValue_or_MaybePromiseArrayValue) -> Array[MaybePromise]
+
+pub(all) struct MarkedExtension[ParserOutput, RendererOutput] {
+  async_ : Bool?
+  breaks : Bool?
+  extensions : Array[JSValue]?
+  gfm : Bool?
+  hooks : JSValue?
+  pedantic : Bool?
+  renderer : JSValue?
+  silent : Bool?
+  tokenizer : TokenizerObject?
+  walkTokens : ((Token) -> Promise[Unit])?
+}
+
+pub(all) struct MarkedHooks {
+  _new_ : (MarkedOptions[ParserOutput, RendererOutput]?) -> UnderscoreHooks
+  passThroughHooks : Set
+  passThroughHooksRespectAsync : Set
+}
+pub fn MarkedHooks::_new_(Self, MarkedOptions[ParserOutput, RendererOutput]?) -> UnderscoreHooks
+
+pub(all) struct MarkedOptions[ParserOutput, RendererOutput] {
+  hooks : UnderscoreHooks?
+  renderer : UnderscoreRenderer?
+  tokenizer : UnderscoreTokenizer?
+  extensions : MarkedOptionsExtensions?
+  walkTokens : ((Token) -> JSValue)?
+}
+pub fn[ParserOutput, RendererOutput] MarkedOptions::asOmit(Self[ParserOutput, RendererOutput]) -> Omit
+
+pub(all) struct MarkedOptionsExtensions {
+  renderers : JSValue
+  childTokens : JSValue
+  inline : Array[TokenizerExtensionFunction]?
+  block : Array[TokenizerExtensionFunction]?
+  startInline : Array[TokenizerStartFunction]?
+  startBlock : Array[TokenizerStartFunction]?
+}
+
+pub(all) struct MarkedParser {
+  _new_ : (MarkedOptions[ParserOutput, RendererOutput]?) -> UnderscoreParser
+  parse : (Array[Token], MarkedOptions[ParserOutput_1, RendererOutput_1]?) -> ParserOutput_1
+  parseInline : (Array[Token], MarkedOptions[ParserOutput_1, RendererOutput_1]?) -> ParserOutput_1
+}
+pub fn MarkedParser::_new_(Self, MarkedOptions[ParserOutput, RendererOutput]?) -> UnderscoreParser
+pub fn MarkedParser::parse(Self, Array[Token], MarkedOptions[ParserOutput_1, RendererOutput_1]?) -> ParserOutput_1
+pub fn MarkedParser::parseInline(Self, Array[Token], MarkedOptions[ParserOutput_1, RendererOutput_1]?) -> ParserOutput_1
+
+pub(all) struct MarkedRenderer {
+  _new_ : (MarkedOptions[ParserOutput, RendererOutput]?) -> UnderscoreRenderer
+}
+pub fn MarkedRenderer::_new_(Self, MarkedOptions[ParserOutput, RendererOutput]?) -> UnderscoreRenderer
+
+pub(all) struct MarkedTextRenderer {
+  _new_ : () -> UnderscoreTextRenderer
+}
+pub fn MarkedTextRenderer::_new_(Self) -> UnderscoreTextRenderer
+
+#external
+pub type MarkedToken
+
+pub(all) struct MarkedTokenizer {
+  _new_ : (MarkedOptions[ParserOutput, RendererOutput]?) -> UnderscoreTokenizer
+}
+pub fn MarkedTokenizer::_new_(Self, MarkedOptions[ParserOutput, RendererOutput]?) -> UnderscoreTokenizer
+
+#external
+pub type MaybePromise
+
+#external
+pub type ModifiedKeyId
+
+#external
+pub type MouseRegion
+pub fn MouseRegion::handle_mouse(Self, TuiMouseEvent) -> Auto_TuiMouseEventResultValue_or_TuiMouseDispatchResultValue?
+pub fn MouseRegion::invalidate(Self) -> Unit
+pub fn MouseRegion::render(Self, Double) -> Array[String]
+
+#external
+pub type Omit
+
+pub(all) enum OverlayAnchor {
+  Center
+  Top_left
+  Top_right
+  Bottom_left
+  Bottom_right
+  Top_center
+  Bottom_center
+  Left_center
+  Right_center
+}
+
+pub(all) struct OverlayBounds {
+  row : Double
+  col : Double
+  width : Double
+  height : Double
+}
+
+pub(all) struct OverlayHandle {
+  hide : () -> Unit
+  setHidden : (Bool) -> Unit
+  isHidden : () -> Bool
+  focus : () -> Unit
+  unfocus : (OverlayUnfocusOptions?) -> Unit
+  isFocused : () -> Bool
+  getBounds : () -> OverlayBounds?
+}
+pub fn OverlayHandle::focus(Self) -> Unit
+pub fn OverlayHandle::getBounds(Self) -> OverlayBounds?
+pub fn OverlayHandle::hide(Self) -> Unit
+pub fn OverlayHandle::isFocused(Self) -> Bool
+pub fn OverlayHandle::isHidden(Self) -> Bool
+pub fn OverlayHandle::setHidden(Self, Bool) -> Unit
+pub fn OverlayHandle::unfocus(Self, OverlayUnfocusOptions?) -> Unit
+
+pub(all) struct OverlayMargin {
+  top : Double?
+  right : Double?
+  bottom : Double?
+  left : Double?
+}
+
+pub(all) struct OverlayOptions {
+  width : SizeValue?
+  minWidth : Double?
+  maxHeight : SizeValue?
+  anchor : OverlayAnchor?
+  offsetX : Double?
+  offsetY : Double?
+  row : SizeValue?
+  col : SizeValue?
+  margin : Auto_NumberValue_or_OverlayMarginValue?
+  visible : ((Double, Double) -> Bool)?
+  nonCapturing : Bool?
+}
+
+pub(all) struct OverlayUnfocusOptions {
+  target : Component?
+}
+
+#external
+pub type ParserOutput
+
+#external
+pub type ParserOutput_1
+
+#external
+pub type ProcessTerminal
+pub fn ProcessTerminal::clear_from_cursor(Self) -> Unit
+pub fn ProcessTerminal::clear_line(Self) -> Unit
+pub fn ProcessTerminal::clear_screen(Self) -> Unit
+pub fn ProcessTerminal::columns(Self) -> Double
+pub fn ProcessTerminal::drain_input(Self, Double?, Double?) -> Promise[Unit]
+pub fn ProcessTerminal::get_process_terminal_columns(Self) -> Double
+pub fn ProcessTerminal::get_process_terminal_kitty_protocol_active(Self) -> Bool
+pub fn ProcessTerminal::get_process_terminal_modify_other_keys_active(Self) -> Bool
+pub fn ProcessTerminal::get_process_terminal_rows(Self) -> Double
+pub fn ProcessTerminal::hide_cursor(Self) -> Unit
+pub fn ProcessTerminal::kitty_protocol_active(Self) -> Bool
+pub fn ProcessTerminal::modify_other_keys_active(Self) -> Bool
+pub fn ProcessTerminal::move_by(Self, Double) -> Unit
+pub fn ProcessTerminal::rows(Self) -> Double
+pub fn ProcessTerminal::set_progress(Self, Bool) -> Unit
+pub fn ProcessTerminal::set_title(Self, String) -> Unit
+pub fn ProcessTerminal::show_cursor(Self) -> Unit
+pub fn ProcessTerminal::start(Self, (String) -> Unit, () -> Unit) -> Unit
+pub fn ProcessTerminal::stop(Self) -> Unit
+pub fn ProcessTerminal::write(Self, String) -> Unit
+
+#external
+pub type Promise[X]
+pub fn[T] Promise::from_async(async () -> T) -> Self[T]
+pub fn[T, U] Promise::map(Self[T], (T) -> U) -> Self[U]
+pub fn[T] Promise::then(Self[T], (T) -> Unit) -> Unit
+pub fn[T] Promise::then_catch(Self[T], (T) -> Unit, (JSValue) -> Unit) -> Unit
+pub async fn[T] Promise::wait(Self[T]) -> T
+
+pub(all) struct RenderLatexOptions {
+  display : Bool?
+}
+
+pub(all) struct RendererExtension[ParserOutput, RendererOutput] {
+  name : String
+  renderer : (RendererThis[ParserOutput, RendererOutput], Tokens_Generic) -> Auto_FalseValue_or_RendererOutputValue?
+}
+pub fn[ParserOutput, RendererOutput] RendererExtension::renderer(Self[ParserOutput, RendererOutput], RendererThis[ParserOutput, RendererOutput], Tokens_Generic) -> Auto_FalseValue_or_RendererOutputValue?
+
+#external
+pub type RendererOutput
+
+#external
+pub type RendererOutput_1
+
+pub(all) struct RendererThis[ParserOutput, RendererOutput] {
+  parser : UnderscoreParser
+}
+
+pub(all) struct RgbColor {
+  r : Double
+  g : Double
+  b : Double
+}
+
+#external
+pub type ScrollView
+pub fn ScrollView::add_child(Self, Component) -> Unit
+pub fn ScrollView::clear(Self) -> Unit
+pub fn ScrollView::get_content_width(Self, Double) -> Double
+pub fn ScrollView::get_scroll_view_children(Self) -> Array[Component]
+pub fn ScrollView::get_scroll_view_follow_end(Self) -> Bool
+pub fn ScrollView::get_scroll_view_is_following_end(Self) -> Bool
+pub fn ScrollView::get_scroll_view_is_scrollbar_active(Self) -> Bool
+pub fn ScrollView::get_scroll_view_is_scrollbar_visible(Self) -> Bool
+pub fn ScrollView::get_scroll_view_overscroll(Self) -> ScrollViewOverscroll
+pub fn ScrollView::get_scroll_view_primary(Self) -> Bool
+pub fn ScrollView::get_scroll_view_scroll_top(Self) -> Double
+pub fn ScrollView::get_scroll_view_scrollbar(Self) -> ScrollViewScrollbar
+pub fn ScrollView::get_scroll_view_scrollbar_thumb_style(Self) -> (String) -> String
+pub fn ScrollView::get_scroll_view_scrollbar_track_style(Self) -> (String) -> String
+pub fn ScrollView::get_scroll_view_viewport_height(Self) -> Double
+pub fn ScrollView::handle_mouse(Self, TuiMouseEvent) -> TuiMouseDispatchResult?
+pub fn ScrollView::invalidate(Self) -> Unit
+pub fn ScrollView::is_following_end(Self) -> Bool
+pub fn ScrollView::is_scrollbar_active(Self) -> Bool
+pub fn ScrollView::is_scrollbar_visible(Self) -> Bool
+pub fn ScrollView::remove_child(Self, Component) -> Unit
+pub fn ScrollView::render(Self, Double) -> Array[String]
+pub fn ScrollView::scroll_by(Self, Double) -> Double
+pub fn ScrollView::scroll_to(Self, Double, ScrollViewScrollToOptions?) -> Unit
+pub fn ScrollView::scroll_to_end(Self) -> Unit
+pub fn ScrollView::scroll_to_start(Self) -> Unit
+pub fn ScrollView::scroll_top(Self) -> Double
+pub fn ScrollView::scrollbar(Self) -> ScrollViewScrollbar
+pub fn ScrollView::scrollbar_thumb_style(Self, String) -> String
+pub fn ScrollView::scrollbar_track_style(Self, String) -> String
+pub fn ScrollView::set_scroll_view_children(Self, Array[Component]) -> Unit
+pub fn ScrollView::set_scrollbar(Self, ScrollViewScrollbar) -> Unit
+pub fn ScrollView::set_scrollbar_active(Self, Bool) -> Unit
+pub fn ScrollView::update_layout(Self, Double, Double, () -> Unit) -> Unit
+pub fn ScrollView::viewport_height(Self) -> Double
+
+pub(all) struct ScrollViewOptions {
+  axis : ScrollViewOptionsAxis?
+  follow : ScrollViewOptionsFollow?
+  primary : Bool?
+  overscroll : ScrollViewOptionsOverscroll?
+  scrollbar : ScrollViewScrollbar?
+  scrollbarTrackStyle : ((String) -> String)?
+  scrollbarThumbStyle : ((String) -> String)?
+  scrollbarHideDelayMs : Double?
+}
+
+pub(all) enum ScrollViewOptionsAxis {
+  Vertical
+}
+
+pub(all) enum ScrollViewOptionsFollow {
+  None
+  End
+}
+
+pub(all) enum ScrollViewOptionsOverscroll {
+  Chain
+  Contain
+}
+
+pub(all) enum ScrollViewOverscroll {
+  Chain
+  Contain
+}
+
+pub(all) struct ScrollViewScrollToOptions {
+  disableFollow : Bool?
+}
+
+pub(all) enum ScrollViewScrollbar {
+  Hidden
+  Auto
+  Always
+}
+
+pub(all) struct SelectItem {
+  value : String
+  label : String
+  description : String?
+}
+
+#external
+pub type SelectList
+pub fn SelectList::get_select_list_on_cancel(Self) -> () -> Unit
+pub fn SelectList::get_select_list_on_select(Self) -> (SelectItem) -> Unit
+pub fn SelectList::get_select_list_on_selection_change(Self) -> (SelectItem) -> Unit
+pub fn SelectList::get_selected_item(Self) -> SelectItem?
+pub fn SelectList::handle_input(Self, String) -> Unit
+pub fn SelectList::handle_mouse(Self, TuiMouseEvent) -> TuiMouseEventResult?
+pub fn SelectList::invalidate(Self) -> Unit
+pub fn SelectList::on_cancel(Self) -> Unit
+pub fn SelectList::on_select(Self, SelectItem) -> Unit
+pub fn SelectList::on_selection_change(Self, SelectItem) -> Unit
+pub fn SelectList::render(Self, Double) -> Array[String]
+pub fn SelectList::set_filter(Self, String) -> Unit
+pub fn SelectList::set_select_list_on_cancel(Self, () -> Unit) -> Unit
+pub fn SelectList::set_select_list_on_select(Self, (SelectItem) -> Unit) -> Unit
+pub fn SelectList::set_select_list_on_selection_change(Self, (SelectItem) -> Unit) -> Unit
+pub fn SelectList::set_selected_index(Self, Double) -> Unit
+
+pub(all) struct SelectListLayoutOptions {
+  minPrimaryColumnWidth : Double?
+  maxPrimaryColumnWidth : Double?
+  truncatePrimary : ((SelectListTruncatePrimaryContext) -> String)?
+}
+
+pub(all) struct SelectListTheme {
+  selectedPrefix : (String) -> String
+  selectedText : (String) -> String
+  description : (String) -> String
+  scrollInfo : (String) -> String
+  noMatch : (String) -> String
+}
+pub fn SelectListTheme::description(Self, String) -> String
+pub fn SelectListTheme::noMatch(Self, String) -> String
+pub fn SelectListTheme::scrollInfo(Self, String) -> String
+pub fn SelectListTheme::selectedPrefix(Self, String) -> String
+pub fn SelectListTheme::selectedText(Self, String) -> String
+
+pub(all) struct SelectListTruncatePrimaryContext {
+  text : String
+  maxWidth : Double
+  columnWidth : Double
+  item : SelectItem
+  isSelected : Bool
+}
+
+#external
+pub type Set
+
+pub(all) struct SettingItem {
+  id : String
+  label : String
+  description : String?
+  currentValue : String
+  values : Array[String]?
+  submenu : ((String, (String?, JSValue?) -> Unit) -> Component)?
+}
+
+#external
+pub type SettingsList
+pub fn SettingsList::handle_input(Self, String) -> Unit
+pub fn SettingsList::handle_mouse(Self, TuiMouseEvent) -> TuiMouseEventResult?
+pub fn SettingsList::invalidate(Self) -> Unit
+pub fn SettingsList::render(Self, Double) -> Array[String]
+pub fn SettingsList::select_item(Self, String) -> Unit
+pub fn SettingsList::update_value(Self, String, String) -> Unit
+
+pub(all) struct SettingsListOptions {
+  enableSearch : Bool?
+}
+
+pub(all) struct SettingsListTheme {
+  label : (String, Bool) -> String
+  value : (String, Bool) -> String
+  description : (String) -> String
+  cursor : String
+  hint : (String) -> String
+}
+pub fn SettingsListTheme::description(Self, String) -> String
+pub fn SettingsListTheme::hint(Self, String) -> String
+pub fn SettingsListTheme::label(Self, String, Bool) -> String
+pub fn SettingsListTheme::value(Self, String, Bool) -> String
+
+#external
+pub type SizeValue
+
+pub(all) struct SlashCommand {
+  name : String
+  description : String?
+  argumentHint : String?
+  getArgumentCompletions : ((String) -> JSValue?)?
+}
+
+#external
+pub type Spacer
+pub fn Spacer::invalidate(Self) -> Unit
+pub fn Spacer::render(Self, Double) -> Array[String]
+pub fn Spacer::set_lines(Self, Double) -> Unit
+
+pub(all) enum StackChild {
+  ComponentValue(Component)
+  StackEntryValue(StackEntry)
+}
+
+pub(all) struct StackEntry {
+  component : Component
+  basis : Auto_NumberValue_or_StackEntryBasisMember1Value?
+  grow : Double?
+  shrink : Double?
+  minSize : Double?
+  maxSize : Double?
+  visible : ((LayoutViewport) -> Bool)?
+}
+
+pub(all) enum StackEntryBasisMember1 {
+  Auto
+}
+
+pub(all) struct StackEntryOptions {
+  basis : Auto_NumberValue_or_StackEntryOptionsBasisMember1Value?
+  grow : Double?
+  shrink : Double?
+  minSize : Double?
+  maxSize : Double?
+  visible : ((LayoutViewport) -> Bool)?
+}
+
+pub(all) enum StackEntryOptionsBasisMember1 {
+  Auto
+}
+
+pub(all) struct StackOptions {
+  gap : Double?
+  align : StackOptionsAlign?
+}
+
+pub(all) enum StackOptionsAlign {
+  Stretch
+  Start
+  Center
+  End
+}
+
+#external
+pub type StdinBuffer
+pub fn StdinBuffer::clear(Self) -> Unit
+pub fn StdinBuffer::destroy(Self) -> Unit
+pub fn StdinBuffer::flush(Self) -> Array[String]
+pub fn StdinBuffer::get_buffer(Self) -> String
+pub fn StdinBuffer::process(Self, Auto_BufferValue_or_StringValue) -> Unit
+
+pub(all) struct StdinBufferEventMap {
+  data : Array[String]
+  paste : Array[String]
+}
+
+pub(all) struct StdinBufferOptions {
+  timeout : Double?
+  escapeTimeout : Double?
+}
+
+#alias(KeybindingsConfig)
+#external
+pub type StringRecordOfKeyIdOrArrayOfKeyIdOptional
+
+#alias(KeybindingDefinitions)
+#external
+pub type StringRecordOfKeybindingDefinition
+
+pub(all) struct TUI {
+  mode : TuiMode
+  children : Array[Component]
+  terminal : Terminal
+  onDebug : (() -> Unit)?
+  fullRedraws : Double
+  addChild : (Component) -> Unit
+  removeChild : (Component) -> Unit
+  clear : () -> Unit
+  getShowHardwareCursor : () -> Bool
+  setShowHardwareCursor : (Bool) -> Unit
+  getClearOnShrink : () -> Bool
+  setClearOnShrink : (Bool) -> Unit
+  setFocus : (Component?) -> Unit
+  showOverlay : (Component, OverlayOptions?) -> OverlayHandle
+  hideOverlay : () -> Unit
+  hasOverlay : () -> Bool
+  start : () -> Unit
+  stop : (TuiStopOptions?) -> Unit
+  renderNow : (Bool?) -> Unit
+  requestRender : (Bool?) -> Unit
+  addInputListener : ((String) -> TuiInputListenerResult) -> () -> Unit
+  removeInputListener : ((String) -> TuiInputListenerResult) -> Unit
+  onTerminalColorSchemeChange : ((String) -> Unit) -> () -> Unit
+  setTerminalColorSchemeNotifications : (Bool) -> Unit
+  queryTerminalBackgroundColor : (TuiQueryTerminalBackgroundColorOptions) -> Promise[RgbColor?]
+  queryTerminalColorScheme : (TuiQueryTerminalColorSchemeOptions) -> Promise[String?]
+  render : (Double) -> Array[String]
+  handleInput : ((String) -> Unit)?
+  handleMouse : ((TuiMouseEvent) -> TuiMouseEventResult?)?
+  wantsKeyRelease : Bool?
+  invalidate : () -> Unit
+}
+pub fn TUI::addChild(Self, Component) -> Unit
+pub fn TUI::addInputListener(Self, (String) -> TuiInputListenerResult) -> () -> Unit
+pub fn TUI::clear(Self) -> Unit
+pub fn TUI::getClearOnShrink(Self) -> Bool
+pub fn TUI::getShowHardwareCursor(Self) -> Bool
+pub fn TUI::hasOverlay(Self) -> Bool
+pub fn TUI::hideOverlay(Self) -> Unit
+pub fn TUI::invalidate(Self) -> Unit
+pub fn TUI::onTerminalColorSchemeChange(Self, (String) -> Unit) -> () -> Unit
+pub fn TUI::queryTerminalBackgroundColor(Self, TuiQueryTerminalBackgroundColorOptions) -> Promise[RgbColor?]
+pub fn TUI::queryTerminalColorScheme(Self, TuiQueryTerminalColorSchemeOptions) -> Promise[String?]
+pub fn TUI::removeChild(Self, Component) -> Unit
+pub fn TUI::removeInputListener(Self, (String) -> TuiInputListenerResult) -> Unit
+pub fn TUI::render(Self, Double) -> Array[String]
+pub fn TUI::renderNow(Self, Bool?) -> Unit
+pub fn TUI::requestRender(Self, Bool?) -> Unit
+pub fn TUI::setClearOnShrink(Self, Bool) -> Unit
+pub fn TUI::setFocus(Self, Component?) -> Unit
+pub fn TUI::setShowHardwareCursor(Self, Bool) -> Unit
+pub fn TUI::setTerminalColorSchemeNotifications(Self, Bool) -> Unit
+pub fn TUI::showOverlay(Self, Component, OverlayOptions?) -> OverlayHandle
+pub fn TUI::start(Self) -> Unit
+pub fn TUI::stop(Self, TuiStopOptions?) -> Unit
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_bottomDefaultKeys {
+  End
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_bottomDescription {
+  Scroll_viewport_to_bottom
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_halfPageDownDescription {
+  Scroll_viewport_down_half_a_page
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_halfPageUpDescription {
+  Scroll_viewport_up_half_a_page
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_lineDownDescription {
+  Scroll_viewport_down_one_line
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_lineUpDescription {
+  Scroll_viewport_up_one_line
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_nextPromptDefaultKeysItem0 {
+  Ctrl_shift_down
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_nextPromptDefaultKeysItem1 {
+  Ctrl_down
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_nextPromptDescription {
+  Jump_to_next_semantic_prompt
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_pageDownDefaultKeys {
+  PageDown
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_pageDownDescription {
+  Scroll_viewport_down_one_page
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_pageUpDefaultKeys {
+  PageUp
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_pageUpDescription {
+  Scroll_viewport_up_one_page
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_previousPromptDefaultKeysItem0 {
+  Ctrl_shift_up
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_previousPromptDefaultKeysItem1 {
+  Ctrl_up
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_previousPromptDescription {
+  Jump_to_previous_semantic_prompt
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchCloseDefaultKeys {
+  Escape
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchCloseDescription {
+  Close_transcript_search
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchDefaultKeys {
+  Ctrl_shift_f
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchDescription {
+  Search_the_primary_scroll_view
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchNextDefaultKeysItem0 {
+  Enter
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchNextDefaultKeysItem1 {
+  Ctrl_g
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchNextDescription {
+  Select_the_next_search_match
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchPreviousDefaultKeysItem0 {
+  Shift_enter
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchPreviousDefaultKeysItem1 {
+  Ctrl_shift_g
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_searchPreviousDescription {
+  Select_the_previous_search_match
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_topDefaultKeys {
+  Home
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_altScreen_topDescription {
+  Scroll_viewport_to_top
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorDownDefaultKeys {
+  Down
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorDownDescription {
+  Move_cursor_down
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLeftDefaultKeysItem0 {
+  Left
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLeftDefaultKeysItem1 {
+  Ctrl_b
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLeftDescription {
+  Move_cursor_left
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLineEndDefaultKeysItem0 {
+  End
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLineEndDefaultKeysItem1 {
+  Ctrl_end
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLineEndDefaultKeysItem2 {
+  Ctrl_e
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLineEndDescription {
+  Move_to_line_end
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLineStartDefaultKeysItem0 {
+  Home
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLineStartDefaultKeysItem1 {
+  Ctrl_home
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLineStartDefaultKeysItem2 {
+  Ctrl_a
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorLineStartDescription {
+  Move_to_line_start
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorRightDefaultKeysItem0 {
+  Right
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorRightDefaultKeysItem1 {
+  Ctrl_f
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorRightDescription {
+  Move_cursor_right
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorUpDefaultKeys {
+  Up
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorUpDescription {
+  Move_cursor_up
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorWordLeftDefaultKeysItem0 {
+  Alt_left
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorWordLeftDefaultKeysItem1 {
+  Ctrl_left
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorWordLeftDefaultKeysItem2 {
+  Alt_b
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorWordLeftDescription {
+  Move_cursor_word_left
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorWordRightDefaultKeysItem0 {
+  Alt_right
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorWordRightDefaultKeysItem1 {
+  Ctrl_right
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorWordRightDefaultKeysItem2 {
+  Alt_f
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_cursorWordRightDescription {
+  Move_cursor_word_right
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteCharBackwardDefaultKeys {
+  Backspace
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteCharBackwardDescription {
+  Delete_character_backward
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteCharForwardDefaultKeysItem0 {
+  Delete
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteCharForwardDefaultKeysItem1 {
+  Ctrl_d
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteCharForwardDescription {
+  Delete_character_forward
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteToLineEndDefaultKeys {
+  Ctrl_k
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteToLineEndDescription {
+  Delete_to_line_end
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteToLineStartDefaultKeys {
+  Ctrl_u
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteToLineStartDescription {
+  Delete_to_line_start
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteWordBackwardDefaultKeysItem0 {
+  Ctrl_w
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteWordBackwardDefaultKeysItem1 {
+  Alt_backspace
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteWordBackwardDescription {
+  Delete_word_backward
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteWordForwardDefaultKeysItem0 {
+  Alt_d
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteWordForwardDefaultKeysItem1 {
+  Alt_delete
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_deleteWordForwardDescription {
+  Delete_word_forward
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_historyNextDescription {
+  Select_next_prompt_history_entry
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_historyPreviousDescription {
+  Select_previous_prompt_history_entry
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_jumpBackwardDefaultKeys {
+  Ctrl_alt__
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_jumpBackwardDescription {
+  Jump_backward_to_character
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_jumpForwardDefaultKeys {
+  Ctrl__
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_jumpForwardDescription {
+  Jump_forward_to_character
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_pageDownDefaultKeysItem0 {
+  PageDown
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_pageDownDefaultKeysItem1 {
+  Ctrl_pageDown
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_pageDownDescription {
+  Page_down
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_pageUpDefaultKeysItem0 {
+  PageUp
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_pageUpDefaultKeysItem1 {
+  Ctrl_pageUp
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_pageUpDescription {
+  Page_up
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_undoDefaultKeys {
+  Ctrl__
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_undoDescription {
+  Undo
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_yankDefaultKeys {
+  Ctrl_y
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_yankDescription {
+  Yank
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_yankPopDefaultKeys {
+  Alt_y
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_editor_yankPopDescription {
+  Yank_pop
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_input_copyDefaultKeys {
+  Ctrl_c
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_input_copyDescription {
+  Copy_selection
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_input_newLineDefaultKeysItem0 {
+  Shift_enter
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_input_newLineDefaultKeysItem1 {
+  Ctrl_j
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_input_newLineDescription {
+  Insert_newline
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_input_submitDefaultKeys {
+  Enter
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_input_submitDescription {
+  Submit_input
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_input_tabDefaultKeys {
+  Tab
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_input_tabDescription {
+  Tab___autocomplete
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_cancelDefaultKeysItem0 {
+  Escape
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_cancelDefaultKeysItem1 {
+  Ctrl_c
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_cancelDescription {
+  Cancel_selection
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_confirmDefaultKeys {
+  Enter
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_confirmDescription {
+  Confirm_selection
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_downDefaultKeys {
+  Down
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_downDescription {
+  Move_selection_down
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_pageDownDefaultKeys {
+  PageDown
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_pageDownDescription {
+  Selection_page_down
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_pageUpDefaultKeys {
+  PageUp
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_pageUpDescription {
+  Selection_page_up
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_upDefaultKeys {
+  Up
+}
+
+pub(all) enum TUI_KEYBINDINGSValueTui_select_upDescription {
+  Move_selection_up
+}
+
+pub(all) struct Terminal {
+  start : ((String) -> Unit, () -> Unit) -> Unit
+  stop : () -> Unit
+  drainInput : (Double?, Double?) -> Promise[Unit]
+  write : (String) -> Unit
+  columns : Double
+  rows : Double
+  kittyProtocolActive : Bool
+  moveBy : (Double) -> Unit
+  hideCursor : () -> Unit
+  showCursor : () -> Unit
+  clearLine : () -> Unit
+  clearFromCursor : () -> Unit
+  clearScreen : () -> Unit
+  setTitle : (String) -> Unit
+  setProgress : (Bool) -> Unit
+}
+pub fn Terminal::clearFromCursor(Self) -> Unit
+pub fn Terminal::clearLine(Self) -> Unit
+pub fn Terminal::clearScreen(Self) -> Unit
+pub fn Terminal::drainInput(Self, Double?, Double?) -> Promise[Unit]
+pub fn Terminal::hideCursor(Self) -> Unit
+pub fn Terminal::moveBy(Self, Double) -> Unit
+pub fn Terminal::setProgress(Self, Bool) -> Unit
+pub fn Terminal::setTitle(Self, String) -> Unit
+pub fn Terminal::showCursor(Self) -> Unit
+pub fn Terminal::start(Self, (String) -> Unit, () -> Unit) -> Unit
+pub fn Terminal::stop(Self) -> Unit
+pub fn Terminal::write(Self, String) -> Unit
+
+pub(all) struct TerminalCapabilities {
+  images : String?
+  trueColor : Bool
+  hyperlinks : Bool
+}
+
+pub(all) struct TerminalCapabilitiesPartial {
+  images : String??
+  trueColor : Bool?
+  hyperlinks : Bool?
+}
+
+pub(all) enum TerminalColorScheme {
+  Dark
+  Light
+}
+
+#external
+pub type Text
+pub fn Text::invalidate(Self) -> Unit
+pub fn Text::render(Self, Double) -> Array[String]
+pub fn Text::set_custom_bg_fn(Self, ((String) -> String)?) -> Unit
+pub fn Text::set_text(Self, String) -> Unit
+
+#external
+pub type This
+
+#external
+pub type Token
+
+pub(all) struct TokenizerExtension {
+  name : String
+  level : TokenizerExtensionLevel
+  start : TokenizerStartFunction?
+  tokenizer : TokenizerExtensionFunction
+  childTokens : Array[String]?
+}
+
+#external
+pub type TokenizerExtensionFunction
+
+pub(all) enum TokenizerExtensionLevel {
+  Block
+  Inline
+}
+
+#external
+pub type TokenizerObject
+
+#external
+pub type TokenizerStartFunction
+
+#external
+pub type TokensList
+
+#external
+pub type Tokens_Generic
+
+#external
+pub type TruncatedText
+pub fn TruncatedText::invalidate(Self) -> Unit
+pub fn TruncatedText::render(Self, Double) -> Array[String]
+
+#external
+pub type TuiAltScreen
+pub fn TuiAltScreen::add_child(Self, Component) -> Unit
+pub fn TuiAltScreen::add_input_listener(Self, (String) -> TuiInputListenerResult) -> () -> Unit
+pub fn TuiAltScreen::clear(Self) -> Unit
+pub fn TuiAltScreen::copy_active_selection_to_clipboard(Self) -> Promise[Bool]
+pub fn TuiAltScreen::flash(Self, String, Double?) -> Unit
+pub fn TuiAltScreen::full_redraws(Self) -> Double
+pub fn TuiAltScreen::get_clear_on_shrink(Self) -> Bool
+pub fn TuiAltScreen::get_copy_on_select(Self) -> Bool
+pub fn TuiAltScreen::get_focused_component(Self) -> Component?
+pub fn TuiAltScreen::get_show_hardware_cursor(Self) -> Bool
+pub fn TuiAltScreen::get_tui_alt_screen_children(Self) -> Array[Component]
+pub fn TuiAltScreen::get_tui_alt_screen_full_redraws(Self) -> Double
+pub fn TuiAltScreen::get_tui_alt_screen_has_overlay_entries(Self) -> Bool
+pub fn TuiAltScreen::get_tui_alt_screen_is_following_output(Self) -> Bool
+pub fn TuiAltScreen::get_tui_alt_screen_mode(Self) -> TuiMode
+pub fn TuiAltScreen::get_tui_alt_screen_on_debug(Self) -> () -> Unit
+pub fn TuiAltScreen::get_tui_alt_screen_terminal(Self) -> Terminal
+pub fn TuiAltScreen::get_tui_alt_screen_viewport_top(Self) -> Double
+pub fn TuiAltScreen::handle_mouse(Self, TuiMouseEvent) -> TuiMouseDispatchResult?
+pub fn TuiAltScreen::has_active_selection(Self) -> Bool
+pub fn TuiAltScreen::has_overlay(Self) -> Bool
+pub fn TuiAltScreen::has_overlay_entries(Self) -> Bool
+pub fn TuiAltScreen::hide_overlay(Self) -> Unit
+pub fn TuiAltScreen::invalidate(Self) -> Unit
+pub fn TuiAltScreen::is_following_output(Self) -> Bool
+pub fn TuiAltScreen::on_debug(Self) -> Unit
+pub fn TuiAltScreen::on_terminal_color_scheme_change(Self, (String) -> Unit) -> () -> Unit
+pub fn TuiAltScreen::query_terminal_background_color(Self, TuiBaseQueryTerminalBackgroundColorDestructured) -> Promise[RgbColor?]
+pub fn TuiAltScreen::query_terminal_color_scheme(Self, TuiBaseQueryTerminalColorSchemeDestructured) -> Promise[String?]
+pub fn TuiAltScreen::remove_child(Self, Component) -> Unit
+pub fn TuiAltScreen::remove_input_listener(Self, (String) -> TuiInputListenerResult) -> Unit
+pub fn TuiAltScreen::render(Self, Double) -> Array[String]
+pub fn TuiAltScreen::render_now(Self, Bool?) -> Unit
+pub fn TuiAltScreen::request_render(Self, Bool?) -> Unit
+pub fn TuiAltScreen::scroll_by(Self, Double) -> Unit
+pub fn TuiAltScreen::scroll_to_bottom(Self) -> Unit
+pub fn TuiAltScreen::scroll_to_top(Self) -> Unit
+pub fn TuiAltScreen::set_clear_on_shrink(Self, Bool) -> Unit
+pub fn TuiAltScreen::set_copy_on_select(Self, Bool) -> Unit
+pub fn TuiAltScreen::set_focus(Self, Component?) -> Unit
+pub fn TuiAltScreen::set_layout_root(Self, Component?) -> Unit
+pub fn TuiAltScreen::set_show_hardware_cursor(Self, Bool) -> Unit
+pub fn TuiAltScreen::set_terminal_color_scheme_notifications(Self, Bool) -> Unit
+pub fn TuiAltScreen::set_tui_alt_screen_children(Self, Array[Component]) -> Unit
+pub fn TuiAltScreen::set_tui_alt_screen_on_debug(Self, () -> Unit) -> Unit
+pub fn TuiAltScreen::set_tui_alt_screen_terminal(Self, Terminal) -> Unit
+pub fn TuiAltScreen::show_overlay(Self, Component, OverlayOptions?) -> OverlayHandle
+pub fn TuiAltScreen::start(Self) -> Unit
+pub fn TuiAltScreen::stop(Self, TuiStopOptions?) -> Unit
+pub fn TuiAltScreen::viewport_top(Self) -> Double
+
+pub(all) struct TuiAltScreenOptions {
+  wheelScrollLines : Double?
+  mouse : Bool?
+  searchMatchStyle : ((String) -> String)?
+  searchCurrentMatchStyle : ((String) -> String)?
+  searchNavigationButtonStyle : ((String, Bool) -> String)?
+  scrollToEndIndicator : (() -> String)?
+  openUrl : ((String) -> Unit)?
+  onRightClickPaste : (() -> Unit)?
+  copyOnSelect : Bool?
+  copySelection : ((String) -> Promise[Bool])?
+}
+
+pub(all) struct TuiBaseQueryTerminalBackgroundColorDestructured {
+  timeoutMs : Double
+}
+
+pub(all) struct TuiBaseQueryTerminalColorSchemeDestructured {
+  timeoutMs : Double
+}
+
+#external
+pub type TuiInputListenerResult
+
+#external
+pub type TuiMainScreen
+pub fn TuiMainScreen::add_child(Self, Component) -> Unit
+pub fn TuiMainScreen::add_input_listener(Self, (String) -> TuiInputListenerResult) -> () -> Unit
+pub fn TuiMainScreen::capture_render_state(Self) -> TuiMainScreenRenderState
+pub fn TuiMainScreen::clear(Self) -> Unit
+pub fn TuiMainScreen::full_redraws(Self) -> Double
+pub fn TuiMainScreen::get_clear_on_shrink(Self) -> Bool
+pub fn TuiMainScreen::get_focused_component(Self) -> Component?
+pub fn TuiMainScreen::get_show_hardware_cursor(Self) -> Bool
+pub fn TuiMainScreen::get_tui_main_screen_children(Self) -> Array[Component]
+pub fn TuiMainScreen::get_tui_main_screen_full_redraws(Self) -> Double
+pub fn TuiMainScreen::get_tui_main_screen_has_overlay_entries(Self) -> Bool
+pub fn TuiMainScreen::get_tui_main_screen_mode(Self) -> TuiMode
+pub fn TuiMainScreen::get_tui_main_screen_on_debug(Self) -> () -> Unit
+pub fn TuiMainScreen::get_tui_main_screen_terminal(Self) -> Terminal
+pub fn TuiMainScreen::handle_mouse(Self, TuiMouseEvent) -> TuiMouseDispatchResult?
+pub fn TuiMainScreen::has_overlay(Self) -> Bool
+pub fn TuiMainScreen::has_overlay_entries(Self) -> Bool
+pub fn TuiMainScreen::hide_overlay(Self) -> Unit
+pub fn TuiMainScreen::invalidate(Self) -> Unit
+pub fn TuiMainScreen::on_debug(Self) -> Unit
+pub fn TuiMainScreen::on_terminal_color_scheme_change(Self, (String) -> Unit) -> () -> Unit
+pub fn TuiMainScreen::query_terminal_background_color(Self, TuiBaseQueryTerminalBackgroundColorDestructured) -> Promise[RgbColor?]
+pub fn TuiMainScreen::query_terminal_color_scheme(Self, TuiBaseQueryTerminalColorSchemeDestructured) -> Promise[String?]
+pub fn TuiMainScreen::remove_child(Self, Component) -> Unit
+pub fn TuiMainScreen::remove_input_listener(Self, (String) -> TuiInputListenerResult) -> Unit
+pub fn TuiMainScreen::render(Self, Double) -> Array[String]
+pub fn TuiMainScreen::render_now(Self, Bool?) -> Unit
+pub fn TuiMainScreen::request_render(Self, Bool?) -> Unit
+pub fn TuiMainScreen::restore_render_state(Self, TuiMainScreenRenderState) -> Unit
+pub fn TuiMainScreen::set_clear_on_shrink(Self, Bool) -> Unit
+pub fn TuiMainScreen::set_focus(Self, Component?) -> Unit
+pub fn TuiMainScreen::set_show_hardware_cursor(Self, Bool) -> Unit
+pub fn TuiMainScreen::set_terminal_color_scheme_notifications(Self, Bool) -> Unit
+pub fn TuiMainScreen::set_tui_main_screen_children(Self, Array[Component]) -> Unit
+pub fn TuiMainScreen::set_tui_main_screen_on_debug(Self, () -> Unit) -> Unit
+pub fn TuiMainScreen::set_tui_main_screen_terminal(Self, Terminal) -> Unit
+pub fn TuiMainScreen::show_overlay(Self, Component, OverlayOptions?) -> OverlayHandle
+pub fn TuiMainScreen::start(Self) -> Unit
+pub fn TuiMainScreen::stop(Self, TuiStopOptions?) -> Unit
+
+pub(all) struct TuiMainScreenRenderState {
+  previousLines : Array[String]
+  previousWidth : Double
+  previousHeight : Double
+  cursorRow : Double
+  hardwareCursorRow : Double
+  maxLinesRendered : Double
+  previousViewportTop : Double
+}
+
+pub(all) enum TuiMode {
+  Regular
+  Fullscreen
+}
+
+pub(all) enum TuiMouseButton {
+  Left
+  Middle
+  Right
+  None
+}
+
+pub(all) struct TuiMouseDispatchResult {
+  handled : Bool
+  target : TuiMouseDispatchTarget
+  focusTarget : Component?
+  capture : Bool?
+  focus : Bool?
+  render : Bool?
+}
+
+pub(all) struct TuiMouseDispatchTarget {
+  component : Component
+  originX : Double
+  originY : Double
+  width : Double
+  height : Double
+}
+
+pub(all) struct TuiMouseEvent {
+  type_ : TuiMouseEventType
+  button : TuiMouseButton
+  x : Double
+  y : Double
+  screenX : Double
+  screenY : Double
+  width : Double
+  height : Double
+  shift : Bool
+  alt : Bool
+  ctrl : Bool
+  wheelDelta : Double?
+  clickCount : Double?
+}
+
+pub(all) struct TuiMouseEventResult {
+  handled : Bool?
+  capture : Bool?
+  focus : Bool?
+  render : Bool?
+}
+
+pub(all) enum TuiMouseEventType {
+  Press
+  Release
+  Move
+  Drag
+  Click
+  Wheel
+}
+
+pub(all) struct TuiQueryTerminalBackgroundColorOptions {
+  timeoutMs : Double
+}
+
+pub(all) struct TuiQueryTerminalColorSchemeOptions {
+  timeoutMs : Double
+}
+
+pub(all) struct TuiStopOptions {
+  preserveScreen : Bool?
+}
+
+#external
+pub type UnderscoreHooks
+
+#external
+pub type UnderscoreParser
+
+#external
+pub type UnderscoreRenderer
+
+#external
+pub type UnderscoreTextRenderer
+
+#external
+pub type UnderscoreTokenizer
+
+#external
+pub type VStack
+pub fn VStack::add_child(Self, Component, StackEntryOptions?) -> Unit
+pub fn VStack::clear(Self) -> Unit
+pub fn VStack::get_vstack_children(Self) -> Array[Component]
+pub fn VStack::handle_mouse(Self, TuiMouseEvent) -> TuiMouseDispatchResult?
+pub fn VStack::invalidate(Self) -> Unit
+pub fn VStack::remove_child(Self, Component) -> Unit
+pub fn VStack::render(Self, Double) -> Array[String]
+pub fn VStack::set_vstack_children(Self, Array[Component]) -> Unit
+
+pub(all) struct ViewportTUI {
+  _computed_ : Bool
+  setLayoutRoot : (Component?) -> Unit
+  mode : TuiMode
+  children : Array[Component]
+  terminal : Terminal
+  onDebug : (() -> Unit)?
+  fullRedraws : Double
+  addChild : (Component) -> Unit
+  removeChild : (Component) -> Unit
+  clear : () -> Unit
+  getShowHardwareCursor : () -> Bool
+  setShowHardwareCursor : (Bool) -> Unit
+  getClearOnShrink : () -> Bool
+  setClearOnShrink : (Bool) -> Unit
+  setFocus : (Component?) -> Unit
+  showOverlay : (Component, OverlayOptions?) -> OverlayHandle
+  hideOverlay : () -> Unit
+  hasOverlay : () -> Bool
+  start : () -> Unit
+  stop : (TuiStopOptions?) -> Unit
+  renderNow : (Bool?) -> Unit
+  requestRender : (Bool?) -> Unit
+  addInputListener : ((String) -> TuiInputListenerResult) -> () -> Unit
+  removeInputListener : ((String) -> TuiInputListenerResult) -> Unit
+  onTerminalColorSchemeChange : ((String) -> Unit) -> () -> Unit
+  setTerminalColorSchemeNotifications : (Bool) -> Unit
+  queryTerminalBackgroundColor : (TuiQueryTerminalBackgroundColorOptions) -> Promise[RgbColor?]
+  queryTerminalColorScheme : (TuiQueryTerminalColorSchemeOptions) -> Promise[String?]
+  render : (Double) -> Array[String]
+  handleInput : ((String) -> Unit)?
+  handleMouse : ((TuiMouseEvent) -> TuiMouseEventResult?)?
+  wantsKeyRelease : Bool?
+  invalidate : () -> Unit
+}
+pub fn ViewportTUI::addChild(Self, Component) -> Unit
+pub fn ViewportTUI::addInputListener(Self, (String) -> TuiInputListenerResult) -> () -> Unit
+pub fn ViewportTUI::clear(Self) -> Unit
+pub fn ViewportTUI::getClearOnShrink(Self) -> Bool
+pub fn ViewportTUI::getShowHardwareCursor(Self) -> Bool
+pub fn ViewportTUI::hasOverlay(Self) -> Bool
+pub fn ViewportTUI::hideOverlay(Self) -> Unit
+pub fn ViewportTUI::invalidate(Self) -> Unit
+pub fn ViewportTUI::onTerminalColorSchemeChange(Self, (String) -> Unit) -> () -> Unit
+pub fn ViewportTUI::queryTerminalBackgroundColor(Self, TuiQueryTerminalBackgroundColorOptions) -> Promise[RgbColor?]
+pub fn ViewportTUI::queryTerminalColorScheme(Self, TuiQueryTerminalColorSchemeOptions) -> Promise[String?]
+pub fn ViewportTUI::removeChild(Self, Component) -> Unit
+pub fn ViewportTUI::removeInputListener(Self, (String) -> TuiInputListenerResult) -> Unit
+pub fn ViewportTUI::render(Self, Double) -> Array[String]
+pub fn ViewportTUI::renderNow(Self, Bool?) -> Unit
+pub fn ViewportTUI::requestRender(Self, Bool?) -> Unit
+pub fn ViewportTUI::setClearOnShrink(Self, Bool) -> Unit
+pub fn ViewportTUI::setFocus(Self, Component?) -> Unit
+pub fn ViewportTUI::setLayoutRoot(Self, Component?) -> Unit
+pub fn ViewportTUI::setShowHardwareCursor(Self, Bool) -> Unit
+pub fn ViewportTUI::setTerminalColorSchemeNotifications(Self, Bool) -> Unit
+pub fn ViewportTUI::showOverlay(Self, Component, OverlayOptions?) -> OverlayHandle
+pub fn ViewportTUI::start(Self) -> Unit
+pub fn ViewportTUI::stop(Self, TuiStopOptions?) -> Unit
+
+// Type aliases
+pub type ImageProtocol = String?
+
+pub type MouseRegionHandler = (TuiMouseEvent) -> TuiMouseEventResult?
+
+pub type TuiInputListener = (String) -> TuiInputListenerResult
+
+// Traits

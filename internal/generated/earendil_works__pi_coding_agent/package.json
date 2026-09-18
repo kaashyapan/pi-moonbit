@@ -1,0 +1,7 @@
+{
+  "name": "@tsmbt-bridge/earendil_works__pi_coding_agent",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "bridge.js",
+  "private": true
+}

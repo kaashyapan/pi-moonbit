@@ -1,0 +1,5403 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "kaashyapan/moonext/internal/generated/earendil_works__pi_coding_agent"
+
+// Values
+pub fn agent_message_from_message(Message) -> AgentMessage
+
+pub fn agent_session_event_from_exclude(Exclude) -> AgentSessionEvent
+
+pub fn api_from_known_api(KnownApi) -> Api
+
+pub fn api_from_string(String) -> Api
+
+pub fn auth_type_from_string(String) -> AuthType
+
+pub fn bash_tool_input_from_static(Static) -> BashToolInput
+
+pub fn buildContextEntries(Array[SessionEntry], String?, Map?) -> Array[SessionEntry]
+
+pub fn buildSessionContext(Array[SessionEntry], String?, Map?) -> SessionContext
+
+pub fn calculateContextTokens(Usage) -> Double
+
+pub fn collectEntriesForBranchSummary(ReadonlySessionManager, String?, String) -> CollectEntriesResult
+
+pub fn color_mode_from_string(String) -> ColorMode
+
+pub fn compact(CompactionPreparation, Model[JSValue], String?, StringRecordOfString?, String?, AbortSignal?, ThinkingLevel?, StreamFn?, StringRecordOfString?, RetryPolicy?, RetryCallbacks?, String?) -> Promise[CompactionResult[JSValue]]
+
+pub fn convertToLlm(Array[AgentMessage]) -> Array[Message]
+
+pub fn convertToPng(String, String) -> Promise[JSValue?]
+
+pub fn copyToClipboard(String) -> Promise[Unit]
+
+pub fn createAgentSession(CreateAgentSessionOptions?) -> Promise[CreateAgentSessionResult]
+
+pub fn createAgentSessionFromServices(CreateAgentSessionFromServicesOptions) -> Promise[CreateAgentSessionResult]
+
+pub fn createAgentSessionRuntime(CreateAgentSessionRuntimeFactory, JSValue) -> Promise[AgentSessionRuntime]
+
+pub fn createAgentSessionServices(CreateAgentSessionServicesOptions) -> Promise[AgentSessionServices]
+
+pub fn createBashTool(String, BashToolOptions?) -> AgentTool[JSValue, JSValue]
+
+pub fn createBashToolDefinition(String, BashToolOptions?) -> ToolDefinition[JSValue, BashToolDetails?, BashRenderState]
+
+pub fn createCodingTools(String, ToolsOptions?) -> Array[Tool[JSValue]]
+
+pub fn createEditTool(String, EditToolOptions?) -> AgentTool[JSValue, JSValue]
+
+pub fn createEditToolDefinition(String, EditToolOptions?) -> ToolDefinition[JSValue, EditToolDetails?, EditRenderState]
+
+pub fn createEventBus() -> EventBusController
+
+pub fn createExtensionRuntime() -> ExtensionRuntime
+
+pub fn createFindTool(String, FindToolOptions?) -> AgentTool[JSValue, JSValue]
+
+pub fn createFindToolDefinition(String, FindToolOptions?) -> ToolDefinition[JSValue, JSValue, JSValue]
+
+pub fn createGrepTool(String, GrepToolOptions?) -> AgentTool[JSValue, JSValue]
+
+pub fn createGrepToolDefinition(String, GrepToolOptions?) -> ToolDefinition[JSValue, JSValue, JSValue]
+
+pub fn createLocalBashOperations(JSValue?) -> BashOperations
+
+pub fn createLocalPowerShellOperations() -> BashOperations
+
+pub fn createLsTool(String, LsToolOptions?) -> AgentTool[JSValue, JSValue]
+
+pub fn createLsToolDefinition(String, LsToolOptions?) -> ToolDefinition[JSValue, JSValue, JSValue]
+
+pub fn createPowerShellTool(String, PowerShellToolOptions?) -> ReturnType
+
+pub fn createPowerShellToolDefinition(String, PowerShellToolOptions?) -> ReturnType
+
+pub fn createReadOnlyTools(String, ToolsOptions?) -> Array[Tool[JSValue]]
+
+pub fn createReadTool(String, ReadToolOptions?) -> AgentTool[JSValue, JSValue]
+
+pub fn createReadToolDefinition(String, ReadToolOptions?) -> ToolDefinition[JSValue, JSValue, JSValue]
+
+pub fn createSyntheticSourceInfo(String, JSValue) -> SourceInfo
+
+pub fn createWriteTool(String, WriteToolOptions?) -> AgentTool[JSValue, JSValue]
+
+pub fn createWriteToolDefinition(String, WriteToolOptions?) -> ToolDefinition[JSValue, JSValue, JSValue]
+
+pub fn credential_from_api_key_credential(ApiKeyCredential) -> Credential
+
+pub fn credential_from_oauth_credential(OAuthCredential) -> Credential
+
+pub fn defineTool(ToolDefinition[TSchema, TDetails, TState[JSValue, JSValue]]) -> JSValue
+
+pub fn detectSupportedImageMimeTypeFromFile(String) -> Promise[String?]
+
+pub fn discoverAndLoadExtensions(Array[String], String, String?, EventBus?) -> Promise[LoadExtensionsResult]
+
+pub fn edit_tool_input_from_static(Static) -> EditToolInput
+
+pub fn estimateTokens(AgentMessage) -> Double
+
+pub fn extension_event_from_after_provider_response_event(AfterProviderResponseEvent) -> ExtensionEvent
+
+pub fn extension_event_from_agent_end_event(AgentEndEvent) -> ExtensionEvent
+
+pub fn extension_event_from_agent_settled_event(AgentSettledEvent) -> ExtensionEvent
+
+pub fn extension_event_from_agent_start_event(AgentStartEvent) -> ExtensionEvent
+
+pub fn extension_event_from_before_agent_start_event(BeforeAgentStartEvent) -> ExtensionEvent
+
+pub fn extension_event_from_before_provider_headers_event(BeforeProviderHeadersEvent) -> ExtensionEvent
+
+pub fn extension_event_from_before_provider_request_event(BeforeProviderRequestEvent) -> ExtensionEvent
+
+pub fn extension_event_from_context_event(ContextEvent) -> ExtensionEvent
+
+pub fn extension_event_from_input_event(InputEvent) -> ExtensionEvent
+
+pub fn extension_event_from_message_end_event(MessageEndEvent) -> ExtensionEvent
+
+pub fn extension_event_from_message_start_event(MessageStartEvent) -> ExtensionEvent
+
+pub fn extension_event_from_message_update_event(MessageUpdateEvent) -> ExtensionEvent
+
+pub fn extension_event_from_model_select_event(ModelSelectEvent) -> ExtensionEvent
+
+pub fn extension_event_from_project_trust_event(ProjectTrustEvent) -> ExtensionEvent
+
+pub fn extension_event_from_resources_discover_event(ResourcesDiscoverEvent) -> ExtensionEvent
+
+pub fn extension_event_from_session_event(SessionEvent) -> ExtensionEvent
+
+pub fn extension_event_from_thinking_level_select_event(ThinkingLevelSelectEvent) -> ExtensionEvent
+
+pub fn extension_event_from_tool_call_event(ToolCallEvent) -> ExtensionEvent
+
+pub fn extension_event_from_tool_execution_end_event(ToolExecutionEndEvent) -> ExtensionEvent
+
+pub fn extension_event_from_tool_execution_start_event(ToolExecutionStartEvent) -> ExtensionEvent
+
+pub fn extension_event_from_tool_execution_update_event(ToolExecutionUpdateEvent) -> ExtensionEvent
+
+pub fn extension_event_from_tool_result_event(ToolResultEvent) -> ExtensionEvent
+
+pub fn extension_event_from_turn_end_event(TurnEndEvent) -> ExtensionEvent
+
+pub fn extension_event_from_turn_start_event(TurnStartEvent) -> ExtensionEvent
+
+pub fn extension_event_from_uiprompt_end_event(UIPromptEndEvent) -> ExtensionEvent
+
+pub fn extension_event_from_uiprompt_start_event(UIPromptStartEvent) -> ExtensionEvent
+
+pub fn extension_event_from_user_bash_event(UserBashEvent) -> ExtensionEvent
+
+pub fn extension_mode_from_string(String) -> ExtensionMode
+
+pub fn file_entry_from_session_entry(SessionEntry) -> FileEntry
+
+pub fn file_entry_from_session_header(SessionHeader) -> FileEntry
+
+pub fn filter_mode_from_string(String) -> FilterMode
+
+pub fn findCutPoint(Array[SessionEntry], Double, Double, Double) -> CutPointResult
+
+pub fn findTurnStartIndex(Array[SessionEntry], Double, Double) -> Double
+
+pub fn find_tool_input_from_static(Static) -> FindToolInput
+
+pub fn formatDimensionNote(ResizedImage) -> String?
+
+pub fn formatSize(Double) -> String
+
+pub fn formatSkillsForPrompt(Array[Skill], FormatSkillsForPromptFileReadTool?) -> String
+
+pub fn generateBranchSummary(Array[SessionEntry], GenerateBranchSummaryOptions) -> Promise[BranchSummaryResult]
+
+pub fn generateDiffString(String, String, Double?) -> GenerateDiffStringResult
+
+pub fn generateSummary(Array[AgentMessage], Model[JSValue], Double, String?, StringRecordOfString?, AbortSignal?, String?, String?, ThinkingLevel?, StreamFn?, StringRecordOfString?, RetryPolicy?, RetryCallbacks?, String?) -> Promise[String]
+
+pub fn generateSummaryWithUsage(Array[AgentMessage], Model[JSValue], Double, String?, StringRecordOfString?, AbortSignal?, String?, String?, ThinkingLevel?, StreamFn?, StringRecordOfString?, RetryPolicy?, RetryCallbacks?, String?) -> Promise[GenerateSummaryWithUsageResult]
+
+pub fn generateUnifiedPatch(String, String, String, Double?) -> String
+
+pub fn getAgentDir() -> String
+
+pub fn getDocsPath() -> String
+
+pub fn getExamplesPath() -> String
+
+pub fn getLanguageFromPath(String) -> String?
+
+pub fn getLastAssistantUsage(Array[SessionEntry]) -> Usage?
+
+pub fn getLatestCompactionEntry(Array[SessionEntry]) -> CompactionEntry[JSValue]?
+
+pub fn getMarkdownTheme() -> MarkdownTheme
+
+pub fn getPackageDir() -> String
+
+pub fn getPowerShellConfig() -> ShellConfig
+
+pub fn getReadmePath() -> String
+
+pub fn getSelectListTheme() -> SelectListTheme
+
+pub fn getSettingsListTheme() -> SettingsListTheme
+
+pub fn getShellConfig(String?) -> ShellConfig
+
+pub fn get_config_dir_name() -> String
+
+pub fn get_current_session_version() -> JSValue
+
+pub fn get_default_compaction_settings() -> CompactionSettings
+
+pub fn get_default_max_bytes() -> Double
+
+pub fn get_default_max_lines() -> JSValue
+
+pub fn get_parse_frontmatter() -> JSValue
+
+pub fn get_strip_frontmatter() -> (String) -> String
+
+pub fn get_version() -> String
+
+pub fn grep_tool_input_from_static(Static) -> GrepToolInput
+
+pub fn hasTrustRequiringProjectResources(String) -> Bool
+
+pub fn highlightCode(String, String?) -> Array[String]
+
+pub fn initTheme(String?, Bool?) -> Unit
+
+pub fn inline_extension_from_extension_factory(ExtensionFactory) -> InlineExtension
+
+pub fn isBashToolResult(ToolResultEvent) -> Bool
+
+pub fn isEditToolResult(ToolResultEvent) -> Bool
+
+pub fn isFindToolResult(ToolResultEvent) -> Bool
+
+pub fn isGrepToolResult(ToolResultEvent) -> Bool
+
+pub fn isLsToolResult(ToolResultEvent) -> Bool
+
+pub fn isPowerShellToolResult(ToolResultEvent) -> Bool
+
+pub fn isReadToolResult(ToolResultEvent) -> Bool
+
+pub fn isToolCallEventType(IsToolCallEventTypeToolName, ToolCallEvent) -> Bool
+
+pub fn isToolCallEventType_string_tool_call_event(IsToolCallEventType_string_tool_call_eventToolName, ToolCallEvent) -> Bool
+
+pub fn isWriteToolResult(ToolResultEvent) -> Bool
+
+pub fn json_agent_session_event_from_agent_session_event(AgentSessionEvent) -> JsonAgentSessionEvent
+
+pub fn json_agent_session_event_from_json_message_update_event(JsonMessageUpdateEvent) -> JsonAgentSessionEvent
+
+pub fn keyHint(Keybinding, String) -> String
+
+pub fn keyText(Keybinding) -> String
+
+pub fn key_id_from_base_key(BaseKey) -> KeyId
+
+pub fn key_id_from_modified_key_id(ModifiedKeyId) -> KeyId
+
+pub fn keybindings_config_from_record(Record) -> KeybindingsConfig
+
+pub fn loadProjectContextFiles(JSValue) -> Array[JSValue]
+
+pub fn loadSkills(LoadSkillsOptions) -> LoadSkillsResult
+
+pub fn loadSkillsFromDir(LoadSkillsFromDirOptions) -> LoadSkillsResult
+
+pub fn ls_tool_input_from_static(Static) -> LsToolInput
+
+pub fn main_(Array[String], MainOptions?) -> Promise[Unit]
+
+pub fn mermaid_rendering_mode_from_string(String) -> MermaidRenderingMode
+
+pub fn message_from_assistant_message(AssistantMessage) -> Message
+
+pub fn message_from_tool_result_message(ToolResultMessage[JSValue]) -> Message
+
+pub fn message_from_user_message(UserMessage) -> Message
+
+pub fn migrateSessionEntries(Array[FileEntry]) -> Unit
+
+pub fn missing_source_action_from_string(String) -> MissingSourceAction
+
+pub fn mode_from_string(String) -> Mode
+
+pub fn model_runtime_create(CreateModelRuntimeOptions?) -> Promise[ModelRuntime]
+
+pub fn model_select_source_from_string(String) -> ModelSelectSource
+
+pub fn new_agent_session(AgentSessionConfig) -> AgentSession
+
+pub fn new_agent_session_runtime(AgentSession, AgentSessionServices, CreateAgentSessionRuntimeFactory, Array[AgentSessionRuntimeDiagnostic]?, String?) -> AgentSessionRuntime
+
+pub fn new_armin_component(TUI) -> ArminComponent
+
+pub fn new_assistant_message_component(AssistantMessage?, Bool?, MarkdownTheme?, String?, Double?, Array[(String, MarkdownTransformContext) -> String]?) -> AssistantMessageComponent
+
+pub fn new_bash_execution_component(String, TUI, Bool?) -> BashExecutionComponent
+
+pub fn new_bordered_loader(TUI, Theme, String, JSValue?) -> BorderedLoader
+
+pub fn new_branch_summary_message_component(BranchSummaryMessage, MarkdownTheme?) -> BranchSummaryMessageComponent
+
+pub fn new_compaction_summary_message_component(CompactionSummaryMessage, MarkdownTheme?) -> CompactionSummaryMessageComponent
+
+pub fn new_credential_synchronization_error(String, CredentialSynchronizationOperation, Credential?, ErrorOptions) -> CredentialSynchronizationError
+
+pub fn new_custom_editor(TUI, EditorTheme, KeybindingsManager, EditorOptions?) -> CustomEditor
+
+pub fn new_custom_message_component(CustomMessage[JSValue], MessageRenderer?, MarkdownTheme?, Double?) -> CustomMessageComponent
+
+pub fn new_default_package_manager(PackageManagerOptions) -> DefaultPackageManager
+
+pub fn new_default_resource_loader(DefaultResourceLoaderOptions) -> DefaultResourceLoader
+
+pub fn new_dynamic_border(((String) -> String)?) -> DynamicBorder
+
+pub fn new_extension_editor_component(TUI, KeybindingsManager, String, String?, (String) -> Unit, () -> Unit, EditorOptions?, String?) -> ExtensionEditorComponent
+
+pub fn new_extension_input_component(String, String?, (String) -> Unit, () -> Unit, ExtensionInputOptions?) -> ExtensionInputComponent
+
+pub fn new_extension_runner(Array[Extension], ExtensionRuntime, String, SessionManager, ModelRegistry) -> ExtensionRunner
+
+pub fn new_extension_selector_component(String, Array[String], (String) -> Unit, () -> Unit, ExtensionSelectorOptions?) -> ExtensionSelectorComponent
+
+pub fn new_footer_component(AgentSession, Pick) -> FooterComponent
+
+pub fn new_interactive_mode(AgentSessionRuntime, InteractiveModeOptions?) -> InteractiveMode
+
+pub fn new_login_dialog_component(TUI, String, (Bool, String?) -> Unit, String?, String?) -> LoginDialogComponent
+
+pub fn new_model_registry(ModelRuntime) -> ModelRegistry
+
+pub fn new_model_selector_component(TUI, Model[JSValue]?, ModelRuntime, Array[ScopedModelItem], (Model[JSValue]) -> Unit, () -> Unit, String?, ((Model[JSValue]) -> Unit)?, DefaultModelReference?) -> ModelSelectorComponent
+
+pub fn new_oauth_selector_component(OAuthSelectorComponentConstructorMode, Array[AuthSelectorProvider], (String, String) -> Unit, () -> Unit, String?) -> OAuthSelectorComponent
+
+pub fn new_project_trust_store(String) -> ProjectTrustStore
+
+pub fn new_rpc_client(RpcClientOptions?) -> RpcClient
+
+pub fn new_session_selector_component(SessionsLoader, SessionsLoader, (String) -> Unit, () -> Unit, () -> Unit, () -> Unit, JSValue?, String?) -> SessionSelectorComponent
+
+pub fn new_settings_selector_component(SettingsConfig, SettingsCallbacks) -> SettingsSelectorComponent
+
+pub fn new_show_images_selector_component(Bool, (Bool) -> Unit, () -> Unit) -> ShowImagesSelectorComponent
+
+pub fn new_skill_invocation_message_component(ParsedSkillBlock, MarkdownTheme?) -> SkillInvocationMessageComponent
+
+pub fn new_theme(JSValue, JSValue, ColorMode, JSValue?) -> Theme
+
+pub fn new_theme_selector_component(String, (String) -> Unit, () -> Unit, (String) -> Unit) -> ThemeSelectorComponent
+
+pub fn new_thinking_selector_component(ThinkingLevel, Array[ThinkingLevel], (ThinkingLevel) -> Unit, () -> Unit, ((ThinkingLevel) -> Unit)?, ThinkingLevel?) -> ThinkingSelectorComponent
+
+pub fn new_tool_execution_component(String, String, JSValue, ToolExecutionOptions?, JSValue?, TUI, String) -> ToolExecutionComponent
+
+pub fn new_tree_selector_component(Array[SessionTreeNode], String?, Double, (String) -> Unit, () -> Unit, ((String, String?) -> Unit)?, String?, FilterMode?) -> TreeSelectorComponent
+
+pub fn new_user_message_component(String, MarkdownTheme?, Double?, Array[(String, MarkdownTransformContext) -> String]?) -> UserMessageComponent
+
+pub fn new_user_message_selector_component(Array[UserMessageItem], (String) -> Unit, () -> Unit, String?) -> UserMessageSelectorComponent
+
+pub fn package_source_from_string(String) -> PackageSource
+
+pub fn parseArgs(Array[String]) -> Args
+
+pub fn parseSessionEntries(String) -> Array[FileEntry]
+
+pub fn parseSkillBlock(String) -> ParsedSkillBlock?
+
+pub fn prepareBranchEntries(Array[SessionEntry], Double?) -> BranchPreparation
+
+pub fn provider_headers_from_record(Record) -> ProviderHeaders
+
+pub fn rawKeyHint(String, String) -> String
+
+pub fn readStoredCredential(String, String?) -> Credential?
+
+pub fn read_tool_input_from_static(Static) -> ReadToolInput
+
+pub fn readonly_session_manager_from_pick(Pick) -> ReadonlySessionManager
+
+pub fn renderDiff(String, RenderDiffOptions?) -> String
+
+pub fn resizeImage(Uint8Array, String, ImageResizeOptions?) -> Promise[ResizedImage?]
+
+pub fn resolveCliModel(JSValue) -> ResolveCliModelResult
+
+pub fn resolveModelScopeWithDiagnostics(Array[String], ModelRuntime, AuthOperationOptions?) -> Promise[ResolveModelScopeResult]
+
+pub fn runPrintMode(AgentSessionRuntime, PrintModeOptions) -> Promise[Double]
+
+pub fn runRpcMode(AgentSessionRuntime) -> Promise[JSValue]
+
+pub fn run_async(async () -> Unit) -> Unit
+
+pub fn runner_emit_event_from_exclude(Exclude) -> RunnerEmitEvent
+
+pub fn scroll_view_scrollbar_from_string(String) -> ScrollViewScrollbar
+
+pub fn serializeConversation(Array[Message]) -> String
+
+pub fn sessionEntryToContextMessages(SessionEntry) -> Array[AgentMessage]
+
+pub fn session_entry_from_branch_summary_entry(BranchSummaryEntry[JSValue]) -> SessionEntry
+
+pub fn session_entry_from_compaction_entry(CompactionEntry[JSValue]) -> SessionEntry
+
+pub fn session_entry_from_custom_entry(CustomEntry[JSValue]) -> SessionEntry
+
+pub fn session_entry_from_custom_message_entry(CustomMessageEntry[JSValue]) -> SessionEntry
+
+pub fn session_entry_from_label_entry(LabelEntry) -> SessionEntry
+
+pub fn session_entry_from_model_change_entry(ModelChangeEntry) -> SessionEntry
+
+pub fn session_entry_from_session_info_entry(SessionInfoEntry) -> SessionEntry
+
+pub fn session_entry_from_session_message_entry(SessionMessageEntry) -> SessionEntry
+
+pub fn session_entry_from_thinking_level_change_entry(ThinkingLevelChangeEntry) -> SessionEntry
+
+pub fn session_event_from_session_before_compact_event(SessionBeforeCompactEvent) -> SessionEvent
+
+pub fn session_event_from_session_before_fork_event(SessionBeforeForkEvent) -> SessionEvent
+
+pub fn session_event_from_session_before_switch_event(SessionBeforeSwitchEvent) -> SessionEvent
+
+pub fn session_event_from_session_before_tree_event(SessionBeforeTreeEvent) -> SessionEvent
+
+pub fn session_event_from_session_compact_event(SessionCompactEvent) -> SessionEvent
+
+pub fn session_event_from_session_compact_failed_event(SessionCompactFailedEvent) -> SessionEvent
+
+pub fn session_event_from_session_info_changed_event(SessionInfoChangedEvent) -> SessionEvent
+
+pub fn session_event_from_session_shutdown_event(SessionShutdownEvent) -> SessionEvent
+
+pub fn session_event_from_session_start_event(SessionStartEvent) -> SessionEvent
+
+pub fn session_event_from_session_tree_event(SessionTreeEvent) -> SessionEvent
+
+pub fn session_manager_continue_recent(String, String?) -> SessionManager
+
+pub fn session_manager_create(String, String?, NewSessionOptions?) -> SessionManager
+
+pub fn session_manager_fork_from(String, String, String?, NewSessionOptions?) -> SessionManager
+
+pub fn session_manager_in_memory(String?, NewSessionOptions?, Array[FileEntry]?) -> SessionManager
+
+pub fn session_manager_list(String, String?, SessionListProgress?) -> Promise[Array[SessionInfo]]
+
+pub fn session_manager_list_all(SessionListProgress?) -> Promise[Array[SessionInfo]]
+
+pub fn session_manager_open(String, String?, String?) -> SessionManager
+
+pub fn settings_manager_create(String, String?, SettingsManagerCreateOptions?) -> SettingsManager
+
+pub fn settings_manager_from_storage(SettingsStorage, SettingsManagerCreateOptions?) -> SettingsManager
+
+pub fn settings_manager_in_memory(SettingsPartial?, SettingsManagerCreateOptions?) -> SettingsManager
+
+pub fn settings_scope_from_string(String) -> SettingsScope
+
+pub fn shouldCompact(Double, Double, CompactionSettings) -> Bool
+
+pub fn source_origin_from_string(String) -> SourceOrigin
+
+pub fn source_scope_from_string(String) -> SourceScope
+
+pub fn strip_frontmatter(String) -> String
+
+pub fn terminal_theme_from_string(String) -> TerminalTheme
+
+pub fn theme_bg_from_string(String) -> ThemeBg
+
+pub fn thinking_level_from_string(String) -> ThinkingLevel
+
+pub fn tool_call_event_from_bash_tool_call_event(BashToolCallEvent) -> ToolCallEvent
+
+pub fn tool_call_event_from_custom_tool_call_event(CustomToolCallEvent) -> ToolCallEvent
+
+pub fn tool_call_event_from_edit_tool_call_event(EditToolCallEvent) -> ToolCallEvent
+
+pub fn tool_call_event_from_find_tool_call_event(FindToolCallEvent) -> ToolCallEvent
+
+pub fn tool_call_event_from_grep_tool_call_event(GrepToolCallEvent) -> ToolCallEvent
+
+pub fn tool_call_event_from_ls_tool_call_event(LsToolCallEvent) -> ToolCallEvent
+
+pub fn tool_call_event_from_power_shell_tool_call_event(PowerShellToolCallEvent) -> ToolCallEvent
+
+pub fn tool_call_event_from_read_tool_call_event(ReadToolCallEvent) -> ToolCallEvent
+
+pub fn tool_call_event_from_write_tool_call_event(WriteToolCallEvent) -> ToolCallEvent
+
+pub fn tool_from_agent_tool(AgentTool[JSValue, JSValue]) -> Tool[JSValue]
+
+pub fn tool_result_event_from_bash_tool_result_event(BashToolResultEvent) -> ToolResultEvent
+
+pub fn tool_result_event_from_custom_tool_result_event(CustomToolResultEvent) -> ToolResultEvent
+
+pub fn tool_result_event_from_edit_tool_result_event(EditToolResultEvent) -> ToolResultEvent
+
+pub fn tool_result_event_from_find_tool_result_event(FindToolResultEvent) -> ToolResultEvent
+
+pub fn tool_result_event_from_grep_tool_result_event(GrepToolResultEvent) -> ToolResultEvent
+
+pub fn tool_result_event_from_ls_tool_result_event(LsToolResultEvent) -> ToolResultEvent
+
+pub fn tool_result_event_from_power_shell_tool_result_event(PowerShellToolResultEvent) -> ToolResultEvent
+
+pub fn tool_result_event_from_read_tool_result_event(ReadToolResultEvent) -> ToolResultEvent
+
+pub fn tool_result_event_from_write_tool_result_event(WriteToolResultEvent) -> ToolResultEvent
+
+pub fn transport_from_string(String) -> Transport
+
+pub fn transport_setting_from_transport(Transport) -> TransportSetting
+
+pub fn truncateHead(String, TruncationOptions?) -> TruncationResult
+
+pub fn truncateLine(String, Double?) -> TruncateLineResult
+
+pub fn truncateTail(String, TruncationOptions?) -> TruncationResult
+
+pub fn truncateToVisualLines(String, Double, Double, Double?) -> VisualTruncateResult
+
+pub fn withFileMutationQueue(String, async () -> JSValue) -> Promise[JSValue]
+
+pub fn wrapRegisteredTool(RegisteredTool, ExtensionRunner) -> AgentTool[JSValue, JSValue]
+
+pub fn wrapRegisteredTools(Array[RegisteredTool], ExtensionRunner) -> Array[AgentTool[JSValue, JSValue]]
+
+pub fn write_tool_input_from_static(Static) -> WriteToolInput
+
+// Errors
+pub suberror JsRejection {
+  JsRejection(JSValue)
+}
+
+// Types and methods
+#external
+pub type AbortSignal
+
+pub(all) struct AfterProviderResponseEvent {
+  type_ : AfterProviderResponseEventType
+  status : Double
+  headers : StringRecordOfString
+}
+
+pub(all) enum AfterProviderResponseEventType {
+  After_provider_response
+}
+
+#external
+pub type Agent
+
+pub(all) struct AgentEndEvent {
+  type_ : AgentEndEventType
+  messages : Array[AgentMessage]
+}
+
+pub(all) enum AgentEndEventType {
+  Agent_end
+}
+
+#external
+pub type AgentMessage
+
+#external
+pub type AgentSession
+pub fn AgentSession::abort(Self) -> Promise[Unit]
+pub fn AgentSession::abort_bash(Self) -> Unit
+pub fn AgentSession::abort_branch_summary(Self) -> Unit
+pub fn AgentSession::abort_compaction(Self) -> Unit
+pub fn AgentSession::abort_retry(Self) -> Unit
+pub fn AgentSession::auto_compaction_enabled(Self) -> Bool
+pub fn AgentSession::auto_retry_enabled(Self) -> Bool
+pub fn AgentSession::bind_extensions(Self, ExtensionBindings) -> Promise[Unit]
+pub fn AgentSession::clear_queue(Self) -> JSValue
+pub fn AgentSession::compact(Self, String?) -> Promise[CompactionResult[JSValue]]
+pub fn AgentSession::create_replaced_session_context(Self) -> ReplacedSessionContext
+pub fn AgentSession::cycle_model(Self, AgentSessionCycleModelDirection?, ModelMutationOptions?) -> Promise[ModelCycleResult?]
+pub fn AgentSession::cycle_thinking_level(Self, ModelMutationOptions?) -> ThinkingLevel?
+pub fn AgentSession::dispose(Self) -> Unit
+pub fn AgentSession::execute_bash(Self, String, ((String) -> Unit)?, AgentSessionExecuteBashOptions?) -> Promise[BashResult]
+pub fn AgentSession::export_to_html(Self, String?, AgentSessionExportToHtmlOptions?) -> Promise[String]
+pub fn AgentSession::export_to_jsonl(Self, String?) -> String
+pub fn AgentSession::extension_runner(Self) -> ExtensionRunner
+pub fn AgentSession::follow_up(Self, String, Array[ImageContent]?) -> Promise[Unit]
+pub fn AgentSession::follow_up_mode(Self) -> AgentSessionFollowUpModeReturn
+pub fn AgentSession::get_active_tool_names(Self) -> Array[String]
+pub fn AgentSession::get_agent_session_agent(Self) -> Agent
+pub fn AgentSession::get_agent_session_auto_compaction_enabled(Self) -> Bool
+pub fn AgentSession::get_agent_session_auto_retry_enabled(Self) -> Bool
+pub fn AgentSession::get_agent_session_extension_runner(Self) -> ExtensionRunner
+pub fn AgentSession::get_agent_session_follow_up_mode(Self) -> AgentSessionFollowUpMode
+pub fn AgentSession::get_agent_session_has_pending_bash_messages(Self) -> Bool
+pub fn AgentSession::get_agent_session_is_bash_running(Self) -> Bool
+pub fn AgentSession::get_agent_session_is_compacting(Self) -> Bool
+pub fn AgentSession::get_agent_session_is_idle(Self) -> Bool
+pub fn AgentSession::get_agent_session_is_retrying(Self) -> Bool
+pub fn AgentSession::get_agent_session_is_streaming(Self) -> Bool
+pub fn AgentSession::get_agent_session_messages(Self) -> Array[AgentMessage]
+pub fn AgentSession::get_agent_session_model(Self) -> Model[JSValue]?
+pub fn AgentSession::get_agent_session_model_runtime(Self) -> ModelRuntime
+pub fn AgentSession::get_agent_session_pending_message_count(Self) -> Double
+pub fn AgentSession::get_agent_session_prompt_templates(Self) -> Array[PromptTemplate]
+pub fn AgentSession::get_agent_session_resource_loader(Self) -> ResourceLoader
+pub fn AgentSession::get_agent_session_retry_attempt(Self) -> Double
+pub fn AgentSession::get_agent_session_scoped_models(Self) -> Array[JSValue]
+pub fn AgentSession::get_agent_session_session_file(Self) -> String?
+pub fn AgentSession::get_agent_session_session_id(Self) -> String
+pub fn AgentSession::get_agent_session_session_manager(Self) -> SessionManager
+pub fn AgentSession::get_agent_session_session_name(Self) -> String?
+pub fn AgentSession::get_agent_session_settings_manager(Self) -> SettingsManager
+pub fn AgentSession::get_agent_session_state(Self) -> AgentState
+pub fn AgentSession::get_agent_session_steering_mode(Self) -> AgentSessionSteeringMode
+pub fn AgentSession::get_agent_session_system_prompt(Self) -> String
+pub fn AgentSession::get_agent_session_thinking_level(Self) -> ThinkingLevel
+pub fn AgentSession::get_all_tools(Self) -> Array[ToolDefinitionPickNameDescriptionParametersPromptGuidelines]
+pub fn AgentSession::get_available_thinking_levels(Self) -> Array[ThinkingLevel]
+pub fn AgentSession::get_context_usage(Self) -> ContextUsage?
+pub fn AgentSession::get_follow_up_messages(Self) -> Array[String]
+pub fn AgentSession::get_last_assistant_text(Self) -> String?
+pub fn AgentSession::get_session_stats(Self) -> SessionStats
+pub fn AgentSession::get_steering_messages(Self) -> Array[String]
+pub fn AgentSession::get_tool_definition(Self, String) -> ToolDefinition[JSValue, JSValue, JSValue]?
+pub fn AgentSession::get_user_messages_for_forking(Self) -> Array[JSValue]
+pub fn AgentSession::has_extension_handlers(Self, String) -> Bool
+pub fn AgentSession::has_pending_bash_messages(Self) -> Bool
+pub fn AgentSession::is_bash_running(Self) -> Bool
+pub fn AgentSession::is_compacting(Self) -> Bool
+pub fn AgentSession::is_idle(Self) -> Bool
+pub fn AgentSession::is_retrying(Self) -> Bool
+pub fn AgentSession::is_streaming(Self) -> Bool
+pub fn AgentSession::messages(Self) -> Array[AgentMessage]
+pub fn AgentSession::model(Self) -> Model[JSValue]?
+pub fn AgentSession::model_runtime(Self) -> ModelRuntime
+pub fn AgentSession::navigate_tree(Self, String, AgentSessionNavigateTreeOptions?) -> Promise[JSValue]
+pub fn AgentSession::pending_message_count(Self) -> Double
+pub fn AgentSession::prompt(Self, String, PromptOptions?) -> Promise[Unit]
+pub fn AgentSession::prompt_templates(Self) -> Array[PromptTemplate]
+pub fn AgentSession::record_bash_result(Self, String, BashResult, AgentSessionRecordBashResultOptions?) -> Unit
+pub fn AgentSession::reload(Self, AgentSessionReloadOptions?) -> Promise[Unit]
+pub fn AgentSession::resource_loader(Self) -> ResourceLoader
+pub fn AgentSession::retry_attempt(Self) -> Double
+pub fn AgentSession::scoped_models(Self) -> Array[JSValue]
+pub fn AgentSession::send_custom_message(Self, Pick, AgentSessionSendCustomMessageOptions?) -> Promise[Unit]
+pub fn AgentSession::send_user_message(Self, JSValue, AgentSessionSendUserMessageOptions?) -> Promise[Unit]
+pub fn AgentSession::session_file(Self) -> String?
+pub fn AgentSession::session_id(Self) -> String
+pub fn AgentSession::session_name(Self) -> String?
+pub fn AgentSession::set_active_tools_by_name(Self, Array[String]) -> Unit
+pub fn AgentSession::set_auto_compaction_enabled(Self, Bool) -> Unit
+pub fn AgentSession::set_auto_retry_enabled(Self, Bool) -> Unit
+pub fn AgentSession::set_follow_up_mode(Self, AgentSessionSetFollowUpModeMode) -> Unit
+pub fn AgentSession::set_model(Self, Model[JSValue], ModelMutationOptions?) -> Promise[Unit]
+pub fn AgentSession::set_scoped_models(Self, Array[JSValue]) -> Unit
+pub fn AgentSession::set_session_name(Self, String) -> Unit
+pub fn AgentSession::set_steering_mode(Self, AgentSessionSetSteeringModeMode) -> Unit
+pub fn AgentSession::set_thinking_level(Self, ThinkingLevel, ModelMutationOptions?) -> Unit
+pub fn AgentSession::state(Self) -> AgentState
+pub fn AgentSession::steer(Self, String, Array[ImageContent]?) -> Promise[Unit]
+pub fn AgentSession::steering_mode(Self) -> AgentSessionSteeringModeReturn
+pub fn AgentSession::subscribe(Self, (AgentSessionEvent) -> Unit) -> () -> Unit
+pub fn AgentSession::supports_thinking(Self) -> Bool
+pub fn AgentSession::system_prompt(Self) -> String
+pub fn AgentSession::thinking_level(Self) -> ThinkingLevel
+pub fn AgentSession::wait_for_idle(Self) -> Promise[Unit]
+
+pub(all) struct AgentSessionConfig {
+  agent : Agent
+  sessionManager : SessionManager
+  settingsManager : SettingsManager
+  cwd : String
+  scopedModels : Array[JSValue]?
+  resourceLoader : ResourceLoader
+  customTools : Array[ToolDefinition[JSValue, JSValue, JSValue]]?
+  modelRuntime : ModelRuntime
+  initialActiveToolNames : Array[String]?
+  allowedToolNames : Array[String]?
+  excludedToolNames : Array[String]?
+  baseToolsOverride : StringRecordOfAgentTool?
+  extensionRunnerRef : AgentSessionConfigExtensionRunnerRef?
+  sessionStartEvent : SessionStartEvent?
+}
+
+pub(all) struct AgentSessionConfigExtensionRunnerRef {
+  current : ExtensionRunner?
+}
+
+pub(all) enum AgentSessionCycleModelDirection {
+  Forward
+  Backward
+}
+
+#external
+pub type AgentSessionEvent
+
+pub(all) struct AgentSessionExecuteBashOptions {
+  excludeFromContext : Bool?
+  id : String?
+  operations : BashOperations?
+}
+
+pub(all) struct AgentSessionExportToHtmlOptions {
+  themeName : String?
+}
+
+pub(all) enum AgentSessionFollowUpMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum AgentSessionFollowUpModeReturn {
+  All
+  One_at_a_time
+}
+
+pub(all) struct AgentSessionNavigateTreeOptions {
+  summarize : Bool?
+  customInstructions : String?
+  replaceInstructions : Bool?
+  label : String?
+}
+
+pub(all) struct AgentSessionRecordBashResultOptions {
+  excludeFromContext : Bool?
+}
+
+pub(all) struct AgentSessionReloadOptions {
+  beforeSessionStart : (() -> Promise[Unit])?
+}
+
+#external
+pub type AgentSessionRuntime
+pub fn AgentSessionRuntime::cwd(Self) -> String
+pub fn AgentSessionRuntime::diagnostics(Self) -> Array[AgentSessionRuntimeDiagnostic]
+pub fn AgentSessionRuntime::dispose(Self) -> Promise[Unit]
+pub fn AgentSessionRuntime::fork(Self, String, AgentSessionRuntimeForkOptions?) -> Promise[JSValue]
+pub fn AgentSessionRuntime::get_agent_session_runtime_cwd(Self) -> String
+pub fn AgentSessionRuntime::get_agent_session_runtime_diagnostics(Self) -> Array[AgentSessionRuntimeDiagnostic]
+pub fn AgentSessionRuntime::get_agent_session_runtime_model_fallback_message(Self) -> String?
+pub fn AgentSessionRuntime::get_agent_session_runtime_services(Self) -> AgentSessionServices
+pub fn AgentSessionRuntime::get_agent_session_runtime_session(Self) -> AgentSession
+pub fn AgentSessionRuntime::import_from_jsonl(Self, String, String?) -> Promise[JSValue]
+pub fn AgentSessionRuntime::model_fallback_message(Self) -> String?
+pub fn AgentSessionRuntime::new_session(Self, AgentSessionRuntimeNewSessionOptions?) -> Promise[JSValue]
+pub fn AgentSessionRuntime::services(Self) -> AgentSessionServices
+pub fn AgentSessionRuntime::session(Self) -> AgentSession
+pub fn AgentSessionRuntime::set_before_session_invalidate(Self, (() -> Unit)?) -> Unit
+pub fn AgentSessionRuntime::set_rebind_session(Self, (async (AgentSession) -> Unit)?) -> Unit
+pub fn AgentSessionRuntime::switch_session(Self, String, AgentSessionRuntimeSwitchSessionOptions?) -> Promise[JSValue]
+
+pub(all) struct AgentSessionRuntimeDiagnostic {
+  type_ : AgentSessionRuntimeDiagnosticType
+  message : String
+}
+
+pub(all) enum AgentSessionRuntimeDiagnosticType {
+  Info
+  Warning
+  Error_
+}
+
+pub(all) struct AgentSessionRuntimeForkOptions {
+  position : AgentSessionRuntimeForkOptionsPosition?
+  withSession : ((ReplacedSessionContext) -> Promise[Unit])?
+}
+
+pub(all) enum AgentSessionRuntimeForkOptionsPosition {
+  Before
+  At
+}
+
+pub(all) struct AgentSessionRuntimeNewSessionOptions {
+  parentSession : String?
+  setup : ((SessionManager) -> Promise[Unit])?
+  withSession : ((ReplacedSessionContext) -> Promise[Unit])?
+}
+
+pub(all) struct AgentSessionRuntimeSwitchSessionOptions {
+  cwdOverride : String?
+  withSession : ((ReplacedSessionContext) -> Promise[Unit])?
+  projectTrustContextFactory : ((String) -> ProjectTrustContext)?
+}
+
+pub(all) enum AgentSessionSendCustomMessageMessageArg1 {
+  CustomType
+  Content
+  Display
+  Details
+}
+
+pub(all) struct AgentSessionSendCustomMessageOptions {
+  triggerTurn : Bool?
+  deliverAs : AgentSessionSendCustomMessageOptionsDeliverAs?
+}
+
+pub(all) enum AgentSessionSendCustomMessageOptionsDeliverAs {
+  Steer
+  FollowUp
+  NextTurn
+}
+
+pub(all) struct AgentSessionSendUserMessageOptions {
+  deliverAs : AgentSessionSendUserMessageOptionsDeliverAs?
+  expandPromptTemplates : Bool?
+}
+
+pub(all) enum AgentSessionSendUserMessageOptionsDeliverAs {
+  Steer
+  FollowUp
+}
+
+pub(all) struct AgentSessionServices {
+  cwd : String
+  agentDir : String
+  modelRuntime : ModelRuntime
+  settingsManager : SettingsManager
+  resourceLoader : ResourceLoader
+  diagnostics : Array[AgentSessionRuntimeDiagnostic]
+}
+
+pub(all) enum AgentSessionSetFollowUpModeMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum AgentSessionSetSteeringModeMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum AgentSessionSteeringMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum AgentSessionSteeringModeReturn {
+  All
+  One_at_a_time
+}
+
+pub(all) struct AgentSettledEvent {
+  type_ : AgentSettledEventType
+}
+
+pub(all) enum AgentSettledEventType {
+  Agent_settled
+}
+
+pub(all) struct AgentStartEvent {
+  type_ : AgentStartEventType
+}
+
+pub(all) enum AgentStartEventType {
+  Agent_start
+}
+
+#external
+pub type AgentState
+
+#external
+pub type AgentTool[TParameters, TDetails]
+
+pub(all) struct AgentToolResult[T] {
+  content : Array[Auto_TextContentValue_or_ImageContentValue]
+  details : T
+  usage : Usage?
+  addedToolNames : Array[String]?
+  terminate : Bool?
+}
+
+#external
+pub type AgentToolUpdateCallback
+
+#external
+pub type Api
+
+#external
+pub type ApiKeyAuth
+
+#external
+pub type ApiKeyCredential
+
+pub(all) enum AppKeybinding {
+  App_interrupt
+  App_clear
+  App_exit
+  App_suspend
+  App_thinking_cycle
+  App_thinking_save
+  App_model_cycleForward
+  App_model_cycleBackward
+  App_model_select
+  App_tools_expand
+  App_thinking_toggle
+  App_session_toggleNamedFilter
+  App_editor_external
+  App_message_copy
+  App_message_followUp
+  App_message_dequeue
+  App_clipboard_pasteImage
+  App_session_new
+  App_session_tree
+  App_session_fork
+  App_session_resume
+  App_tree_foldOrUp
+  App_tree_unfoldOrDown
+  App_tree_editLabel
+  App_tree_toggleLabelTimestamp
+  App_session_togglePath
+  App_session_toggleSort
+  App_session_rename
+  App_session_delete
+  App_session_deleteNoninvasive
+  App_models_save
+  App_models_enableAll
+  App_models_clearAll
+  App_models_toggleProvider
+  App_models_reorderUp
+  App_models_reorderDown
+  App_tree_filter_default
+  App_tree_filter_noTools
+  App_tree_filter_userOnly
+  App_tree_filter_labeledOnly
+  App_tree_filter_all
+  App_tree_filter_cycleForward
+  App_tree_filter_cycleBackward
+}
+
+#external
+pub type AppendEntryHandler
+
+pub(all) struct Args {
+  provider : String?
+  model : String?
+  apiKey : String?
+  systemPrompt : String?
+  appendSystemPrompt : Array[String]?
+  thinking : ThinkingLevel?
+  continue_ : Bool?
+  resume_ : Bool?
+  help : Bool?
+  version : Bool?
+  mode : Mode?
+  name : String?
+  noSession : Bool?
+  session : String?
+  sessionId : String?
+  fork : String?
+  sessionDir : String?
+  models : Array[String]?
+  tools : Array[String]?
+  excludeTools : Array[String]?
+  noTools : Bool?
+  noBuiltinTools : Bool?
+  extensions : Array[String]?
+  noExtensions : Bool?
+  print : Bool?
+  export_ : String?
+  noSkills : Bool?
+  skills : Array[String]?
+  promptTemplates : Array[String]?
+  noPromptTemplates : Bool?
+  themes : Array[String]?
+  useTheme : String?
+  noThemes : Bool?
+  noContextFiles : Bool?
+  listModels : Auto_TrueValue_or_StringValue?
+  offline : Bool?
+  tuiMode : RendererTuiMode?
+  verbose : Bool?
+  projectTrustOverride : Bool?
+  messages : Array[String]
+  fileArgs : Array[String]
+  unknownFlags : Map
+  diagnostics : Array[JSValue]
+}
+
+pub(all) enum ArgsDiagnosticsItemType {
+  Warning
+  Error_
+}
+
+#external
+pub type ArminComponent
+pub fn ArminComponent::dispose(Self) -> Unit
+pub fn ArminComponent::invalidate(Self) -> Unit
+pub fn ArminComponent::render(Self, Double) -> Array[String]
+
+#external
+pub type AssistantMessage
+
+#external
+pub type AssistantMessageComponent
+pub fn AssistantMessageComponent::invalidate(Self) -> Unit
+pub fn AssistantMessageComponent::render(Self, Double) -> Array[String]
+pub fn AssistantMessageComponent::set_hidden_thinking_label(Self, String) -> Unit
+pub fn AssistantMessageComponent::set_hide_thinking_block(Self, Bool) -> Unit
+pub fn AssistantMessageComponent::set_output_pad(Self, Double) -> Unit
+pub fn AssistantMessageComponent::update_content(Self, AssistantMessage, Bool?) -> Unit
+
+#external
+pub type AssistantMessageEvent
+
+#external
+pub type AssistantMessageEventStream
+
+#external
+pub type AuthCheck
+
+#external
+pub type AuthInfoLink
+
+#external
+pub type AuthInteraction
+
+#external
+pub type AuthOperationOptions
+
+#external
+pub type AuthResult
+
+pub(all) struct AuthSelectorProvider {
+  id : String
+  name : String
+  authType : AuthSelectorProviderAuthType
+  method_ : Auto_OAuthAuthValue_or_ApiKeyAuthValue?
+  status : AuthCheck?
+}
+
+pub(all) enum AuthSelectorProviderAuthType {
+  Oauth
+  Api_key
+}
+
+pub(all) struct AuthStatus {
+  configured : Bool
+  source : AuthStatusSource?
+  label : String?
+}
+
+pub(all) enum AuthStatusSource {
+  Stored
+  Runtime
+  Environment
+  Fallback
+  Models_json_key
+  Models_json_command
+}
+
+#external
+pub type AuthType
+
+pub(all) enum Auto_BoolValue_or_StringValue {
+  BoolValue(Bool)
+  StringValue(String)
+}
+
+pub(all) enum Auto_BoolValue_or_TerminalSettingsHyperlinksMember1Value {
+  BoolValue(Bool)
+  TerminalSettingsHyperlinksMember1Value(TerminalSettingsHyperlinksMember1)
+}
+
+pub(all) enum Auto_BoolValue_or_TerminalSettingsTrueColorMember1Value {
+  BoolValue(Bool)
+  TerminalSettingsTrueColorMember1Value(TerminalSettingsTrueColorMember1)
+}
+
+pub(all) enum Auto_FalseValue_or_ConstrainedSamplingConfigValue {
+  FalseValue
+  ConstrainedSamplingConfigValue(ConstrainedSamplingConfig)
+}
+
+pub(all) enum Auto_MessageValue_or_CustomMessageValue_or_BashExecutionMessageValue {
+  MessageValue(Message)
+  CustomMessageValue(CustomMessage[JSValue])
+  BashExecutionMessageValue(BashExecutionMessage)
+}
+
+pub(all) enum Auto_OAuthAuthValue_or_ApiKeyAuthValue {
+  ApiKeyAuthValue(ApiKeyAuth)
+  OAuthAuthValue(OAuthAuth)
+}
+
+pub(all) enum Auto_TextContentValue_or_ImageContentValue {
+  TextContentValue(TextContent)
+  ImageContentValue(ImageContent)
+}
+
+pub(all) enum Auto_ThemeValue_or_StringValue {
+  StringValue(String)
+  ThemeValue(Theme)
+}
+
+pub(all) enum Auto_TrueValue_or_StringValue {
+  StringValue(String)
+  TrueValue
+}
+
+#external
+pub type AutocompleteProvider
+
+#external
+pub type BaseKey
+
+#external
+pub type BashExecutionComponent
+pub fn BashExecutionComponent::append_output(Self, String) -> Unit
+pub fn BashExecutionComponent::get_command(Self) -> String
+pub fn BashExecutionComponent::get_output(Self) -> String
+pub fn BashExecutionComponent::invalidate(Self) -> Unit
+pub fn BashExecutionComponent::set_complete(Self, Double?, Bool, TruncationResult?, String?) -> Unit
+pub fn BashExecutionComponent::set_expanded(Self, Bool) -> Unit
+
+pub(all) struct BashExecutionMessage {
+  role : BashExecutionMessageRole
+  command : String
+  output : String
+  exitCode : Double?
+  cancelled : Bool
+  truncated : Bool
+  fullOutputPath : String?
+  timestamp : Double
+  excludeFromContext : Bool?
+}
+
+pub(all) enum BashExecutionMessageRole {
+  BashExecution
+}
+
+#alias(PowerShellOperations)
+pub(all) struct BashOperations {
+  exec : (String, String, BashOperationsExecOptions) -> Promise[JSValue]
+}
+pub fn BashOperations::exec(Self, String, String, BashOperationsExecOptions) -> Promise[JSValue]
+
+pub(all) struct BashOperationsExecOptions {
+  onData : (Buffer) -> Unit
+  signal : AbortSignal?
+  timeout : Double?
+  env : NodeJS_ProcessEnv?
+}
+pub fn BashOperationsExecOptions::onData(Self, Buffer) -> Unit
+
+pub(all) struct BashRenderState {
+  startedAt : Double?
+  endedAt : Double?
+  interval : NodeJS_Timeout?
+}
+
+pub(all) struct BashResult {
+  output : String
+  exitCode : Double?
+  cancelled : Bool
+  truncated : Bool
+  fullOutputPath : String?
+}
+
+#alias(PowerShellSpawnContext)
+pub(all) struct BashSpawnContext {
+  command : String
+  cwd : String
+  env : NodeJS_ProcessEnv
+}
+
+pub(all) struct BashToolCallEvent {
+  toolName : BashToolCallEventToolName
+  input : BashToolInput
+  type_ : BashToolCallEventType
+  toolCallId : String
+}
+
+pub(all) enum BashToolCallEventToolName {
+  Bash
+}
+
+pub(all) enum BashToolCallEventType {
+  Tool_call
+}
+
+#alias(PowerShellToolDetails)
+pub(all) struct BashToolDetails {
+  truncation : TruncationResult?
+  fullOutputPath : String?
+}
+
+#alias(PowerShellToolInput)
+#external
+pub type BashToolInput
+
+pub(all) struct BashToolOptions {
+  operations : BashOperations?
+  commandPrefix : String?
+  shellPath : String?
+  exposeSessionEnvironment : Bool?
+  spawnHook : ((BashSpawnContext) -> BashSpawnContext)?
+}
+
+#external
+pub type BashToolResultEvent
+
+pub(all) struct BeforeAgentStartCombinedResult {
+  messages : Array[Pick]?
+  systemPrompt : String?
+}
+
+pub(all) enum BeforeAgentStartCombinedResultMessagesMember0ItemArg1 {
+  CustomType
+  Content
+  Display
+  Details
+}
+
+pub(all) struct BeforeAgentStartEvent {
+  type_ : BeforeAgentStartEventType
+  prompt : String
+  images : Array[ImageContent]?
+  systemPrompt : String
+  systemPromptOptions : BuildSystemPromptOptions
+}
+
+pub(all) struct BeforeAgentStartEventResult {
+  message : CustomMessagePickCustomTypeContentDisplayDetails?
+  systemPrompt : String?
+}
+
+pub(all) enum BeforeAgentStartEventType {
+  Before_agent_start
+}
+
+pub(all) struct BeforeProviderHeadersEvent {
+  type_ : BeforeProviderHeadersEventType
+  headers : ProviderHeaders
+}
+
+pub(all) enum BeforeProviderHeadersEventType {
+  Before_provider_headers
+}
+
+pub(all) struct BeforeProviderRequestEvent {
+  type_ : BeforeProviderRequestEventType
+  payload : JSValue
+}
+
+pub(all) enum BeforeProviderRequestEventType {
+  Before_provider_request
+}
+
+#external
+pub type BorderedLoader
+pub fn BorderedLoader::dispose(Self) -> Unit
+pub fn BorderedLoader::get_bordered_loader_on_abort(Self) -> (() -> Unit)?
+pub fn BorderedLoader::get_bordered_loader_signal(Self) -> AbortSignal
+pub fn BorderedLoader::handle_input(Self, String) -> Unit
+pub fn BorderedLoader::on_abort(Self, (() -> Unit)?) -> Unit
+pub fn BorderedLoader::set_bordered_loader_on_abort(Self, (() -> Unit)?) -> Unit
+pub fn BorderedLoader::signal(Self) -> AbortSignal
+
+pub(all) struct BranchPreparation {
+  messages : Array[AgentMessage]
+  fileOps : FileOperations
+  totalTokens : Double
+}
+
+pub(all) struct BranchSummaryEntry[T] {
+  type_ : BranchSummaryEntryType
+  fromId : String
+  summary : String
+  details : T?
+  usage : Usage?
+  fromHook : Bool?
+}
+pub fn[T] BranchSummaryEntry::asSessionEntryBase(Self[T]) -> SessionEntryBase
+
+pub(all) enum BranchSummaryEntryType {
+  Branch_summary
+}
+
+pub(all) struct BranchSummaryMessage {
+  role : BranchSummaryMessageRole
+  summary : String
+  fromId : String?
+  timestamp : Double
+}
+
+#external
+pub type BranchSummaryMessageComponent
+pub fn BranchSummaryMessageComponent::invalidate(Self) -> Unit
+pub fn BranchSummaryMessageComponent::set_expanded(Self, Bool) -> Unit
+
+pub(all) enum BranchSummaryMessageRole {
+  BranchSummary
+}
+
+pub(all) struct BranchSummaryResult {
+  summary : String?
+  usage : Usage?
+  readFiles : Array[String]?
+  modifiedFiles : Array[String]?
+  aborted : Bool?
+  error : String?
+}
+
+pub(all) struct BranchSummarySettings {
+  reserveTokens : Double?
+  skipPrompt : Bool?
+}
+
+#external
+pub type Buffer
+
+pub(all) struct BuildSystemPromptOptions {
+  customPrompt : String?
+  selectedTools : Array[String]?
+  toolSnippets : StringRecordOfString?
+  promptGuidelines : Array[String]?
+  appendSystemPrompt : String?
+  cwd : String
+  contextFiles : Array[JSValue]?
+  skills : Array[Skill]?
+}
+
+pub(all) struct CollectEntriesResult {
+  entries : Array[SessionEntry]
+  commonAncestorId : String?
+}
+
+#external
+pub type ColorMode
+
+pub(all) struct CompactOptions {
+  customInstructions : String?
+  onComplete : ((CompactionResult[JSValue]) -> Unit)?
+  onError : ((Error_) -> Unit)?
+}
+
+pub(all) struct CompactionEntry[T] {
+  type_ : CompactionEntryType
+  summary : String
+  firstKeptEntryId : String
+  tokensBefore : Double
+  details : T?
+  usage : Usage?
+  fromHook : Bool?
+}
+pub fn[T] CompactionEntry::asSessionEntryBase(Self[T]) -> SessionEntryBase
+
+pub(all) enum CompactionEntryType {
+  Compaction
+}
+
+pub(all) struct CompactionPreparation {
+  firstKeptEntryId : String
+  messagesToSummarize : Array[AgentMessage]
+  turnPrefixMessages : Array[AgentMessage]
+  isSplitTurn : Bool
+  tokensBefore : Double
+  previousSummary : String?
+  fileOps : FileOperations
+  settings : CompactionSettings
+}
+
+pub(all) struct CompactionResult[T] {
+  summary : String
+  firstKeptEntryId : String
+  tokensBefore : Double
+  estimatedTokensAfter : Double?
+  usage : Usage?
+  details : T?
+}
+
+pub(all) struct CompactionSettings {
+  enabled : Bool?
+  reserveTokens : Double?
+  keepRecentTokens : Double?
+}
+
+pub(all) struct CompactionSummaryMessage {
+  role : CompactionSummaryMessageRole
+  summary : String
+  tokensBefore : Double
+  timestamp : Double
+}
+
+#external
+pub type CompactionSummaryMessageComponent
+pub fn CompactionSummaryMessageComponent::invalidate(Self) -> Unit
+pub fn CompactionSummaryMessageComponent::set_expanded(Self, Bool) -> Unit
+
+pub(all) enum CompactionSummaryMessageRole {
+  CompactionSummary
+}
+
+pub(all) struct CompatibilityRequestConfig {
+  headers : ProviderHeaders?
+  authHeader : Bool
+}
+
+#external
+pub type Component
+
+pub(all) struct ConfiguredPackage {
+  source : String
+  scope : ConfiguredPackageScope
+  filtered : Bool
+  installedPath : String?
+}
+
+pub(all) enum ConfiguredPackageScope {
+  User
+  Project
+}
+
+#external
+pub type ConstrainedSamplingConfig
+
+#external
+pub type Context
+
+pub(all) struct ContextEvent {
+  type_ : ContextEventType
+  messages : Array[AgentMessage]
+}
+
+pub(all) struct ContextEventResult {
+  messages : Array[AgentMessage]?
+}
+
+pub(all) enum ContextEventType {
+  Context
+}
+
+pub(all) struct ContextUsage {
+  tokens : Double?
+  contextWindow : Double
+  percent : Double?
+}
+
+pub(all) struct CreateAgentSessionFromServicesOptions {
+  services : AgentSessionServices
+  sessionManager : SessionManager
+  sessionStartEvent : SessionStartEvent?
+  model : Model[JSValue]?
+  thinkingLevel : ThinkingLevel?
+  scopedModels : Array[JSValue]?
+  tools : Array[String]?
+  excludeTools : Array[String]?
+  noTools : CreateAgentSessionFromServicesOptionsNoTools?
+  customTools : Array[ToolDefinition[JSValue, JSValue, JSValue]]?
+}
+
+pub(all) enum CreateAgentSessionFromServicesOptionsNoTools {
+  All
+  Builtin
+}
+
+pub(all) struct CreateAgentSessionOptions {
+  cwd : String?
+  agentDir : String?
+  modelRuntime : ModelRuntime?
+  model : Model[JSValue]?
+  thinkingLevel : ThinkingLevel?
+  scopedModels : Array[JSValue]?
+  noTools : CreateAgentSessionOptionsNoTools?
+  tools : Array[String]?
+  excludeTools : Array[String]?
+  customTools : Array[ToolDefinition[JSValue, JSValue, JSValue]]?
+  resourceLoader : ResourceLoader?
+  sessionManager : SessionManager?
+  settingsManager : SettingsManager?
+  sessionStartEvent : SessionStartEvent?
+}
+
+pub(all) enum CreateAgentSessionOptionsNoTools {
+  All
+  Builtin
+}
+
+pub(all) struct CreateAgentSessionResult {
+  session : AgentSession
+  extensionsResult : LoadExtensionsResult
+  modelFallbackMessage : String?
+}
+
+#external
+pub type CreateAgentSessionRuntimeFactory
+
+pub(all) struct CreateAgentSessionRuntimeResult {
+  services : AgentSessionServices
+  diagnostics : Array[AgentSessionRuntimeDiagnostic]
+  session : AgentSession
+  extensionsResult : LoadExtensionsResult
+  modelFallbackMessage : String?
+}
+
+pub(all) struct CreateAgentSessionServicesOptions {
+  cwd : String
+  agentDir : String?
+  settingsManager : SettingsManager?
+  modelRuntime : ModelRuntime?
+  modelRuntimeSignal : AbortSignal?
+  extensionFlagValues : Map?
+  resourceLoaderOptions : DefaultResourceLoaderOptionsOmitCwdAgentDirSettingsManager?
+  resourceLoaderReloadOptions : ResourceLoaderReloadOptions?
+}
+
+pub(all) struct CreateModelRuntimeOptions {
+  credentials : CredentialStore?
+  authPath : String?
+  modelsPath : String?
+  modelsStore : ModelsStore?
+  modelsStorePath : String?
+  allowModelNetwork : Bool?
+  modelRefreshTimeoutMs : Double?
+  catalogBaseUrl : String?
+  signal : AbortSignal?
+  refreshOnCreate : Bool?
+}
+
+#external
+pub type Credential
+
+#external
+pub type CredentialInfo
+
+#external
+pub type CredentialStore
+
+#external
+pub type CredentialSynchronizationError
+pub fn CredentialSynchronizationError::get_credential_synchronization_error_credential(Self) -> Credential?
+pub fn CredentialSynchronizationError::get_credential_synchronization_error_operation(Self) -> CredentialSynchronizationOperation
+pub fn CredentialSynchronizationError::get_credential_synchronization_error_provider_id(Self) -> String
+
+pub(all) enum CredentialSynchronizationOperation {
+  Login
+  Logout
+  SetRuntimeApiKey
+  RemoveRuntimeApiKey
+}
+
+#external
+pub type CustomEditor
+pub fn CustomEditor::get_custom_editor_action_handlers(Self) -> Map
+pub fn CustomEditor::get_custom_editor_embed_working_status(Self) -> Bool
+pub fn CustomEditor::get_custom_editor_on_ctrl_d(Self) -> () -> Unit
+pub fn CustomEditor::get_custom_editor_on_escape(Self) -> () -> Unit
+pub fn CustomEditor::get_custom_editor_on_extension_shortcut(Self) -> (String) -> Bool
+pub fn CustomEditor::get_custom_editor_on_paste_image(Self) -> () -> Unit
+pub fn CustomEditor::handle_input(Self, String) -> Unit
+pub fn CustomEditor::on_action(Self, AppKeybinding, () -> Unit) -> Unit
+pub fn CustomEditor::on_ctrl_d(Self) -> Unit
+pub fn CustomEditor::on_escape(Self) -> Unit
+pub fn CustomEditor::on_extension_shortcut(Self, String) -> Bool
+pub fn CustomEditor::on_paste_image(Self) -> Unit
+pub fn CustomEditor::set_custom_editor_action_handlers(Self, Map) -> Unit
+pub fn CustomEditor::set_custom_editor_on_ctrl_d(Self, () -> Unit) -> Unit
+pub fn CustomEditor::set_custom_editor_on_escape(Self, () -> Unit) -> Unit
+pub fn CustomEditor::set_custom_editor_on_extension_shortcut(Self, (String) -> Bool) -> Unit
+pub fn CustomEditor::set_custom_editor_on_paste_image(Self, () -> Unit) -> Unit
+pub fn CustomEditor::set_working_status_indicator(Self, WorkingStatusIndicator?) -> Unit
+
+pub(all) struct CustomEntry[T] {
+  type_ : CustomEntryType
+  customType : String
+  data : T?
+}
+pub fn[T] CustomEntry::asSessionEntryBase(Self[T]) -> SessionEntryBase
+
+pub(all) enum CustomEntryType {
+  Custom
+}
+
+pub(all) struct CustomMessage[T] {
+  role : CustomMessageRole
+  customType : String
+  content : JSValue
+  display : Bool
+  details : T?
+  timestamp : Double
+}
+
+#external
+pub type CustomMessageComponent
+pub fn CustomMessageComponent::invalidate(Self) -> Unit
+pub fn CustomMessageComponent::set_expanded(Self, Bool) -> Unit
+pub fn CustomMessageComponent::set_output_pad(Self, Double) -> Unit
+
+pub(all) struct CustomMessageEntry[T] {
+  type_ : CustomMessageEntryType
+  customType : String
+  content : JSValue
+  details : T?
+  display : Bool
+}
+pub fn[T] CustomMessageEntry::asSessionEntryBase(Self[T]) -> SessionEntryBase
+
+pub(all) enum CustomMessageEntryType {
+  Custom_message
+}
+
+pub(all) struct CustomMessagePickCustomTypeContentDisplayDetails {
+  customType : String
+  content : JSValue
+  display : Bool
+  details : JSValue?
+}
+
+pub(all) enum CustomMessageRole {
+  Custom
+}
+
+pub(all) struct CustomToolCallEvent {
+  toolName : String
+  input : StringRecordOfUnknown
+  type_ : CustomToolCallEventType
+  toolCallId : String
+}
+
+pub(all) enum CustomToolCallEventType {
+  Tool_call
+}
+
+#external
+pub type CustomToolResultEvent
+
+pub(all) struct CutPointResult {
+  firstKeptEntryIndex : Double
+  turnStartIndex : Double
+  isSplitTurn : Bool
+}
+
+#external
+pub type Date
+
+pub(all) struct DefaultModelReference {
+  provider : String
+  id : String
+}
+
+#external
+pub type DefaultPackageManager
+pub fn DefaultPackageManager::add_source_to_settings(Self, String, DefaultPackageManagerAddSourceToSettingsOptions?) -> Bool
+pub fn DefaultPackageManager::check_for_available_updates(Self) -> Promise[Array[PackageUpdate]]
+pub fn DefaultPackageManager::get_installed_path(Self, String, DefaultPackageManagerGetInstalledPathScope) -> String?
+pub fn DefaultPackageManager::install(Self, String, DefaultPackageManagerInstallOptions?) -> Promise[Unit]
+pub fn DefaultPackageManager::install_and_persist(Self, String, DefaultPackageManagerInstallAndPersistOptions?) -> Promise[Unit]
+pub fn DefaultPackageManager::list_configured_packages(Self) -> Array[ConfiguredPackage]
+pub fn DefaultPackageManager::remove(Self, String, DefaultPackageManagerRemoveOptions?) -> Promise[Unit]
+pub fn DefaultPackageManager::remove_and_persist(Self, String, DefaultPackageManagerRemoveAndPersistOptions?) -> Promise[Bool]
+pub fn DefaultPackageManager::remove_source_from_settings(Self, String, DefaultPackageManagerRemoveSourceFromSettingsOptions?) -> Bool
+pub fn DefaultPackageManager::resolve(Self, (async (String) -> MissingSourceAction)?) -> Promise[ResolvedPaths]
+pub fn DefaultPackageManager::resolve_extension_sources(Self, Array[String], DefaultPackageManagerResolveExtensionSourcesOptions?) -> Promise[ResolvedPaths]
+pub fn DefaultPackageManager::set_progress_callback(Self, ((ProgressEvent) -> Unit)?) -> Unit
+pub fn DefaultPackageManager::update(Self, String?) -> Promise[Unit]
+
+pub(all) struct DefaultPackageManagerAddSourceToSettingsOptions {
+  local_ : Bool?
+}
+
+pub(all) enum DefaultPackageManagerGetInstalledPathScope {
+  User
+  Project
+}
+
+pub(all) struct DefaultPackageManagerInstallAndPersistOptions {
+  local_ : Bool?
+}
+
+pub(all) struct DefaultPackageManagerInstallOptions {
+  local_ : Bool?
+}
+
+pub(all) struct DefaultPackageManagerRemoveAndPersistOptions {
+  local_ : Bool?
+}
+
+pub(all) struct DefaultPackageManagerRemoveOptions {
+  local_ : Bool?
+}
+
+pub(all) struct DefaultPackageManagerRemoveSourceFromSettingsOptions {
+  local_ : Bool?
+}
+
+pub(all) struct DefaultPackageManagerResolveExtensionSourcesOptions {
+  local_ : Bool?
+  temporary : Bool?
+}
+
+pub(all) enum DefaultProjectTrust {
+  Ask
+  Always
+  Never
+}
+
+#external
+pub type DefaultResourceLoader
+pub fn DefaultResourceLoader::extend_resources(Self, ResourceExtensionPaths) -> Unit
+pub fn DefaultResourceLoader::get_agents_files(Self) -> JSValue
+pub fn DefaultResourceLoader::get_append_system_prompt(Self) -> Array[String]
+pub fn DefaultResourceLoader::get_append_system_prompt_sources(Self) -> Array[JSValue]
+pub fn DefaultResourceLoader::get_extensions(Self) -> LoadExtensionsResult
+pub fn DefaultResourceLoader::get_prompts(Self) -> JSValue
+pub fn DefaultResourceLoader::get_skills(Self) -> JSValue
+pub fn DefaultResourceLoader::get_system_prompt(Self) -> String?
+pub fn DefaultResourceLoader::get_system_prompt_source(Self) -> JSValue?
+pub fn DefaultResourceLoader::get_themes(Self) -> JSValue
+pub fn DefaultResourceLoader::load_project_trust_extensions(Self) -> Promise[LoadExtensionsResult]
+pub fn DefaultResourceLoader::reload(Self, ResourceLoaderReloadOptions?) -> Promise[Unit]
+
+pub(all) struct DefaultResourceLoaderOptions {
+  cwd : String
+  agentDir : String
+  settingsManager : SettingsManager?
+  eventBus : EventBus?
+  additionalExtensionPaths : Array[String]?
+  additionalSkillPaths : Array[String]?
+  additionalPromptTemplatePaths : Array[String]?
+  additionalThemePaths : Array[String]?
+  extensionFactories : Array[InlineExtension]?
+  noExtensions : Bool?
+  noSkills : Bool?
+  noPromptTemplates : Bool?
+  noThemes : Bool?
+  noContextFiles : Bool?
+  systemPrompt : String?
+  appendSystemPrompt : Array[String]?
+  extensionsOverride : ((LoadExtensionsResult) -> LoadExtensionsResult)?
+  skillsOverride : ((JSValue) -> JSValue)?
+  promptsOverride : ((JSValue) -> JSValue)?
+  themesOverride : ((JSValue) -> JSValue)?
+  agentsFilesOverride : ((JSValue) -> JSValue)?
+  systemPromptOverride : ((String?) -> String?)?
+  appendSystemPromptOverride : ((Array[String]) -> Array[String])?
+}
+
+pub(all) struct DefaultResourceLoaderOptionsOmitCwdAgentDirSettingsManager {
+  eventBus : EventBus?
+  additionalExtensionPaths : Array[String]?
+  additionalSkillPaths : Array[String]?
+  additionalPromptTemplatePaths : Array[String]?
+  additionalThemePaths : Array[String]?
+  extensionFactories : Array[InlineExtension]?
+  noExtensions : Bool?
+  noSkills : Bool?
+  noPromptTemplates : Bool?
+  noThemes : Bool?
+  noContextFiles : Bool?
+  systemPrompt : String?
+  appendSystemPrompt : Array[String]?
+  extensionsOverride : ((LoadExtensionsResult) -> LoadExtensionsResult)?
+  skillsOverride : ((JSValue) -> JSValue)?
+  promptsOverride : ((JSValue) -> JSValue)?
+  themesOverride : ((JSValue) -> JSValue)?
+  agentsFilesOverride : ((JSValue) -> JSValue)?
+  systemPromptOverride : ((String?) -> String?)?
+  appendSystemPromptOverride : ((Array[String]) -> Array[String])?
+}
+
+#external
+pub type DeferredHandle
+
+#external
+pub type DynamicBorder
+pub fn DynamicBorder::invalidate(Self) -> Unit
+pub fn DynamicBorder::render(Self, Double) -> Array[String]
+
+#external
+pub type EditCallRenderComponent
+
+pub(all) struct EditDiffResult {
+  diff : String
+  firstChangedLine : Double?
+}
+
+pub(all) struct EditOperations {
+  readFile : (String) -> Promise[Buffer]
+  writeFile : (String, String) -> Promise[Unit]
+  access : (String) -> Promise[Unit]
+}
+pub fn EditOperations::access(Self, String) -> Promise[Unit]
+pub fn EditOperations::readFile(Self, String) -> Promise[Buffer]
+pub fn EditOperations::writeFile(Self, String, String) -> Promise[Unit]
+
+pub(all) struct EditRenderState {
+  callComponent : EditCallRenderComponent?
+}
+
+pub(all) struct EditToolCallEvent {
+  toolName : EditToolCallEventToolName
+  input : EditToolInput
+  type_ : EditToolCallEventType
+  toolCallId : String
+}
+
+pub(all) enum EditToolCallEventToolName {
+  Edit
+}
+
+pub(all) enum EditToolCallEventType {
+  Tool_call
+}
+
+pub(all) struct EditToolDetails {
+  diff : String
+  patch : String
+  firstChangedLine : Double?
+}
+
+#external
+pub type EditToolInput
+
+pub(all) struct EditToolOptions {
+  operations : EditOperations?
+}
+
+#external
+pub type EditToolResultEvent
+
+#external
+pub type EditorFactory
+
+#alias(CustomEditorOptions)
+#external
+pub type EditorOptions
+
+#external
+pub type EditorTheme
+
+pub(all) struct EntryRenderOptions {
+  expanded : Bool
+}
+
+#external
+pub type EntryRenderer
+
+#external
+pub type ErrorOptions
+
+#external
+pub type Error_
+
+pub(all) struct EventBus {
+  emit : (String, JSValue) -> Unit
+  on : (String, (JSValue) -> Unit) -> () -> Unit
+}
+pub fn EventBus::emit(Self, String, JSValue) -> Unit
+pub fn EventBus::on(Self, String, (JSValue) -> Unit) -> () -> Unit
+
+pub(all) struct EventBusController {
+  clear : () -> Unit
+  emit : (String, JSValue) -> Unit
+  on : (String, (JSValue) -> Unit) -> () -> Unit
+}
+pub fn EventBusController::clear(Self) -> Unit
+pub fn EventBusController::emit(Self, String, JSValue) -> Unit
+pub fn EventBusController::on(Self, String, (JSValue) -> Unit) -> () -> Unit
+
+#external
+pub type Exclude
+
+pub(all) struct ExecOptions {
+  signal : AbortSignal?
+  timeout : Double?
+  cwd : String?
+}
+
+pub(all) struct ExecResult {
+  stdout : String
+  stderr : String
+  code : Double
+  killed : Bool
+}
+
+pub(all) struct Extension {
+  path : String
+  resolvedPath : String
+  hidden : Bool?
+  sourceInfo : SourceInfo
+  handlers : Map
+  tools : Map
+  messageRenderers : Map
+  markdownTransformer : ((String, MarkdownTransformContext) -> String)?
+  entryRenderers : Map?
+  commands : Map
+  flags : Map
+  shortcuts : Map
+}
+
+pub(all) struct ExtensionAPI {
+  on : (String, ProjectTrustHandler) -> Unit
+  on_resources_discover : ((ResourcesDiscoverEvent, ExtensionContext) -> JSValue) -> Unit
+  on_session_before_switch : ((SessionBeforeSwitchEvent, ExtensionContext) -> JSValue) -> Unit
+  on_session_before_fork : ((SessionBeforeForkEvent, ExtensionContext) -> JSValue) -> Unit
+  on_session_before_compact : ((SessionBeforeCompactEvent, ExtensionContext) -> JSValue) -> Unit
+  on_session_before_tree : ((SessionBeforeTreeEvent, ExtensionContext) -> JSValue) -> Unit
+  on_context : ((ContextEvent, ExtensionContext) -> JSValue) -> Unit
+  on_before_provider_request : ((BeforeProviderRequestEvent, ExtensionContext) -> JSValue) -> Unit
+  on_before_agent_start : ((BeforeAgentStartEvent, ExtensionContext) -> JSValue) -> Unit
+  on_message_end : ((MessageEndEvent, ExtensionContext) -> JSValue) -> Unit
+  on_tool_call : ((ToolCallEvent, ExtensionContext) -> JSValue) -> Unit
+  on_tool_result : ((ToolResultEvent, ExtensionContext) -> JSValue) -> Unit
+  on_user_bash : ((UserBashEvent, ExtensionContext) -> JSValue) -> Unit
+  on_input : ((InputEvent, ExtensionContext) -> JSValue) -> Unit
+  registerTool : (ToolDefinition[TSchema, TDetails, TState[JSValue, JSValue]]) -> Unit
+  registerCommand : (String, RegisteredCommandOmitNameSourceInfo) -> Unit
+  registerShortcut : (KeyId, ExtensionApiRegisterShortcutOptions) -> Unit
+  registerFlag : (String, JSValue) -> Unit
+  getFlag : (String) -> Auto_BoolValue_or_StringValue?
+  registerMessageRenderer : (String, (CustomMessage[JSValue], MessageRenderOptions, Theme) -> Component?) -> Unit
+  registerMarkdownTransformer : ((String, MarkdownTransformContext) -> String) -> Unit
+  registerEntryRenderer : (String, (CustomEntry[JSValue], EntryRenderOptions, Theme) -> Component?) -> Unit
+  sendMessage : (Pick, JSValue?) -> Unit
+  sendUserMessage : (JSValue, JSValue?) -> Unit
+  appendEntry : (String, JSValue?) -> Unit
+  setSessionName : (String) -> Unit
+  getSessionName : () -> String?
+  setLabel : (String, String?) -> Unit
+  exec : (String, Array[String], ExecOptions?) -> Promise[ExecResult]
+  getActiveTools : () -> Array[String]
+  getAllTools : () -> Array[ToolDefinitionPickNameDescriptionParametersPromptGuidelines]
+  setActiveTools : (Array[String]) -> Unit
+  getCommands : () -> Array[SlashCommandInfo]
+  setModel : (Model[JSValue]) -> Promise[Bool]
+  getThinkingLevel : () -> ThinkingLevel
+  setThinkingLevel : (ThinkingLevel) -> Unit
+  registerProvider : (Provider[JSValue]) -> Unit
+  unregisterProvider : (String) -> Unit
+  events : EventBus
+}
+pub fn[T] ExtensionAPI::appendEntry(Self, String, T?) -> Unit
+pub fn ExtensionAPI::exec(Self, String, Array[String], ExecOptions?) -> Promise[ExecResult]
+pub fn ExtensionAPI::getActiveTools(Self) -> Array[String]
+pub fn ExtensionAPI::getAllTools(Self) -> Array[ToolDefinitionPickNameDescriptionParametersPromptGuidelines]
+pub fn ExtensionAPI::getCommands(Self) -> Array[SlashCommandInfo]
+pub fn ExtensionAPI::getFlag(Self, String) -> Auto_BoolValue_or_StringValue?
+pub fn ExtensionAPI::getSessionName(Self) -> String?
+pub fn ExtensionAPI::getThinkingLevel(Self) -> ThinkingLevel
+pub fn ExtensionAPI::on(Self, String, ProjectTrustHandler) -> Unit
+pub fn ExtensionAPI::on_before_agent_start(Self, (BeforeAgentStartEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_before_provider_request(Self, (BeforeProviderRequestEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_context(Self, (ContextEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_input(Self, (InputEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_message_end(Self, (MessageEndEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_resources_discover(Self, (ResourcesDiscoverEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_session_before_compact(Self, (SessionBeforeCompactEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_session_before_fork(Self, (SessionBeforeForkEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_session_before_switch(Self, (SessionBeforeSwitchEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_session_before_tree(Self, (SessionBeforeTreeEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_tool_call(Self, (ToolCallEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_tool_result(Self, (ToolResultEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::on_user_bash(Self, (UserBashEvent, ExtensionContext) -> JSValue) -> Unit
+pub fn ExtensionAPI::registerCommand(Self, String, RegisteredCommandOmitNameSourceInfo) -> Unit
+pub fn[T] ExtensionAPI::registerEntryRenderer(Self, String, (CustomEntry[T], EntryRenderOptions, Theme) -> Component?) -> Unit
+pub fn ExtensionAPI::registerFlag(Self, String, JSValue) -> Unit
+pub fn ExtensionAPI::registerMarkdownTransformer(Self, (String, MarkdownTransformContext) -> String) -> Unit
+pub fn[T] ExtensionAPI::registerMessageRenderer(Self, String, (CustomMessage[T], MessageRenderOptions, Theme) -> Component?) -> Unit
+pub fn ExtensionAPI::registerProvider(Self, Provider[JSValue]) -> Unit
+pub fn ExtensionAPI::registerShortcut(Self, KeyId, ExtensionApiRegisterShortcutOptions) -> Unit
+pub fn[TDetails, TState] ExtensionAPI::registerTool(Self, ToolDefinition[TSchema, TDetails, TState]) -> Unit
+pub fn ExtensionAPI::sendMessage(Self, Pick, JSValue?) -> Unit
+pub fn ExtensionAPI::sendUserMessage(Self, JSValue, JSValue?) -> Unit
+pub fn ExtensionAPI::setActiveTools(Self, Array[String]) -> Unit
+pub fn ExtensionAPI::setLabel(Self, String, String?) -> Unit
+pub fn ExtensionAPI::setModel(Self, Model[JSValue]) -> Promise[Bool]
+pub fn ExtensionAPI::setSessionName(Self, String) -> Unit
+pub fn ExtensionAPI::setThinkingLevel(Self, ThinkingLevel) -> Unit
+pub fn ExtensionAPI::unregisterProvider(Self, String) -> Unit
+
+pub(all) enum ExtensionAPIOnArg0 {
+  Project_trust
+}
+
+pub(all) enum ExtensionAPIRegisterFlagArg1Member0Type {
+  Boolean
+}
+
+pub(all) enum ExtensionAPIRegisterFlagArg1Member1Type {
+  String_
+}
+
+pub(all) struct ExtensionActions {
+  sendMessage : SendMessageHandler
+  sendUserMessage : SendUserMessageHandler
+  appendEntry : AppendEntryHandler
+  setSessionName : SetSessionNameHandler
+  getSessionName : GetSessionNameHandler
+  setLabel : SetLabelHandler
+  getActiveTools : GetActiveToolsHandler
+  getAllTools : GetAllToolsHandler
+  setActiveTools : SetActiveToolsHandler
+  refreshTools : RefreshToolsHandler
+  getCommands : GetCommandsHandler
+  setModel : SetModelHandler
+  getThinkingLevel : GetThinkingLevelHandler
+  setThinkingLevel : SetThinkingLevelHandler
+}
+
+pub(all) struct ExtensionApiRegisterShortcutOptions {
+  description : String?
+  handler : (ExtensionContext) -> Promise[Unit]
+}
+pub fn ExtensionApiRegisterShortcutOptions::handler(Self, ExtensionContext) -> Promise[Unit]
+
+pub(all) struct ExtensionBindings {
+  uiContext : ExtensionUIContext?
+  mode : ExtensionMode?
+  commandContextActions : ExtensionCommandContextActions?
+  abortHandler : (() -> Unit)?
+  shutdownHandler : ShutdownHandler?
+  onError : ExtensionErrorListener?
+}
+
+pub(all) struct ExtensionCommandContext {
+  getSystemPromptOptions : () -> BuildSystemPromptOptions
+  waitForIdle : () -> Promise[Unit]
+  newSession : (JSValue?) -> Promise[JSValue]
+  fork : (String, JSValue?) -> Promise[JSValue]
+  navigateTree : (String, JSValue?) -> Promise[JSValue]
+  switchSession : (String, JSValue?) -> Promise[JSValue]
+  reload : () -> Promise[Unit]
+  ui : ExtensionUIContext
+  mode : ExtensionMode
+  hasUI : Bool
+  cwd : String
+  sessionManager : ReadonlySessionManager
+  modelRegistry : ModelRegistry
+  model : Model[JSValue]?
+  scopedModels : Array[ScopedModel]
+  thinkingLevel : ThinkingLevel?
+  isIdle : () -> Bool
+  isProjectTrusted : () -> Bool
+  signal : AbortSignal?
+  abort : () -> Unit
+  hasPendingMessages : () -> Bool
+  shutdown : () -> Unit
+  getContextUsage : () -> ContextUsage?
+  compact : (CompactOptions?) -> Unit
+  getSystemPrompt : () -> String
+}
+pub fn ExtensionCommandContext::abort(Self) -> Unit
+pub fn ExtensionCommandContext::compact(Self, CompactOptions?) -> Unit
+pub fn ExtensionCommandContext::fork(Self, String, JSValue?) -> Promise[JSValue]
+pub fn ExtensionCommandContext::getContextUsage(Self) -> ContextUsage?
+pub fn ExtensionCommandContext::getSystemPrompt(Self) -> String
+pub fn ExtensionCommandContext::getSystemPromptOptions(Self) -> BuildSystemPromptOptions
+pub fn ExtensionCommandContext::hasPendingMessages(Self) -> Bool
+pub fn ExtensionCommandContext::isIdle(Self) -> Bool
+pub fn ExtensionCommandContext::isProjectTrusted(Self) -> Bool
+pub fn ExtensionCommandContext::navigateTree(Self, String, JSValue?) -> Promise[JSValue]
+pub fn ExtensionCommandContext::newSession(Self, JSValue?) -> Promise[JSValue]
+pub fn ExtensionCommandContext::reload(Self) -> Promise[Unit]
+pub fn ExtensionCommandContext::shutdown(Self) -> Unit
+pub fn ExtensionCommandContext::switchSession(Self, String, JSValue?) -> Promise[JSValue]
+pub fn ExtensionCommandContext::waitForIdle(Self) -> Promise[Unit]
+
+pub(all) struct ExtensionCommandContextActions {
+  waitForIdle : () -> Promise[Unit]
+  newSession : (JSValue?) -> Promise[JSValue]
+  fork : (String, JSValue?) -> Promise[JSValue]
+  navigateTree : (String, JSValue?) -> Promise[JSValue]
+  switchSession : (String, JSValue?) -> Promise[JSValue]
+  reload : () -> Promise[Unit]
+}
+pub fn ExtensionCommandContextActions::fork(Self, String, JSValue?) -> Promise[JSValue]
+pub fn ExtensionCommandContextActions::navigateTree(Self, String, JSValue?) -> Promise[JSValue]
+pub fn ExtensionCommandContextActions::newSession(Self, JSValue?) -> Promise[JSValue]
+pub fn ExtensionCommandContextActions::reload(Self) -> Promise[Unit]
+pub fn ExtensionCommandContextActions::switchSession(Self, String, JSValue?) -> Promise[JSValue]
+pub fn ExtensionCommandContextActions::waitForIdle(Self) -> Promise[Unit]
+
+pub(all) struct ExtensionContext {
+  ui : ExtensionUIContext
+  mode : ExtensionMode
+  hasUI : Bool
+  cwd : String
+  sessionManager : ReadonlySessionManager
+  modelRegistry : ModelRegistry
+  model : Model[JSValue]?
+  scopedModels : Array[ScopedModel]
+  thinkingLevel : ThinkingLevel?
+  isIdle : () -> Bool
+  isProjectTrusted : () -> Bool
+  signal : AbortSignal?
+  abort : () -> Unit
+  hasPendingMessages : () -> Bool
+  shutdown : () -> Unit
+  getContextUsage : () -> ContextUsage?
+  compact : (CompactOptions?) -> Unit
+  getSystemPrompt : () -> String
+}
+pub fn ExtensionContext::abort(Self) -> Unit
+pub fn ExtensionContext::compact(Self, CompactOptions?) -> Unit
+pub fn ExtensionContext::getContextUsage(Self) -> ContextUsage?
+pub fn ExtensionContext::getSystemPrompt(Self) -> String
+pub fn ExtensionContext::hasPendingMessages(Self) -> Bool
+pub fn ExtensionContext::isIdle(Self) -> Bool
+pub fn ExtensionContext::isProjectTrusted(Self) -> Bool
+pub fn ExtensionContext::shutdown(Self) -> Unit
+
+pub(all) struct ExtensionContextActions {
+  getModel : () -> Model[JSValue]?
+  getScopedModels : () -> Array[ScopedModel]
+  isIdle : () -> Bool
+  isProjectTrusted : () -> Bool
+  getSignal : () -> AbortSignal?
+  abort : () -> Unit
+  hasPendingMessages : () -> Bool
+  shutdown : () -> Unit
+  getContextUsage : () -> ContextUsage?
+  compact : (CompactOptions?) -> Unit
+  getSystemPrompt : () -> String
+  getSystemPromptOptions : (() -> BuildSystemPromptOptions)?
+}
+pub fn ExtensionContextActions::abort(Self) -> Unit
+pub fn ExtensionContextActions::compact(Self, CompactOptions?) -> Unit
+pub fn ExtensionContextActions::getContextUsage(Self) -> ContextUsage?
+pub fn ExtensionContextActions::getModel(Self) -> Model[JSValue]?
+pub fn ExtensionContextActions::getScopedModels(Self) -> Array[ScopedModel]
+pub fn ExtensionContextActions::getSignal(Self) -> AbortSignal?
+pub fn ExtensionContextActions::getSystemPrompt(Self) -> String
+pub fn ExtensionContextActions::hasPendingMessages(Self) -> Bool
+pub fn ExtensionContextActions::isIdle(Self) -> Bool
+pub fn ExtensionContextActions::isProjectTrusted(Self) -> Bool
+pub fn ExtensionContextActions::shutdown(Self) -> Unit
+
+#external
+pub type ExtensionEditorComponent
+pub fn ExtensionEditorComponent::focused(Self) -> Bool
+pub fn ExtensionEditorComponent::get_extension_editor_component_focused(Self) -> Bool
+pub fn ExtensionEditorComponent::handle_input(Self, String) -> Unit
+pub fn ExtensionEditorComponent::set_extension_editor_component_focused(Self, Bool) -> Unit
+
+pub(all) struct ExtensionError {
+  extensionPath : String
+  event : String
+  error : String
+  stack : String?
+}
+
+#external
+pub type ExtensionErrorListener
+
+pub(all) enum ExtensionEvent {
+  ProjectTrustEventValue(ProjectTrustEvent)
+  ResourcesDiscoverEventValue(ResourcesDiscoverEvent)
+  SessionEventValue(SessionEvent)
+  ContextEventValue(ContextEvent)
+  BeforeProviderRequestEventValue(BeforeProviderRequestEvent)
+  BeforeProviderHeadersEventValue(BeforeProviderHeadersEvent)
+  AfterProviderResponseEventValue(AfterProviderResponseEvent)
+  BeforeAgentStartEventValue(BeforeAgentStartEvent)
+  AgentStartEventValue(AgentStartEvent)
+  AgentEndEventValue(AgentEndEvent)
+  AgentSettledEventValue(AgentSettledEvent)
+  UIPromptStartEventValue(UIPromptStartEvent)
+  UIPromptEndEventValue(UIPromptEndEvent)
+  TurnStartEventValue(TurnStartEvent)
+  TurnEndEventValue(TurnEndEvent)
+  MessageStartEventValue(MessageStartEvent)
+  MessageUpdateEventValue(MessageUpdateEvent)
+  MessageEndEventValue(MessageEndEvent)
+  ToolExecutionStartEventValue(ToolExecutionStartEvent)
+  ToolExecutionUpdateEventValue(ToolExecutionUpdateEvent)
+  ToolExecutionEndEventValue(ToolExecutionEndEvent)
+  ModelSelectEventValue(ModelSelectEvent)
+  ThinkingLevelSelectEventValue(ThinkingLevelSelectEvent)
+  UserBashEventValue(UserBashEvent)
+  InputEventValue(InputEvent)
+  ToolCallEventValue(ToolCallEvent)
+  ToolResultEventValue(ToolResultEvent)
+}
+
+#external
+pub type ExtensionFactory
+
+pub(all) struct ExtensionFlag {
+  name : String
+  description : String?
+  type_ : ExtensionFlagType
+  default : Auto_BoolValue_or_StringValue?
+  extensionPath : String
+}
+
+pub(all) enum ExtensionFlagType {
+  Boolean
+  String_
+}
+
+#external
+pub type ExtensionInputComponent
+pub fn ExtensionInputComponent::dispose(Self) -> Unit
+pub fn ExtensionInputComponent::focused(Self) -> Bool
+pub fn ExtensionInputComponent::get_extension_input_component_focused(Self) -> Bool
+pub fn ExtensionInputComponent::handle_input(Self, String) -> Unit
+pub fn ExtensionInputComponent::set_extension_input_component_focused(Self, Bool) -> Unit
+
+pub(all) struct ExtensionInputOptions {
+  tui : TUI?
+  timeout : Double?
+}
+
+#external
+pub type ExtensionMode
+
+pub(all) struct ExtensionOAuthConfig {
+  name : String
+  isSubscription : Bool?
+  usesCallbackServer : Bool?
+  login : (OAuthLoginCallbacks) -> Promise[OAuthCredentials]
+  refreshToken : (OAuthCredentials, AbortSignal) -> Promise[OAuthCredentials]
+  getApiKey : (OAuthCredentials) -> String
+  modifyModels : ((Array[Model[Api]], OAuthCredentials) -> Array[Model[Api]])?
+}
+pub fn ExtensionOAuthConfig::getApiKey(Self, OAuthCredentials) -> String
+pub fn ExtensionOAuthConfig::login(Self, OAuthLoginCallbacks) -> Promise[OAuthCredentials]
+pub fn ExtensionOAuthConfig::refreshToken(Self, OAuthCredentials, AbortSignal) -> Promise[OAuthCredentials]
+
+#external
+pub type ExtensionRunner
+pub fn ExtensionRunner::bind_command_context(Self, ExtensionCommandContextActions?) -> Unit
+pub fn ExtensionRunner::bind_core(Self, ExtensionActions, ExtensionContextActions, ExtensionRunnerBindCoreProviderActions?) -> Unit
+pub fn ExtensionRunner::create_command_context(Self) -> ExtensionCommandContext
+pub fn ExtensionRunner::create_context(Self) -> ExtensionContext
+pub fn ExtensionRunner::emit(Self, RunnerEmitEvent) -> Promise[JSValue]
+pub fn ExtensionRunner::emit_before_agent_start(Self, String, Array[ImageContent]?, String, BuildSystemPromptOptions) -> Promise[BeforeAgentStartCombinedResult?]
+pub fn ExtensionRunner::emit_before_provider_headers(Self, ProviderHeaders) -> Promise[ProviderHeaders]
+pub fn ExtensionRunner::emit_before_provider_request(Self, JSValue) -> Promise[JSValue]
+pub fn ExtensionRunner::emit_context(Self, Array[AgentMessage]) -> Promise[Array[AgentMessage]]
+pub fn ExtensionRunner::emit_error(Self, ExtensionError) -> Unit
+pub fn ExtensionRunner::emit_input(Self, String, Array[ImageContent]?, InputSource, ExtensionRunnerEmitInputStreamingBehavior?) -> Promise[InputEventResult]
+pub fn ExtensionRunner::emit_message_end(Self, MessageEndEvent) -> Promise[AgentMessage?]
+pub fn ExtensionRunner::emit_resources_discover(Self, String, ExtensionRunnerEmitResourcesDiscoverReason) -> Promise[JSValue]
+pub fn ExtensionRunner::emit_tool_call(Self, ToolCallEvent) -> Promise[ToolCallEventResult?]
+pub fn ExtensionRunner::emit_tool_result(Self, ToolResultEvent) -> Promise[ToolResultEventResult?]
+pub fn ExtensionRunner::emit_user_bash(Self, UserBashEvent) -> Promise[UserBashEventResult?]
+pub fn ExtensionRunner::get_active_tools(Self) -> Array[String]
+pub fn ExtensionRunner::get_all_registered_tools(Self) -> Array[RegisteredTool]
+pub fn ExtensionRunner::get_command(Self, String) -> ResolvedCommand?
+pub fn ExtensionRunner::get_command_diagnostics(Self) -> Array[ResourceDiagnostic]
+pub fn ExtensionRunner::get_entry_renderer(Self, String) -> EntryRenderer?
+pub fn ExtensionRunner::get_extension_paths(Self) -> Array[String]
+pub fn ExtensionRunner::get_flag_values(Self) -> Map
+pub fn ExtensionRunner::get_flags(Self) -> Map
+pub fn ExtensionRunner::get_markdown_transformers(Self) -> Array[(String, MarkdownTransformContext) -> String]
+pub fn ExtensionRunner::get_message_renderer(Self, String) -> MessageRenderer?
+pub fn ExtensionRunner::get_model_registry(Self) -> ModelRegistry
+pub fn ExtensionRunner::get_registered_commands(Self) -> Array[ResolvedCommand]
+pub fn ExtensionRunner::get_shortcut_diagnostics(Self) -> Array[ResourceDiagnostic]
+pub fn ExtensionRunner::get_shortcuts(Self, KeybindingsConfig) -> Map
+pub fn ExtensionRunner::get_tool_definition(Self, String) -> ToolDefinition[JSValue, JSValue, JSValue]?
+pub fn ExtensionRunner::get_uicontext(Self) -> ExtensionUIContext
+pub fn ExtensionRunner::has_handlers(Self, String) -> Bool
+pub fn ExtensionRunner::has_ui(Self) -> Bool
+pub fn ExtensionRunner::invalidate(Self, String?) -> Unit
+pub fn ExtensionRunner::on_error(Self, ExtensionErrorListener) -> () -> Unit
+pub fn ExtensionRunner::set_flag_value(Self, String, Auto_BoolValue_or_StringValue) -> Unit
+pub fn ExtensionRunner::set_uicontext(Self, ExtensionUIContext?, ExtensionMode?) -> Unit
+pub fn ExtensionRunner::shutdown(Self) -> Unit
+
+pub(all) struct ExtensionRunnerBindCoreProviderActions {
+  registerProvider : ((String, ProviderConfig) -> Unit)?
+  registerNativeProvider : ((Provider[JSValue]) -> Unit)?
+  unregisterProvider : ((String) -> Unit)?
+}
+
+pub(all) enum ExtensionRunnerEmitInputStreamingBehavior {
+  Steer
+  FollowUp
+}
+
+pub(all) enum ExtensionRunnerEmitResourcesDiscoverReason {
+  Startup
+  Reload
+}
+
+pub(all) enum ExtensionRunnerEmitReturnArg0FalseFalseFalseTargetType {
+  Session_before_tree
+}
+
+pub(all) enum ExtensionRunnerEmitReturnArg0FalseFalseTargetType {
+  Session_before_compact
+}
+
+pub(all) enum ExtensionRunnerEmitReturnArg0FalseTargetType {
+  Session_before_fork
+}
+
+pub(all) enum ExtensionRunnerEmitReturnArg0TargetType {
+  Session_before_switch
+}
+
+pub(all) struct ExtensionRuntime {
+  flagValues : Map
+  pendingProviderRegistrations : Array[JSValue]
+  pendingNativeProviderRegistrations : Array[JSValue]
+  assertActive : () -> Unit
+  invalidate : (String?) -> Unit
+  trackEventBusSubscription : (() -> Unit) -> () -> Unit
+  registerProvider : (String, ProviderConfig, String?) -> Unit
+  registerNativeProvider : (Provider[JSValue], String?) -> Unit
+  unregisterProvider : (String, String?) -> Unit
+  sendMessage : SendMessageHandler
+  sendUserMessage : SendUserMessageHandler
+  appendEntry : AppendEntryHandler
+  setSessionName : SetSessionNameHandler
+  getSessionName : GetSessionNameHandler
+  setLabel : SetLabelHandler
+  getActiveTools : GetActiveToolsHandler
+  getAllTools : GetAllToolsHandler
+  setActiveTools : SetActiveToolsHandler
+  refreshTools : RefreshToolsHandler
+  getCommands : GetCommandsHandler
+  setModel : SetModelHandler
+  getThinkingLevel : GetThinkingLevelHandler
+  setThinkingLevel : SetThinkingLevelHandler
+}
+pub fn ExtensionRuntime::assertActive(Self) -> Unit
+pub fn ExtensionRuntime::invalidate(Self, String?) -> Unit
+pub fn ExtensionRuntime::registerNativeProvider(Self, Provider[JSValue], String?) -> Unit
+pub fn ExtensionRuntime::registerProvider(Self, String, ProviderConfig, String?) -> Unit
+pub fn ExtensionRuntime::trackEventBusSubscription(Self, () -> Unit) -> () -> Unit
+pub fn ExtensionRuntime::unregisterProvider(Self, String, String?) -> Unit
+
+#external
+pub type ExtensionSelectorComponent
+pub fn ExtensionSelectorComponent::dispose(Self) -> Unit
+pub fn ExtensionSelectorComponent::handle_input(Self, String) -> Unit
+
+pub(all) struct ExtensionSelectorOptions {
+  tui : TUI?
+  timeout : Double?
+  onToggleToolsExpanded : (() -> Unit)?
+}
+
+pub(all) struct ExtensionShortcut {
+  shortcut : KeyId
+  description : String?
+  handler : (ExtensionContext) -> Promise[Unit]
+  extensionPath : String
+}
+pub fn ExtensionShortcut::handler(Self, ExtensionContext) -> Promise[Unit]
+
+pub(all) struct ExtensionUIContext {
+  select : (String, Array[String], ExtensionUIDialogOptions?) -> Promise[String?]
+  confirm : (String, String, ExtensionUIDialogOptions?) -> Promise[Bool]
+  input : (String, String?, ExtensionUIDialogOptions?) -> Promise[String?]
+  notify : (String, String?) -> Unit
+  onTerminalInput : (TerminalInputHandler) -> () -> Unit
+  setStatus : (String, String?) -> Unit
+  setWorkingMessage : (String?) -> Unit
+  setWorkingVisible : (Bool) -> Unit
+  setWorkingIndicator : (WorkingIndicatorOptions?) -> Unit
+  setHiddenThinkingLabel : (String?) -> Unit
+  setWidget : (String, Array[String]?, ExtensionWidgetOptions?) -> Unit
+  setFooter : (((TUI, Theme, Pick) -> Component)?) -> Unit
+  setHeader : (((TUI, Theme) -> Component)?) -> Unit
+  setTitle : (String) -> Unit
+  custom : ((TUI, Theme, KeybindingsManager, (JSValue) -> Unit) -> Promise[Component], JSValue?) -> Promise[JSValue]
+  pasteToEditor : (String) -> Unit
+  setEditorText : (String) -> Unit
+  getEditorText : () -> String
+  editor : (String, String?) -> Promise[String?]
+  addAutocompleteProvider : ((AutocompleteProvider) -> AutocompleteProvider) -> Unit
+  setEditorComponent : (EditorFactory?) -> Unit
+  getEditorComponent : () -> EditorFactory?
+  theme : Theme
+  getAllThemes : () -> Array[JSValue]
+  getTheme : (String) -> Theme?
+  setTheme : (Auto_ThemeValue_or_StringValue) -> ExtensionUicontextSetThemeResult
+  getToolsExpanded : () -> Bool
+  setToolsExpanded : (Bool) -> Unit
+}
+pub fn ExtensionUIContext::addAutocompleteProvider(Self, (AutocompleteProvider) -> AutocompleteProvider) -> Unit
+pub fn ExtensionUIContext::confirm(Self, String, String, ExtensionUIDialogOptions?) -> Promise[Bool]
+pub fn[T] ExtensionUIContext::custom(Self, (TUI, Theme, KeybindingsManager, (T) -> Unit) -> Promise[Component], JSValue?) -> Promise[T]
+pub fn ExtensionUIContext::editor(Self, String, String?) -> Promise[String?]
+pub fn ExtensionUIContext::getAllThemes(Self) -> Array[JSValue]
+pub fn ExtensionUIContext::getEditorComponent(Self) -> EditorFactory?
+pub fn ExtensionUIContext::getEditorText(Self) -> String
+pub fn ExtensionUIContext::getTheme(Self, String) -> Theme?
+pub fn ExtensionUIContext::getToolsExpanded(Self) -> Bool
+pub fn ExtensionUIContext::input(Self, String, String?, ExtensionUIDialogOptions?) -> Promise[String?]
+pub fn ExtensionUIContext::notify(Self, String, String?) -> Unit
+pub fn ExtensionUIContext::onTerminalInput(Self, TerminalInputHandler) -> () -> Unit
+pub fn ExtensionUIContext::pasteToEditor(Self, String) -> Unit
+pub fn ExtensionUIContext::select(Self, String, Array[String], ExtensionUIDialogOptions?) -> Promise[String?]
+pub fn ExtensionUIContext::setEditorComponent(Self, EditorFactory?) -> Unit
+pub fn ExtensionUIContext::setEditorText(Self, String) -> Unit
+pub fn ExtensionUIContext::setFooter(Self, ((TUI, Theme, Pick) -> Component)?) -> Unit
+pub fn ExtensionUIContext::setHeader(Self, ((TUI, Theme) -> Component)?) -> Unit
+pub fn ExtensionUIContext::setHiddenThinkingLabel(Self, String?) -> Unit
+pub fn ExtensionUIContext::setStatus(Self, String, String?) -> Unit
+pub fn ExtensionUIContext::setTheme(Self, Auto_ThemeValue_or_StringValue) -> ExtensionUicontextSetThemeResult
+pub fn ExtensionUIContext::setTitle(Self, String) -> Unit
+pub fn ExtensionUIContext::setToolsExpanded(Self, Bool) -> Unit
+pub fn ExtensionUIContext::setWidget(Self, String, Array[String]?, ExtensionWidgetOptions?) -> Unit
+pub fn ExtensionUIContext::setWorkingIndicator(Self, WorkingIndicatorOptions?) -> Unit
+pub fn ExtensionUIContext::setWorkingMessage(Self, String?) -> Unit
+pub fn ExtensionUIContext::setWorkingVisible(Self, Bool) -> Unit
+
+pub(all) struct ExtensionUIContextPickSelectConfirmInputNotify {
+  select : (String, Array[String], ExtensionUIDialogOptions?) -> Promise[String?]
+  confirm : (String, String, ExtensionUIDialogOptions?) -> Promise[Bool]
+  input : (String, String?, ExtensionUIDialogOptions?) -> Promise[String?]
+  notify : (String, String?) -> Unit
+}
+pub fn ExtensionUIContextPickSelectConfirmInputNotify::confirm(Self, String, String, ExtensionUIDialogOptions?) -> Promise[Bool]
+pub fn ExtensionUIContextPickSelectConfirmInputNotify::input(Self, String, String?, ExtensionUIDialogOptions?) -> Promise[String?]
+pub fn ExtensionUIContextPickSelectConfirmInputNotify::notify(Self, String, String?) -> Unit
+pub fn ExtensionUIContextPickSelectConfirmInputNotify::select(Self, String, Array[String], ExtensionUIDialogOptions?) -> Promise[String?]
+
+pub(all) struct ExtensionUIDialogOptions {
+  signal : AbortSignal?
+  timeout : Double?
+}
+
+pub(all) struct ExtensionUicontextSetThemeResult {
+  success : Bool
+  error : String?
+}
+
+pub(all) struct ExtensionWidgetOptions {
+  placement : WidgetPlacement?
+}
+
+pub(all) enum FileEntry {
+  SessionHeaderValue(SessionHeader)
+  SessionEntryValue(SessionEntry)
+}
+
+pub(all) struct FileOperations {
+  read : Set
+  written : Set
+  edited : Set
+}
+
+#external
+pub type FilterMode
+
+pub(all) struct FindOperations {
+  exists : (String) -> Promise[Bool]
+  glob : (String, String, FindOperationsGlobOptions) -> Promise[Array[String]]
+}
+pub fn FindOperations::exists(Self, String) -> Promise[Bool]
+pub fn FindOperations::glob(Self, String, String, FindOperationsGlobOptions) -> Promise[Array[String]]
+
+pub(all) struct FindOperationsGlobOptions {
+  ignore : Array[String]
+  limit : Double
+}
+
+pub(all) struct FindToolCallEvent {
+  toolName : FindToolCallEventToolName
+  input : FindToolInput
+  type_ : FindToolCallEventType
+  toolCallId : String
+}
+
+pub(all) enum FindToolCallEventToolName {
+  Find
+}
+
+pub(all) enum FindToolCallEventType {
+  Tool_call
+}
+
+pub(all) struct FindToolDetails {
+  truncation : TruncationResult?
+  resultLimitReached : Double?
+}
+
+#external
+pub type FindToolInput
+
+pub(all) struct FindToolOptions {
+  operations : FindOperations?
+}
+
+#external
+pub type FindToolResultEvent
+
+#external
+pub type FooterComponent
+pub fn FooterComponent::dispose(Self) -> Unit
+pub fn FooterComponent::invalidate(Self) -> Unit
+pub fn FooterComponent::render(Self, Double) -> Array[String]
+pub fn FooterComponent::set_auto_compact_enabled(Self, Bool) -> Unit
+pub fn FooterComponent::set_session(Self, AgentSession) -> Unit
+
+pub(all) enum FormatSkillsForPromptFileReadTool {
+  Read
+  Bash
+}
+
+pub(all) enum FullscreenExitOutput {
+  Transcript
+  Resume_hint
+}
+
+pub(all) struct GenerateBranchSummaryOptions {
+  model : Model[JSValue]
+  apiKey : String?
+  headers : StringRecordOfString?
+  env : StringRecordOfString?
+  signal : AbortSignal
+  customInstructions : String?
+  replaceInstructions : Bool?
+  reserveTokens : Double?
+  streamFn : StreamFn?
+  retry : RetryPolicy?
+  callbacks : RetryCallbacks?
+}
+
+pub(all) struct GenerateDiffStringResult {
+  diff : String
+  firstChangedLine : Double?
+}
+
+pub(all) struct GenerateSummaryWithUsageResult {
+  text : String
+  usage : Usage
+}
+
+#external
+pub type GetActiveToolsHandler
+
+#external
+pub type GetAllToolsHandler
+
+#external
+pub type GetCommandsHandler
+
+#external
+pub type GetSessionNameHandler
+
+#external
+pub type GetThinkingLevelHandler
+
+pub(all) struct GrepOperations {
+  isDirectory : (String) -> Promise[Bool]
+  readFile : (String) -> Promise[String]
+}
+pub fn GrepOperations::isDirectory(Self, String) -> Promise[Bool]
+pub fn GrepOperations::readFile(Self, String) -> Promise[String]
+
+pub(all) struct GrepToolCallEvent {
+  toolName : GrepToolCallEventToolName
+  input : GrepToolInput
+  type_ : GrepToolCallEventType
+  toolCallId : String
+}
+
+pub(all) enum GrepToolCallEventToolName {
+  Grep
+}
+
+pub(all) enum GrepToolCallEventType {
+  Tool_call
+}
+
+pub(all) struct GrepToolDetails {
+  truncation : TruncationResult?
+  matchLimitReached : Double?
+  linesTruncated : Bool?
+}
+
+#external
+pub type GrepToolInput
+
+pub(all) struct GrepToolOptions {
+  operations : GrepOperations?
+}
+
+#external
+pub type GrepToolResultEvent
+
+#external
+pub type ImageContent
+
+pub(all) struct ImageResizeOptions {
+  maxWidth : Double?
+  maxHeight : Double?
+  maxBytes : Double?
+  jpegQuality : Double?
+}
+
+pub(all) struct ImageSettings {
+  autoResize : Bool?
+  blockImages : Bool?
+}
+
+#external
+pub type InlineExtension
+
+#external
+pub type Input
+
+pub(all) struct InputEvent {
+  type_ : InputEventType
+  text : String
+  images : Array[ImageContent]?
+  source : InputSource
+  streamingBehavior : InputEventStreamingBehavior?
+}
+
+#external
+pub type InputEventResult
+
+pub(all) enum InputEventStreamingBehavior {
+  Steer
+  FollowUp
+}
+
+pub(all) enum InputEventType {
+  Input
+}
+
+pub(all) enum InputSource {
+  Interactive
+  Rpc
+  Extension
+}
+
+#external
+pub type InteractiveMode
+pub fn InteractiveMode::clear_editor(Self) -> Unit
+pub fn InteractiveMode::get_user_input(Self) -> Promise[String]
+pub fn InteractiveMode::init(Self) -> Promise[Unit]
+pub fn InteractiveMode::render_initial_messages(Self) -> Unit
+pub fn InteractiveMode::run(Self) -> Promise[Unit]
+pub fn InteractiveMode::show_error(Self, String) -> Unit
+pub fn InteractiveMode::show_new_version_notification(Self, LatestPiRelease) -> Unit
+pub fn InteractiveMode::show_package_update_notification(Self, Array[String]) -> Unit
+pub fn InteractiveMode::show_warning(Self, String) -> Unit
+pub fn InteractiveMode::stop(Self, FullscreenExitOutput?) -> Unit
+
+pub(all) struct InteractiveModeOptions {
+  migratedProviders : Array[String]?
+  startupDiagnostics : Array[AgentSessionRuntimeDiagnostic]?
+  modelFallbackMessage : String?
+  autoTrustOnReloadCwd : String?
+  initialMessage : String?
+  initialImages : Array[ImageContent]?
+  initialMessages : Array[String]?
+  verbose : Bool?
+  tuiMode : RendererTuiMode?
+  initialThemeSetting : String?
+}
+
+pub(all) enum IsToolCallEventTypeToolName {
+  Bash
+}
+
+pub(all) enum IsToolCallEventType_string_tool_call_eventToolName {
+  Powershell
+}
+
+#external
+pub type JSValue
+pub fn JSValue::from_array(Array[Self]) -> Self
+pub fn JSValue::from_bool(Bool) -> Self
+pub fn JSValue::from_double(Double) -> Self
+pub fn JSValue::from_int(Int) -> Self
+pub fn JSValue::from_string(String) -> Self
+pub fn JSValue::object_from_pairs(Array[(String, Self)]) -> Self
+
+pub(all) enum JsonAgentSessionEvent {
+  AgentSessionEventValue(AgentSessionEvent)
+  JsonMessageUpdateEventValue(JsonMessageUpdateEvent)
+}
+
+#external
+pub type JsonMessageUpdateEvent
+
+#external
+pub type KeyId
+
+#external
+pub type Keybinding
+
+#external
+pub type KeybindingConflict
+
+#external
+pub type KeybindingDefinition
+
+#external
+pub type KeybindingsConfig
+
+#external
+pub type KeybindingsManager
+pub fn KeybindingsManager::get_conflicts(Self) -> Array[KeybindingConflict]
+pub fn KeybindingsManager::get_definition(Self, Keybinding) -> KeybindingDefinition
+pub fn KeybindingsManager::get_effective_config(Self) -> KeybindingsConfig
+pub fn KeybindingsManager::get_keys(Self, Keybinding) -> Array[KeyId]
+pub fn KeybindingsManager::get_resolved_bindings(Self) -> KeybindingsConfig
+pub fn KeybindingsManager::get_user_bindings(Self) -> KeybindingsConfig
+pub fn KeybindingsManager::matches(Self, String, Keybinding) -> Bool
+pub fn KeybindingsManager::reload(Self) -> Unit
+pub fn KeybindingsManager::set_user_bindings(Self, KeybindingsConfig) -> Unit
+
+#external
+pub type KnownApi
+
+#external
+pub type LabelEntry
+
+pub(all) struct LatestPiRelease {
+  version : String
+  packageName : String?
+  note : String?
+}
+
+pub(all) struct LoadExtensionsResult {
+  extensions : Array[Extension]
+  errors : Array[JSValue]
+  runtime : ExtensionRuntime
+}
+
+pub(all) struct LoadSkillsFromDirOptions {
+  dir : String
+  source : String
+}
+
+pub(all) struct LoadSkillsOptions {
+  cwd : String
+  agentDir : String
+  skillPaths : Array[String]
+  includeDefaults : Bool
+}
+
+pub(all) struct LoadSkillsResult {
+  skills : Array[Skill]
+  diagnostics : Array[ResourceDiagnostic]
+}
+
+#external
+pub type LoginDialogComponent
+pub fn LoginDialogComponent::focused(Self) -> Bool
+pub fn LoginDialogComponent::get_login_dialog_component_focused(Self) -> Bool
+pub fn LoginDialogComponent::get_login_dialog_component_signal(Self) -> AbortSignal
+pub fn LoginDialogComponent::handle_input(Self, String) -> Unit
+pub fn LoginDialogComponent::set_login_dialog_component_focused(Self, Bool) -> Unit
+pub fn LoginDialogComponent::show_auth(Self, String, String?) -> Unit
+pub fn LoginDialogComponent::show_details(Self, Array[String]) -> Unit
+pub fn LoginDialogComponent::show_device_code(Self, OAuthDeviceCodeInfo) -> Unit
+pub fn LoginDialogComponent::show_info(Self, String, Array[AuthInfoLink]?, Bool?) -> Unit
+pub fn LoginDialogComponent::show_manual_input(Self, String) -> Promise[String]
+pub fn LoginDialogComponent::show_progress(Self, String) -> Unit
+pub fn LoginDialogComponent::show_prompt(Self, String, String?) -> Promise[String]
+pub fn LoginDialogComponent::show_waiting(Self, String) -> Unit
+pub fn LoginDialogComponent::signal(Self) -> AbortSignal
+
+pub(all) struct LsOperations {
+  exists : (String) -> Promise[Bool]
+  stat : (String) -> Promise[JSValue]
+  readdir : (String) -> Promise[Array[String]]
+}
+pub fn LsOperations::exists(Self, String) -> Promise[Bool]
+pub fn LsOperations::readdir(Self, String) -> Promise[Array[String]]
+pub fn LsOperations::stat(Self, String) -> Promise[JSValue]
+
+pub(all) struct LsToolCallEvent {
+  toolName : LsToolCallEventToolName
+  input : LsToolInput
+  type_ : LsToolCallEventType
+  toolCallId : String
+}
+
+pub(all) enum LsToolCallEventToolName {
+  Ls
+}
+
+pub(all) enum LsToolCallEventType {
+  Tool_call
+}
+
+pub(all) struct LsToolDetails {
+  truncation : TruncationResult?
+  entryLimitReached : Double?
+}
+
+#external
+pub type LsToolInput
+
+pub(all) struct LsToolOptions {
+  operations : LsOperations?
+}
+
+#external
+pub type LsToolResultEvent
+
+pub(all) struct MainOptions {
+  extensionFactories : Array[InlineExtension]?
+}
+
+#external
+pub type Map
+
+pub(all) struct MarkdownSettings {
+  codeBlockIndent : String?
+  mermaid : MermaidRenderingMode?
+}
+
+#external
+pub type MarkdownTheme
+
+pub(all) struct MarkdownTransformContext {
+  messageType : MarkdownTransformContextMessageType
+  isStreaming : Bool
+  availableWidth : Double
+}
+
+pub(all) enum MarkdownTransformContextMessageType {
+  User
+  Assistant
+  Assistant_thinking
+}
+
+#external
+pub type MermaidRenderingMode
+
+#external
+pub type Message
+
+pub(all) struct MessageEndEvent {
+  type_ : MessageEndEventType
+  message : AgentMessage
+}
+
+pub(all) struct MessageEndEventResult {
+  message : AgentMessage?
+}
+
+pub(all) enum MessageEndEventType {
+  Message_end
+}
+
+pub(all) struct MessageRenderOptions {
+  expanded : Bool
+  outputPad : Double
+}
+
+#external
+pub type MessageRenderer
+
+pub(all) struct MessageStartEvent {
+  type_ : MessageStartEventType
+  message : AgentMessage
+}
+
+pub(all) enum MessageStartEventType {
+  Message_start
+}
+
+pub(all) struct MessageUpdateEvent {
+  type_ : MessageUpdateEventType
+  message : AgentMessage
+  assistantMessageEvent : AssistantMessageEvent
+}
+
+pub(all) enum MessageUpdateEventType {
+  Message_update
+}
+
+#external
+pub type MissingSourceAction
+
+#external
+pub type Mode
+
+#external
+pub type Model[TApi]
+
+pub(all) struct ModelChangeEntry {
+  type_ : ModelChangeEntryType
+  provider : String
+  modelId : String
+  id : String
+  parentId : String?
+  timestamp : String
+}
+
+pub(all) enum ModelChangeEntryType {
+  Model_change
+}
+
+pub(all) struct ModelCycleResult {
+  model : Model[JSValue]
+  thinkingLevel : ThinkingLevel
+  isScoped : Bool
+}
+
+pub(all) struct ModelInfo {
+  provider : String
+  id : String
+  contextWindow : Double
+  reasoning : Bool
+}
+
+pub(all) struct ModelMutationOptions {
+  persist : Bool?
+}
+
+#external
+pub type ModelRegistry
+pub fn ModelRegistry::complete(Self, Model[Api], Context, ModelsApiStreamOptions?) -> Promise[AssistantMessage]
+pub fn ModelRegistry::find(Self, String, String) -> Model[Api]?
+pub fn ModelRegistry::get_all(Self) -> Array[Model[Api]]
+pub fn ModelRegistry::get_api_key_and_headers(Self, Model[Api]) -> Promise[ResolvedRequestAuth]
+pub fn ModelRegistry::get_api_key_for_provider(Self, String) -> Promise[String?]
+pub fn ModelRegistry::get_available(Self) -> Array[Model[Api]]
+pub fn ModelRegistry::get_error(Self) -> String?
+pub fn ModelRegistry::get_provider(Self, String) -> Provider[JSValue]?
+pub fn ModelRegistry::get_provider_auth(Self, String) -> Promise[AuthResult?]
+pub fn ModelRegistry::get_provider_auth_status(Self, String) -> AuthStatus
+pub fn ModelRegistry::get_provider_display_name(Self, String) -> String
+pub fn ModelRegistry::get_registered_native_provider(Self, String) -> Provider[JSValue]?
+pub fn ModelRegistry::get_registered_provider_config(Self, String) -> ProviderConfigInput?
+pub fn ModelRegistry::get_registered_provider_ids(Self) -> Array[String]
+pub fn ModelRegistry::has_configured_auth(Self, Model[Api]) -> Bool
+pub fn ModelRegistry::is_using_oauth(Self, Model[Api]) -> Bool
+pub fn ModelRegistry::refresh(Self, ModelsRefreshOptions?) -> Promise[ModelsRefreshResult]
+pub fn ModelRegistry::register_provider(Self, Provider[JSValue]) -> Unit
+pub fn ModelRegistry::unregister_provider(Self, String) -> Unit
+
+#external
+pub type ModelRuntime
+pub fn ModelRuntime::cancel_deferred(Self, Model[Api], DeferredHandle, ModelsDeferredCancelOptions?) -> Promise[Unit]
+pub fn ModelRuntime::check_auth(Self, String, AuthOperationOptions?) -> Promise[AuthCheck?]
+pub fn ModelRuntime::complete(Self, Model[Api], Context, ModelsApiStreamOptions?) -> Promise[AssistantMessage]
+pub fn ModelRuntime::complete_simple(Self, Model[Api], Context, ModelsSimpleStreamOptions?) -> Promise[AssistantMessage]
+pub fn ModelRuntime::fetch_deferred(Self, Model[Api], DeferredHandle, ModelsDeferredFetchOptions?) -> Promise[AssistantMessage]
+pub fn ModelRuntime::get_auth(Self, String, ModelRuntimeAuthOverrides?) -> Promise[AuthResult?]
+pub fn ModelRuntime::get_available(Self, String?, AuthOperationOptions?) -> Promise[Array[Model[Api]]]
+pub fn ModelRuntime::get_available_snapshot(Self) -> Array[Model[Api]]
+pub fn ModelRuntime::get_compatibility_request_config(Self, Model[Api]) -> CompatibilityRequestConfig
+pub fn ModelRuntime::get_error(Self) -> String?
+pub fn ModelRuntime::get_model(Self, String, String) -> Model[Api]?
+pub fn ModelRuntime::get_models(Self, String?) -> Array[Model[Api]]
+pub fn ModelRuntime::get_provider(Self, String) -> Provider[JSValue]?
+pub fn ModelRuntime::get_provider_auth_status(Self, String) -> AuthStatus
+pub fn ModelRuntime::get_providers(Self) -> Array[Provider[JSValue]]
+pub fn ModelRuntime::get_registered_native_provider(Self, String) -> Provider[JSValue]?
+pub fn ModelRuntime::get_registered_provider_config(Self, String) -> ProviderConfigInput?
+pub fn ModelRuntime::get_registered_provider_ids(Self) -> Array[String]
+pub fn ModelRuntime::has_configured_auth(Self, String) -> Bool
+pub fn ModelRuntime::is_using_oauth(Self, String) -> Bool
+pub fn ModelRuntime::is_using_subscription(Self, String) -> Bool
+pub fn ModelRuntime::list_credentials(Self, AuthOperationOptions?) -> Promise[Array[CredentialInfo]]
+pub fn ModelRuntime::login(Self, String, AuthType, AuthInteraction) -> Promise[Credential]
+pub fn ModelRuntime::logout(Self, String, AuthOperationOptions?) -> Promise[Unit]
+pub fn ModelRuntime::refresh(Self, ModelsRefreshOptions?) -> Promise[ModelsRefreshResult]
+pub fn ModelRuntime::register_native_provider(Self, Provider[JSValue]) -> Unit
+pub fn ModelRuntime::register_provider(Self, String, ProviderConfigInput) -> Unit
+pub fn ModelRuntime::remove_runtime_api_key(Self, String, AuthOperationOptions?) -> Promise[Unit]
+pub fn ModelRuntime::set_runtime_api_key(Self, String, String, AuthOperationOptions?) -> Promise[Unit]
+pub fn ModelRuntime::stream(Self, Model[Api], Context, ModelsApiStreamOptions?) -> AssistantMessageEventStream
+pub fn ModelRuntime::stream_deferred(Self, Model[Api], DeferredHandle, ModelsDeferredFetchOptions?) -> AssistantMessageEventStream
+pub fn ModelRuntime::stream_simple(Self, Model[Api], Context, ModelsSimpleStreamOptions?) -> AssistantMessageEventStream
+pub fn ModelRuntime::unregister_provider(Self, String) -> Unit
+
+pub(all) struct ModelRuntimeAuthOverrides {
+  apiKey : String?
+  env : StringRecordOfString?
+  minOAuthValidityMs : Double?
+}
+pub fn ModelRuntimeAuthOverrides::asAuthOperationOptions(Self) -> AuthOperationOptions
+
+pub(all) struct ModelScopeDiagnostic {
+  type_ : ModelScopeDiagnosticType
+  code : ModelScopeDiagnosticCode
+  message : String
+  pattern : String
+}
+
+pub(all) enum ModelScopeDiagnosticCode {
+  No_match
+  Invalid_thinking_level
+}
+
+pub(all) enum ModelScopeDiagnosticType {
+  Warning
+}
+
+pub(all) struct ModelSelectEvent {
+  type_ : ModelSelectEventType
+  model : Model[JSValue]
+  previousModel : Model[JSValue]?
+  source : ModelSelectSource
+}
+
+pub(all) enum ModelSelectEventType {
+  Model_select
+}
+
+#external
+pub type ModelSelectSource
+
+#external
+pub type ModelSelectorComponent
+pub fn ModelSelectorComponent::dispose(Self) -> Unit
+pub fn ModelSelectorComponent::focused(Self) -> Bool
+pub fn ModelSelectorComponent::get_model_selector_component_focused(Self) -> Bool
+pub fn ModelSelectorComponent::get_search_input(Self) -> Input
+pub fn ModelSelectorComponent::handle_input(Self, String) -> Unit
+pub fn ModelSelectorComponent::set_model_selector_component_focused(Self, Bool) -> Unit
+
+#external
+pub type ModelsApiStreamOptions
+
+#external
+pub type ModelsDeferredCancelOptions
+
+#external
+pub type ModelsDeferredFetchOptions
+
+#external
+pub type ModelsRefreshOptions
+
+#external
+pub type ModelsRefreshResult
+
+#external
+pub type ModelsSimpleStreamOptions
+
+#external
+pub type ModelsStore
+
+#external
+pub type ModifiedKeyId
+
+pub(all) struct NewSessionOptions {
+  id : String?
+  parentSession : String?
+}
+
+#external
+pub type NodeJS_ProcessEnv
+
+#external
+pub type NodeJS_Timeout
+
+#external
+pub type OAuthAuth
+
+#external
+pub type OAuthCredential
+
+#external
+pub type OAuthCredentials
+
+#external
+pub type OAuthDeviceCodeInfo
+
+#external
+pub type OAuthLoginCallbacks
+
+#external
+pub type OAuthSelectorComponent
+pub fn OAuthSelectorComponent::focused(Self) -> Bool
+pub fn OAuthSelectorComponent::get_oauth_selector_component_focused(Self) -> Bool
+pub fn OAuthSelectorComponent::handle_input(Self, String) -> Unit
+pub fn OAuthSelectorComponent::set_oauth_selector_component_focused(Self, Bool) -> Unit
+
+pub(all) enum OAuthSelectorComponentConstructorMode {
+  Login
+  Logout
+}
+
+pub(all) enum OAuthSelectorComponentConstructorOnSelectArg1 {
+  Oauth
+  Api_key
+}
+
+pub(all) struct PackageManager {
+  resolve : (((String) -> Promise[MissingSourceAction])?) -> Promise[ResolvedPaths]
+  install : (String, JSValue?) -> Promise[Unit]
+  installAndPersist : (String, JSValue?) -> Promise[Unit]
+  remove : (String, JSValue?) -> Promise[Unit]
+  removeAndPersist : (String, JSValue?) -> Promise[Bool]
+  update : (String?) -> Promise[Unit]
+  listConfiguredPackages : () -> Array[ConfiguredPackage]
+  resolveExtensionSources : (Array[String], JSValue?) -> Promise[ResolvedPaths]
+  addSourceToSettings : (String, JSValue?) -> Bool
+  removeSourceFromSettings : (String, JSValue?) -> Bool
+  setProgressCallback : (((ProgressEvent) -> Unit)?) -> Unit
+  getInstalledPath : (String, String) -> String?
+}
+pub fn PackageManager::addSourceToSettings(Self, String, JSValue?) -> Bool
+pub fn PackageManager::getInstalledPath(Self, String, String) -> String?
+pub fn PackageManager::install(Self, String, JSValue?) -> Promise[Unit]
+pub fn PackageManager::installAndPersist(Self, String, JSValue?) -> Promise[Unit]
+pub fn PackageManager::listConfiguredPackages(Self) -> Array[ConfiguredPackage]
+pub fn PackageManager::remove(Self, String, JSValue?) -> Promise[Unit]
+pub fn PackageManager::removeAndPersist(Self, String, JSValue?) -> Promise[Bool]
+pub fn PackageManager::removeSourceFromSettings(Self, String, JSValue?) -> Bool
+pub fn PackageManager::resolve(Self, (async (String) -> MissingSourceAction)?) -> Promise[ResolvedPaths]
+pub fn PackageManager::resolveExtensionSources(Self, Array[String], JSValue?) -> Promise[ResolvedPaths]
+pub fn PackageManager::setProgressCallback(Self, ((ProgressEvent) -> Unit)?) -> Unit
+pub fn PackageManager::update(Self, String?) -> Promise[Unit]
+
+pub(all) enum PackageManagerGetInstalledPathArg1 {
+  User
+  Project
+}
+
+pub(all) struct PackageManagerOptions {
+  cwd : String
+  agentDir : String
+  settingsManager : SettingsManager
+}
+
+#external
+pub type PackageSource
+
+pub(all) struct PackageUpdate {
+  source : String
+  displayName : String
+  type_ : PackageUpdateType
+  scope : SourceScope
+}
+
+pub(all) enum PackageUpdateType {
+  Npm
+  Git
+}
+
+pub(all) struct ParsedFrontmatter[T] {
+  frontmatter : StringRecordOfUnknown
+  body : String
+}
+
+pub(all) struct ParsedSkillBlock {
+  name : String
+  location : String
+  content : String
+  userMessage : String?
+}
+
+#external
+pub type Partial
+
+pub(all) struct PathMetadata {
+  source : String
+  scope : SourceScope
+  origin : PathMetadataOrigin
+  baseDir : String?
+}
+
+pub(all) enum PathMetadataOrigin {
+  Package
+  Top_level
+}
+
+#alias(ReadonlyFooterDataProvider)
+#external
+pub type Pick
+
+pub(all) struct PowerShellToolCallEvent {
+  toolName : PowerShellToolCallEventToolName
+  input : BashToolInput
+  type_ : PowerShellToolCallEventType
+  toolCallId : String
+}
+
+pub(all) enum PowerShellToolCallEventToolName {
+  Powershell
+}
+
+pub(all) enum PowerShellToolCallEventType {
+  Tool_call
+}
+
+#external
+pub type PowerShellToolOptions
+pub fn PowerShellToolOptions::asPick(Self) -> Pick
+
+#external
+pub type PowerShellToolResultEvent
+
+pub(all) struct PrintModeOptions {
+  mode : PrintModeOptionsMode
+  messages : Array[String]?
+  initialMessage : String?
+  initialImages : Array[ImageContent]?
+}
+
+pub(all) enum PrintModeOptionsMode {
+  Text
+  Json
+}
+
+pub(all) struct ProgressEvent {
+  type_ : ProgressEventType
+  action : ProgressEventAction
+  source : String
+  message : String?
+}
+
+pub(all) enum ProgressEventAction {
+  Install
+  Remove
+  Update
+  Clone
+  Pull
+}
+
+pub(all) enum ProgressEventType {
+  Start
+  Progress
+  Complete
+  Error_
+}
+
+pub(all) struct ProjectTrustContext {
+  cwd : String
+  mode : ExtensionMode
+  hasUI : Bool
+  ui : ExtensionUIContextPickSelectConfirmInputNotify
+}
+
+pub(all) struct ProjectTrustEvent {
+  type_ : ProjectTrustEventType
+  cwd : String
+}
+
+pub(all) enum ProjectTrustEventDecision {
+  Yes
+  No
+  Undecided
+}
+
+pub(all) struct ProjectTrustEventResult {
+  trusted : ProjectTrustEventDecision
+  remember : Bool?
+}
+
+pub(all) enum ProjectTrustEventType {
+  Project_trust
+}
+
+#external
+pub type ProjectTrustHandler
+
+#external
+pub type ProjectTrustStore
+pub fn ProjectTrustStore::get(Self, String) -> Bool?
+pub fn ProjectTrustStore::get_entry(Self, String) -> ProjectTrustStoreEntry?
+pub fn ProjectTrustStore::set(Self, String, Bool?) -> Unit
+pub fn ProjectTrustStore::set_many(Self, Array[ProjectTrustUpdate]) -> Unit
+
+pub(all) struct ProjectTrustStoreEntry {
+  path : String
+  decision : Bool
+}
+
+pub(all) struct ProjectTrustUpdate {
+  path : String
+  decision : Bool?
+}
+
+#external
+pub type Promise[X]
+pub fn[T] Promise::from_async(async () -> T) -> Self[T]
+pub fn[T, U] Promise::map(Self[T], (T) -> U) -> Self[U]
+pub fn[T] Promise::then(Self[T], (T) -> Unit) -> Unit
+pub fn[T] Promise::then_catch(Self[T], (T) -> Unit, (JSValue) -> Unit) -> Unit
+pub async fn[T] Promise::wait(Self[T]) -> T
+
+pub(all) struct PromptOptions {
+  expandPromptTemplates : Bool?
+  images : Array[ImageContent]?
+  streamingBehavior : PromptOptionsStreamingBehavior?
+  source : InputSource?
+  preflightResult : ((Bool) -> Unit)?
+}
+
+pub(all) enum PromptOptionsStreamingBehavior {
+  Steer
+  FollowUp
+}
+
+pub(all) struct PromptTemplate {
+  name : String
+  description : String
+  argumentHint : String?
+  content : String
+  sourceInfo : SourceInfo
+  filePath : String
+}
+
+#external
+pub type Provider[TApi]
+
+pub(all) struct ProviderConfig {
+  name : String?
+  baseUrl : String?
+  apiKey : String?
+  api : Api?
+  streamSimple : (Model[Api], Context, SimpleStreamOptions?) -> AssistantMessageEventStream?
+  headers : StringRecordOfString?
+  authHeader : Bool?
+  models : Array[ProviderModelConfig]?
+  refreshModels : ((RefreshModelsContext) -> Promise[Array[ProviderModelConfig]])?
+  oauth : ProviderConfigOauth?
+}
+
+pub(all) struct ProviderConfigInput {
+  name : String?
+  baseUrl : String?
+  apiKey : String?
+  api : Api?
+  streamSimple : (Model[Api], Context, SimpleStreamOptions?) -> AssistantMessageEventStream?
+  headers : StringRecordOfString?
+  authHeader : Bool?
+  oauth : ExtensionOAuthConfig?
+  models : Array[JSValue]?
+  refreshModels : ((RefreshModelsContext) -> Promise[Array[JSValue]])?
+}
+
+pub(all) enum ProviderConfigInputModelsMember0ItemInputItem {
+  Text
+  Image
+}
+
+pub(all) enum ProviderConfigInputRefreshModelsMember0ReturnArg0ItemInputItem {
+  Text
+  Image
+}
+
+pub(all) struct ProviderConfigOauth {
+  name : String
+  isSubscription : Bool?
+  usesCallbackServer : Bool?
+  login : (OAuthLoginCallbacks) -> Promise[OAuthCredentials]
+  refreshToken : (OAuthCredentials, AbortSignal) -> Promise[OAuthCredentials]
+  getApiKey : (OAuthCredentials) -> String
+  modifyModels : ((Array[Model[Api]], OAuthCredentials) -> Array[Model[Api]])?
+}
+pub fn ProviderConfigOauth::getApiKey(Self, OAuthCredentials) -> String
+pub fn ProviderConfigOauth::login(Self, OAuthLoginCallbacks) -> Promise[OAuthCredentials]
+pub fn ProviderConfigOauth::refreshToken(Self, OAuthCredentials, AbortSignal) -> Promise[OAuthCredentials]
+
+#external
+pub type ProviderHeaders
+
+pub(all) struct ProviderModelConfig {
+  id : String
+  name : String
+  api : Api?
+  baseUrl : String?
+  reasoning : Bool
+  thinkingLevelMap : JSValue?
+  input : Array[ProviderModelConfigInputItem]
+  cost : JSValue
+  contextWindow : Double
+  maxTokens : Double
+  headers : StringRecordOfString?
+  compat : JSValue?
+}
+
+pub(all) enum ProviderModelConfigInputItem {
+  Text
+  Image
+}
+
+pub(all) struct ProviderRetrySettings {
+  timeoutMs : Double?
+  maxRetries : Double?
+  maxRetryDelayMs : Double?
+}
+
+pub(all) struct ReadOperations {
+  readFile : (String) -> Promise[Buffer]
+  access : (String) -> Promise[Unit]
+  detectImageMimeType : ((String) -> Promise[String?])?
+}
+pub fn ReadOperations::access(Self, String) -> Promise[Unit]
+pub fn ReadOperations::readFile(Self, String) -> Promise[Buffer]
+
+pub(all) struct ReadToolCallEvent {
+  toolName : ReadToolCallEventToolName
+  input : ReadToolInput
+  type_ : ReadToolCallEventType
+  toolCallId : String
+}
+
+pub(all) enum ReadToolCallEventToolName {
+  Read
+}
+
+pub(all) enum ReadToolCallEventType {
+  Tool_call
+}
+
+pub(all) struct ReadToolDetails {
+  truncation : TruncationResult?
+}
+
+#external
+pub type ReadToolInput
+
+pub(all) struct ReadToolOptions {
+  autoResizeImages : Bool?
+  operations : ReadOperations?
+}
+
+#external
+pub type ReadToolResultEvent
+
+#external
+pub type ReadonlySessionManager
+
+#external
+pub type Record
+
+#external
+pub type RefreshModelsContext
+
+#external
+pub type RefreshToolsHandler
+
+pub(all) struct RegisteredCommand {
+  name : String
+  sourceInfo : SourceInfo
+  description : String?
+  getArgumentCompletions : ((String) -> JSValue?)?
+  handler : (String, ExtensionCommandContext) -> Promise[Unit]
+}
+pub fn RegisteredCommand::handler(Self, String, ExtensionCommandContext) -> Promise[Unit]
+
+pub(all) struct RegisteredCommandOmitNameSourceInfo {
+  description : String?
+  getArgumentCompletions : ((String) -> JSValue?)?
+  handler : (String, ExtensionCommandContext) -> Promise[Unit]
+}
+pub fn RegisteredCommandOmitNameSourceInfo::handler(Self, String, ExtensionCommandContext) -> Promise[Unit]
+
+pub(all) struct RegisteredTool {
+  definition : ToolDefinition[JSValue, JSValue, JSValue]
+  sourceInfo : SourceInfo
+}
+
+pub(all) struct RenderDiffOptions {
+  filePath : String?
+}
+
+#alias(TuiMode)
+#external
+pub type RendererTuiMode
+
+pub(all) struct ReplacedSessionContext {
+  sendMessage : (Pick, JSValue?) -> Promise[Unit]
+  sendUserMessage : (JSValue, JSValue?) -> Promise[Unit]
+  getSystemPromptOptions : () -> BuildSystemPromptOptions
+  waitForIdle : () -> Promise[Unit]
+  newSession : (JSValue?) -> Promise[JSValue]
+  fork : (String, JSValue?) -> Promise[JSValue]
+  navigateTree : (String, JSValue?) -> Promise[JSValue]
+  switchSession : (String, JSValue?) -> Promise[JSValue]
+  reload : () -> Promise[Unit]
+  ui : ExtensionUIContext
+  mode : ExtensionMode
+  hasUI : Bool
+  cwd : String
+  sessionManager : ReadonlySessionManager
+  modelRegistry : ModelRegistry
+  model : Model[JSValue]?
+  scopedModels : Array[ScopedModel]
+  thinkingLevel : ThinkingLevel?
+  isIdle : () -> Bool
+  isProjectTrusted : () -> Bool
+  signal : AbortSignal?
+  abort : () -> Unit
+  hasPendingMessages : () -> Bool
+  shutdown : () -> Unit
+  getContextUsage : () -> ContextUsage?
+  compact : (CompactOptions?) -> Unit
+  getSystemPrompt : () -> String
+}
+pub fn ReplacedSessionContext::abort(Self) -> Unit
+pub fn ReplacedSessionContext::compact(Self, CompactOptions?) -> Unit
+pub fn ReplacedSessionContext::fork(Self, String, JSValue?) -> Promise[JSValue]
+pub fn ReplacedSessionContext::getContextUsage(Self) -> ContextUsage?
+pub fn ReplacedSessionContext::getSystemPrompt(Self) -> String
+pub fn ReplacedSessionContext::getSystemPromptOptions(Self) -> BuildSystemPromptOptions
+pub fn ReplacedSessionContext::hasPendingMessages(Self) -> Bool
+pub fn ReplacedSessionContext::isIdle(Self) -> Bool
+pub fn ReplacedSessionContext::isProjectTrusted(Self) -> Bool
+pub fn ReplacedSessionContext::navigateTree(Self, String, JSValue?) -> Promise[JSValue]
+pub fn ReplacedSessionContext::newSession(Self, JSValue?) -> Promise[JSValue]
+pub fn ReplacedSessionContext::reload(Self) -> Promise[Unit]
+pub fn ReplacedSessionContext::sendMessage(Self, Pick, JSValue?) -> Promise[Unit]
+pub fn ReplacedSessionContext::sendUserMessage(Self, JSValue, JSValue?) -> Promise[Unit]
+pub fn ReplacedSessionContext::shutdown(Self) -> Unit
+pub fn ReplacedSessionContext::switchSession(Self, String, JSValue?) -> Promise[JSValue]
+pub fn ReplacedSessionContext::waitForIdle(Self) -> Promise[Unit]
+
+pub(all) struct ResizedImage {
+  data : String
+  mimeType : String
+  originalWidth : Double
+  originalHeight : Double
+  width : Double
+  height : Double
+  wasResized : Bool
+}
+
+pub(all) struct ResolveCliModelResult {
+  model : Model[Api]?
+  thinkingLevel : ThinkingLevel?
+  warning : String?
+  error : String?
+}
+
+pub(all) struct ResolveModelScopeResult {
+  scopedModels : Array[ScopedModel]
+  diagnostics : Array[ModelScopeDiagnostic]
+}
+
+pub(all) struct ResolvedCommand {
+  invocationName : String
+  name : String
+  sourceInfo : SourceInfo
+  description : String?
+  getArgumentCompletions : ((String) -> JSValue?)?
+  handler : (String, ExtensionCommandContext) -> Promise[Unit]
+}
+pub fn ResolvedCommand::handler(Self, String, ExtensionCommandContext) -> Promise[Unit]
+
+pub(all) struct ResolvedPaths {
+  extensions : Array[ResolvedResource]
+  skills : Array[ResolvedResource]
+  prompts : Array[ResolvedResource]
+  themes : Array[ResolvedResource]
+}
+
+#external
+pub type ResolvedRequestAuth
+
+pub(all) struct ResolvedResource {
+  path : String
+  enabled : Bool
+  metadata : PathMetadata
+}
+
+pub(all) struct ResourceCollision {
+  resourceType : ResourceCollisionResourceType
+  name : String
+  winnerPath : String
+  loserPath : String
+  winnerSource : String?
+  loserSource : String?
+}
+
+pub(all) enum ResourceCollisionResourceType {
+  Extension
+  Skill
+  Prompt
+  Theme
+}
+
+pub(all) struct ResourceDiagnostic {
+  type_ : ResourceDiagnosticType
+  message : String
+  path : String?
+  collision : ResourceCollision?
+}
+
+pub(all) enum ResourceDiagnosticType {
+  Warning
+  Error_
+  Collision
+}
+
+pub(all) struct ResourceExtensionPaths {
+  skillPaths : Array[JSValue]?
+  promptPaths : Array[JSValue]?
+  themePaths : Array[JSValue]?
+}
+
+pub(all) struct ResourceLoader {
+  getExtensions : () -> LoadExtensionsResult
+  getSkills : () -> ResourceLoaderGetSkillsResult
+  getPrompts : () -> ResourceLoaderGetPromptsResult
+  getThemes : () -> ResourceLoaderGetThemesResult
+  getAgentsFiles : () -> ResourceLoaderGetAgentsFilesResult
+  getSystemPrompt : () -> String?
+  getSystemPromptSource : () -> JSValue?
+  getAppendSystemPrompt : () -> Array[String]
+  getAppendSystemPromptSources : () -> Array[JSValue]
+  extendResources : (ResourceExtensionPaths) -> Unit
+  reload : (ResourceLoaderReloadOptions?) -> Promise[Unit]
+}
+pub fn ResourceLoader::extendResources(Self, ResourceExtensionPaths) -> Unit
+pub fn ResourceLoader::getAgentsFiles(Self) -> ResourceLoaderGetAgentsFilesResult
+pub fn ResourceLoader::getAppendSystemPrompt(Self) -> Array[String]
+pub fn ResourceLoader::getAppendSystemPromptSources(Self) -> Array[JSValue]
+pub fn ResourceLoader::getExtensions(Self) -> LoadExtensionsResult
+pub fn ResourceLoader::getPrompts(Self) -> ResourceLoaderGetPromptsResult
+pub fn ResourceLoader::getSkills(Self) -> ResourceLoaderGetSkillsResult
+pub fn ResourceLoader::getSystemPrompt(Self) -> String?
+pub fn ResourceLoader::getSystemPromptSource(Self) -> JSValue?
+pub fn ResourceLoader::getThemes(Self) -> ResourceLoaderGetThemesResult
+pub fn ResourceLoader::reload(Self, ResourceLoaderReloadOptions?) -> Promise[Unit]
+
+pub(all) struct ResourceLoaderGetAgentsFilesResult {
+  agentsFiles : Array[JSValue]
+}
+
+pub(all) struct ResourceLoaderGetPromptsResult {
+  prompts : Array[PromptTemplate]
+  diagnostics : Array[ResourceDiagnostic]
+}
+
+pub(all) struct ResourceLoaderGetSkillsResult {
+  skills : Array[Skill]
+  diagnostics : Array[ResourceDiagnostic]
+}
+
+pub(all) struct ResourceLoaderGetThemesResult {
+  themes : Array[Theme]
+  diagnostics : Array[ResourceDiagnostic]
+}
+
+pub(all) struct ResourceLoaderReloadOptions {
+  resolveProjectTrust : ((JSValue) -> Promise[Bool])?
+}
+
+pub(all) struct ResourcesDiscoverEvent {
+  type_ : ResourcesDiscoverEventType
+  cwd : String
+  reason : ResourcesDiscoverEventReason
+}
+
+pub(all) enum ResourcesDiscoverEventReason {
+  Startup
+  Reload
+}
+
+pub(all) enum ResourcesDiscoverEventType {
+  Resources_discover
+}
+
+pub(all) struct ResourcesDiscoverResult {
+  skillPaths : Array[String]?
+  promptPaths : Array[String]?
+  themePaths : Array[String]?
+}
+
+#external
+pub type RetryCallbacks
+
+#external
+pub type RetryPolicy
+
+pub(all) struct RetrySettings {
+  enabled : Bool?
+  maxRetries : Double?
+  baseDelayMs : Double?
+  provider : ProviderRetrySettings?
+}
+
+#external
+pub type ReturnType
+
+#external
+pub type RpcClient
+pub fn RpcClient::abort(Self) -> Promise[Unit]
+pub fn RpcClient::abort_bash(Self) -> Promise[Unit]
+pub fn RpcClient::abort_retry(Self) -> Promise[Unit]
+pub fn RpcClient::bash(Self, String) -> Promise[BashResult]
+pub fn RpcClient::clear_queue(Self) -> Promise[JSValue]
+pub fn RpcClient::clone(Self) -> Promise[JSValue]
+pub fn RpcClient::collect_events(Self, Double?) -> Promise[Array[JsonAgentSessionEvent]]
+pub fn RpcClient::compact(Self, String?) -> Promise[CompactionResult[JSValue]]
+pub fn RpcClient::cycle_model(Self) -> Promise[JSValue?]
+pub fn RpcClient::cycle_thinking_level(Self) -> Promise[JSValue?]
+pub fn RpcClient::export_html(Self, String?) -> Promise[JSValue]
+pub fn RpcClient::follow_up(Self, String, Array[ImageContent]?) -> Promise[Unit]
+pub fn RpcClient::fork(Self, String) -> Promise[JSValue]
+pub fn RpcClient::get_available_models(Self) -> Promise[Array[ModelInfo]]
+pub fn RpcClient::get_available_thinking_levels(Self) -> Promise[Array[ThinkingLevel]]
+pub fn RpcClient::get_commands(Self) -> Promise[Array[RpcSlashCommand]]
+pub fn RpcClient::get_entries(Self, String?) -> Promise[JSValue]
+pub fn RpcClient::get_fork_messages(Self) -> Promise[Array[JSValue]]
+pub fn RpcClient::get_last_assistant_text(Self) -> Promise[String?]
+pub fn RpcClient::get_messages(Self) -> Promise[Array[AgentMessage]]
+pub fn RpcClient::get_session_stats(Self) -> Promise[SessionStats]
+pub fn RpcClient::get_state(Self) -> Promise[RpcSessionState]
+pub fn RpcClient::get_stderr(Self) -> String
+pub fn RpcClient::get_tree(Self) -> Promise[JSValue]
+pub fn RpcClient::new_session(Self, String?) -> Promise[JSValue]
+pub fn RpcClient::on_event(Self, (JsonAgentSessionEvent) -> Unit) -> () -> Unit
+pub fn RpcClient::prompt(Self, String, Array[ImageContent]?) -> Promise[Unit]
+pub fn RpcClient::prompt_and_wait(Self, String, Array[ImageContent]?, Double?) -> Promise[Array[JsonAgentSessionEvent]]
+pub fn RpcClient::set_auto_compaction(Self, Bool) -> Promise[Unit]
+pub fn RpcClient::set_auto_retry(Self, Bool) -> Promise[Unit]
+pub fn RpcClient::set_follow_up_mode(Self, RpcClientSetFollowUpModeMode) -> Promise[Unit]
+pub fn RpcClient::set_model(Self, String, String) -> Promise[JSValue]
+pub fn RpcClient::set_session_name(Self, String) -> Promise[Unit]
+pub fn RpcClient::set_steering_mode(Self, RpcClientSetSteeringModeMode) -> Promise[Unit]
+pub fn RpcClient::set_thinking_level(Self, ThinkingLevel) -> Promise[Unit]
+pub fn RpcClient::start(Self) -> Promise[Unit]
+pub fn RpcClient::steer(Self, String, Array[ImageContent]?) -> Promise[Unit]
+pub fn RpcClient::stop(Self) -> Promise[Unit]
+pub fn RpcClient::switch_session(Self, String) -> Promise[JSValue]
+pub fn RpcClient::wait_for_idle(Self, Double?) -> Promise[Unit]
+
+pub(all) struct RpcClientOptions {
+  cliPath : String?
+  cwd : String?
+  env : StringRecordOfString?
+  provider : String?
+  model : String?
+  args : Array[String]?
+}
+
+pub(all) enum RpcClientSetFollowUpModeMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum RpcClientSetSteeringModeMode {
+  All
+  One_at_a_time
+}
+
+pub(all) struct RpcSessionState {
+  model : Model[JSValue]?
+  thinkingLevel : ThinkingLevel
+  isStreaming : Bool
+  isCompacting : Bool
+  steeringMode : RpcSessionStateSteeringMode
+  followUpMode : RpcSessionStateFollowUpMode
+  sessionFile : String?
+  sessionId : String
+  sessionName : String?
+  autoCompactionEnabled : Bool
+  messageCount : Double
+  pendingMessageCount : Double
+}
+
+pub(all) enum RpcSessionStateFollowUpMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum RpcSessionStateSteeringMode {
+  All
+  One_at_a_time
+}
+
+pub(all) struct RpcSlashCommand {
+  name : String
+  description : String?
+  source : RpcSlashCommandSource
+  sourceInfo : SourceInfo
+}
+
+pub(all) enum RpcSlashCommandSource {
+  Extension
+  Prompt
+  Skill
+}
+
+#external
+pub type RunnerEmitEvent
+
+pub(all) struct ScopedModel {
+  model : Model[Api]
+  thinkingLevel : ThinkingLevel?
+}
+
+pub(all) struct ScopedModelItem {
+  model : Model[JSValue]
+  thinkingLevel : String?
+}
+
+#external
+pub type ScrollViewScrollbar
+
+#external
+pub type SelectList
+
+#external
+pub type SelectListTheme
+
+#external
+pub type SendMessageHandler
+
+#external
+pub type SendUserMessageHandler
+
+pub(all) struct SessionBeforeCompactEvent {
+  type_ : SessionBeforeCompactEventType
+  preparation : CompactionPreparation
+  branchEntries : Array[SessionEntry]
+  customInstructions : String?
+  reason : SessionBeforeCompactEventReason
+  willRetry : Bool
+  signal : AbortSignal
+}
+
+pub(all) enum SessionBeforeCompactEventReason {
+  Manual
+  Threshold
+  Overflow
+}
+
+pub(all) enum SessionBeforeCompactEventType {
+  Session_before_compact
+}
+
+pub(all) struct SessionBeforeCompactResult {
+  cancel : Bool?
+  compaction : CompactionResult[JSValue]?
+}
+
+pub(all) struct SessionBeforeForkEvent {
+  type_ : SessionBeforeForkEventType
+  entryId : String
+  position : SessionBeforeForkEventPosition
+}
+
+pub(all) enum SessionBeforeForkEventPosition {
+  Before
+  At
+}
+
+pub(all) enum SessionBeforeForkEventType {
+  Session_before_fork
+}
+
+pub(all) struct SessionBeforeForkResult {
+  cancel : Bool?
+  skipConversationRestore : Bool?
+}
+
+pub(all) struct SessionBeforeSwitchEvent {
+  type_ : SessionBeforeSwitchEventType
+  reason : SessionBeforeSwitchEventReason
+  targetSessionFile : String?
+}
+
+pub(all) enum SessionBeforeSwitchEventReason {
+  New
+  Resume
+}
+
+pub(all) enum SessionBeforeSwitchEventType {
+  Session_before_switch
+}
+
+pub(all) struct SessionBeforeSwitchResult {
+  cancel : Bool?
+}
+
+pub(all) struct SessionBeforeTreeEvent {
+  type_ : SessionBeforeTreeEventType
+  preparation : TreePreparation
+  signal : AbortSignal
+}
+
+pub(all) enum SessionBeforeTreeEventType {
+  Session_before_tree
+}
+
+pub(all) struct SessionBeforeTreeResult {
+  cancel : Bool?
+  summary : SessionBeforeTreeResultSummary?
+  customInstructions : String?
+  replaceInstructions : Bool?
+  label : String?
+}
+
+pub(all) struct SessionBeforeTreeResultSummary {
+  summary : String
+  details : JSValue?
+  usage : Usage?
+}
+
+pub(all) struct SessionCompactEvent {
+  type_ : SessionCompactEventType
+  compactionEntry : CompactionEntry[JSValue]
+  fromExtension : Bool
+  reason : SessionCompactEventReason
+  willRetry : Bool
+}
+
+pub(all) enum SessionCompactEventReason {
+  Manual
+  Threshold
+  Overflow
+}
+
+pub(all) enum SessionCompactEventType {
+  Session_compact
+}
+
+pub(all) struct SessionCompactFailedEvent {
+  type_ : SessionCompactFailedEventType
+  reason : SessionCompactFailedEventReason
+  errorMessage : String?
+  aborted : Bool
+  willRetry : Bool
+  fromExtension : Bool
+}
+
+pub(all) enum SessionCompactFailedEventReason {
+  Manual
+  Threshold
+  Overflow
+}
+
+pub(all) enum SessionCompactFailedEventType {
+  Session_compact_failed
+}
+
+pub(all) struct SessionContext {
+  messages : Array[AgentMessage]
+  thinkingLevel : String
+  model : SessionContextModel?
+}
+
+pub(all) struct SessionContextModel {
+  provider : String
+  modelId : String
+}
+
+pub(all) enum SessionEntry {
+  SessionMessageEntryValue(SessionMessageEntry)
+  ThinkingLevelChangeEntryValue(ThinkingLevelChangeEntry)
+  ModelChangeEntryValue(ModelChangeEntry)
+  CompactionEntryValue(CompactionEntry[JSValue])
+  BranchSummaryEntryValue(BranchSummaryEntry[JSValue])
+  CustomEntryValue(CustomEntry[JSValue])
+  CustomMessageEntryValue(CustomMessageEntry[JSValue])
+  LabelEntryValue(LabelEntry)
+  SessionInfoEntryValue(SessionInfoEntry)
+}
+
+pub(all) struct SessionEntryBase {
+  type_ : String
+  id : String
+  parentId : String?
+  timestamp : String
+}
+
+#external
+pub type SessionEvent
+
+pub(all) struct SessionHeader {
+  type_ : SessionHeaderType
+  version : Double?
+  id : String
+  timestamp : String
+  cwd : String
+  parentSession : String?
+}
+
+pub(all) enum SessionHeaderType {
+  Session
+}
+
+pub(all) struct SessionInfo {
+  path : String
+  id : String
+  cwd : String
+  name : String?
+  parentSessionPath : String?
+  created : Date
+  modified : Date
+  messageCount : Double
+  firstMessage : String
+  allMessagesText : String
+}
+
+pub(all) struct SessionInfoChangedEvent {
+  type_ : SessionInfoChangedEventType
+  name : String?
+}
+
+pub(all) enum SessionInfoChangedEventType {
+  Session_info_changed
+}
+
+pub(all) struct SessionInfoEntry {
+  type_ : SessionInfoEntryType
+  name : String?
+  id : String
+  parentId : String?
+  timestamp : String
+}
+
+pub(all) enum SessionInfoEntryType {
+  Session_info
+}
+
+#external
+pub type SessionList
+
+#external
+pub type SessionListProgress
+
+#external
+pub type SessionManager
+pub fn SessionManager::append_compaction(Self, String, String, Double, JSValue?, Bool?, Usage?) -> String
+pub fn SessionManager::append_custom_entry(Self, String, JSValue?) -> String
+pub fn SessionManager::append_custom_message_entry(Self, String, JSValue, Bool, JSValue?) -> String
+pub fn SessionManager::append_label_change(Self, String, String?) -> String
+pub fn SessionManager::append_message(Self, Auto_MessageValue_or_CustomMessageValue_or_BashExecutionMessageValue) -> String
+pub fn SessionManager::append_model_change(Self, String, String) -> String
+pub fn SessionManager::append_session_info(Self, String) -> String
+pub fn SessionManager::append_thinking_level_change(Self, String) -> String
+pub fn SessionManager::branch(Self, String) -> Unit
+pub fn SessionManager::branch_with_summary(Self, String?, String, JSValue?, Bool?, Usage?) -> String
+pub fn SessionManager::build_context_entries(Self) -> Array[SessionEntry]
+pub fn SessionManager::build_session_context(Self) -> SessionContext
+pub fn SessionManager::create_branched_session(Self, String) -> String?
+pub fn SessionManager::get_branch(Self, String?) -> Array[SessionEntry]
+pub fn SessionManager::get_children(Self, String) -> Array[SessionEntry]
+pub fn SessionManager::get_cwd(Self) -> String
+pub fn SessionManager::get_entries(Self) -> Array[SessionEntry]
+pub fn SessionManager::get_entry(Self, String) -> SessionEntry?
+pub fn SessionManager::get_header(Self) -> SessionHeader?
+pub fn SessionManager::get_label(Self, String) -> String?
+pub fn SessionManager::get_leaf_entry(Self) -> SessionEntry?
+pub fn SessionManager::get_leaf_id(Self) -> String?
+pub fn SessionManager::get_session_dir(Self) -> String
+pub fn SessionManager::get_session_file(Self) -> String?
+pub fn SessionManager::get_session_id(Self) -> String
+pub fn SessionManager::get_session_name(Self) -> String?
+pub fn SessionManager::get_tree(Self) -> Array[SessionTreeNode]
+pub fn SessionManager::is_persisted(Self) -> Bool
+pub fn SessionManager::new_session(Self, NewSessionOptions?) -> String?
+pub fn SessionManager::persist(Self, SessionEntry) -> Unit
+pub fn SessionManager::reset_leaf(Self) -> Unit
+pub fn SessionManager::set_session_file(Self, String) -> Unit
+pub fn SessionManager::uses_default_session_dir(Self) -> Bool
+
+pub(all) struct SessionMessageEntry {
+  type_ : SessionMessageEntryType
+  message : AgentMessage
+  id : String
+  parentId : String?
+  timestamp : String
+}
+
+pub(all) enum SessionMessageEntryType {
+  Message
+}
+
+#external
+pub type SessionSelectorComponent
+pub fn SessionSelectorComponent::focused(Self) -> Bool
+pub fn SessionSelectorComponent::get_session_list(Self) -> SessionList
+pub fn SessionSelectorComponent::get_session_selector_component_focused(Self) -> Bool
+pub fn SessionSelectorComponent::handle_input(Self, String) -> Unit
+pub fn SessionSelectorComponent::set_session_selector_component_focused(Self, Bool) -> Unit
+
+pub(all) struct SessionShutdownEvent {
+  type_ : SessionShutdownEventType
+  reason : SessionShutdownEventReason
+  targetSessionFile : String?
+}
+
+pub(all) enum SessionShutdownEventReason {
+  Quit
+  Reload
+  New
+  Resume
+  Fork
+}
+
+pub(all) enum SessionShutdownEventType {
+  Session_shutdown
+}
+
+pub(all) struct SessionStartEvent {
+  type_ : SessionStartEventType
+  reason : SessionStartEventReason
+  previousSessionFile : String?
+}
+
+pub(all) enum SessionStartEventReason {
+  Startup
+  Reload
+  New
+  Resume
+  Fork
+}
+
+pub(all) enum SessionStartEventType {
+  Session_start
+}
+
+pub(all) struct SessionStats {
+  sessionFile : String?
+  sessionId : String
+  userMessages : Double
+  assistantMessages : Double
+  toolCalls : Double
+  toolResults : Double
+  totalMessages : Double
+  tokens : SessionStatsTokens
+  cost : Double
+  contextUsage : ContextUsage?
+}
+
+pub(all) struct SessionStatsTokens {
+  input : Double
+  output : Double
+  cacheRead : Double
+  cacheWrite : Double
+  total : Double
+}
+
+pub(all) struct SessionTreeEvent {
+  type_ : SessionTreeEventType
+  newLeafId : String?
+  oldLeafId : String?
+  summaryEntry : BranchSummaryEntry[JSValue]?
+  fromExtension : Bool?
+}
+
+pub(all) enum SessionTreeEventType {
+  Session_tree
+}
+
+pub(all) struct SessionTreeNode {
+  entry : JSValue
+  children : Array[SessionTreeNode]
+  label : String?
+  labelTimestamp : String?
+}
+
+#external
+pub type SessionsLoader
+
+#external
+pub type Set
+
+#external
+pub type SetActiveToolsHandler
+
+#external
+pub type SetLabelHandler
+
+#external
+pub type SetModelHandler
+
+#external
+pub type SetSessionNameHandler
+
+#external
+pub type SetThinkingLevelHandler
+
+pub(all) struct Settings {
+  lastChangelogVersion : String?
+  defaultProvider : String?
+  defaultModel : String?
+  defaultThinkingLevel : ThinkingLevel?
+  modelThinkingLevels : StringRecordOfThinkingLevel?
+  transport : TransportSetting?
+  steeringMode : SettingsSteeringMode?
+  followUpMode : SettingsFollowUpMode?
+  theme : String?
+  compaction : CompactionSettings?
+  branchSummary : BranchSummarySettings?
+  retry : RetrySettings?
+  hideThinkingBlock : Bool?
+  showCacheMissNotices : Bool?
+  externalEditor : String?
+  shellPath : String?
+  quietStartup : Bool?
+  defaultProjectTrust : DefaultProjectTrust?
+  shellCommandPrefix : String?
+  npmCommand : Array[String]?
+  collapseChangelog : Bool?
+  enableInstallTelemetry : Bool?
+  enableAnalytics : Bool?
+  trackingId : String?
+  packages : Array[PackageSource]?
+  extensions : Array[String]?
+  skills : Array[String]?
+  prompts : Array[String]?
+  themes : Array[String]?
+  enableSkillCommands : Bool?
+  terminal : TerminalSettings?
+  images : ImageSettings?
+  enabledModels : Array[String]?
+  defaultTools : Array[String]?
+  doubleEscapeAction : SettingsDoubleEscapeAction?
+  treeFilterMode : SettingsTreeFilterMode?
+  thinkingBudgets : ThinkingBudgetsSettings?
+  editorPaddingX : Double?
+  outputPad : SettingsOutputPad?
+  autocompleteMaxVisible : Double?
+  showHardwareCursor : Bool?
+  markdown : MarkdownSettings?
+  warnings : WarningSettings?
+  sessionDir : String?
+  httpProxy : String?
+  httpIdleTimeoutMs : Double?
+  websocketConnectTimeoutMs : Double?
+  tuiMode : RendererTuiMode?
+  fullscreenExitOutput : FullscreenExitOutput?
+  fullscreenScrollbar : ScrollViewScrollbar?
+  fullscreenCopyOnSelect : Bool?
+}
+
+pub(all) struct SettingsCallbacks {
+  onAutoCompactChange : (Bool) -> Unit
+  onShowImagesChange : (Bool) -> Unit
+  onImageWidthCellsChange : (Double) -> Unit
+  onAutoResizeImagesChange : (Bool) -> Unit
+  onBlockImagesChange : (Bool) -> Unit
+  onEnableSkillCommandsChange : (Bool) -> Unit
+  onSteeringModeChange : (String) -> Unit
+  onFollowUpModeChange : (String) -> Unit
+  onTransportChange : (Transport) -> Unit
+  onHttpIdleTimeoutMsChange : (Double) -> Unit
+  onModelThinkingLevelChange : (String, String, ThinkingLevel) -> Unit
+  onModelThinkingLevelRemove : (String, String) -> Unit
+  onThemeChange : (String) -> Unit
+  onThemePreview : ((String) -> Unit)?
+  onHideThinkingBlockChange : (Bool) -> Unit
+  onMermaidRenderingModeChange : (MermaidRenderingMode) -> Unit
+  onShowCacheMissNoticesChange : (Bool) -> Unit
+  onCollapseChangelogChange : (Bool) -> Unit
+  onEnableInstallTelemetryChange : (Bool) -> Unit
+  onDoubleEscapeActionChange : (String) -> Unit
+  onTreeFilterModeChange : (String) -> Unit
+  onShowHardwareCursorChange : (Bool) -> Unit
+  onEditorPaddingXChange : (Double) -> Unit
+  onOutputPadChange : (Int) -> Unit
+  onAutocompleteMaxVisibleChange : (Double) -> Unit
+  onQuietStartupChange : (Bool) -> Unit
+  onDefaultProjectTrustChange : (String) -> Unit
+  onClearOnShrinkChange : (Bool) -> Unit
+  onShowTerminalProgressChange : (Bool) -> Unit
+  onTuiModeChange : (RendererTuiMode) -> Unit
+  onFullscreenExitOutputChange : (String) -> Unit
+  onFullscreenScrollbarChange : (ScrollViewScrollbar) -> Unit
+  onFullscreenCopyOnSelectChange : (Bool) -> Unit
+  onWarningsChange : (WarningSettings) -> Unit
+  onCancel : () -> Unit
+}
+pub fn SettingsCallbacks::onAutoCompactChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onAutoResizeImagesChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onAutocompleteMaxVisibleChange(Self, Double) -> Unit
+pub fn SettingsCallbacks::onBlockImagesChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onCancel(Self) -> Unit
+pub fn SettingsCallbacks::onClearOnShrinkChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onCollapseChangelogChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onDefaultProjectTrustChange(Self, String) -> Unit
+pub fn SettingsCallbacks::onDoubleEscapeActionChange(Self, String) -> Unit
+pub fn SettingsCallbacks::onEditorPaddingXChange(Self, Double) -> Unit
+pub fn SettingsCallbacks::onEnableInstallTelemetryChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onEnableSkillCommandsChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onFollowUpModeChange(Self, String) -> Unit
+pub fn SettingsCallbacks::onFullscreenCopyOnSelectChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onFullscreenExitOutputChange(Self, String) -> Unit
+pub fn SettingsCallbacks::onFullscreenScrollbarChange(Self, ScrollViewScrollbar) -> Unit
+pub fn SettingsCallbacks::onHideThinkingBlockChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onHttpIdleTimeoutMsChange(Self, Double) -> Unit
+pub fn SettingsCallbacks::onImageWidthCellsChange(Self, Double) -> Unit
+pub fn SettingsCallbacks::onMermaidRenderingModeChange(Self, MermaidRenderingMode) -> Unit
+pub fn SettingsCallbacks::onModelThinkingLevelChange(Self, String, String, ThinkingLevel) -> Unit
+pub fn SettingsCallbacks::onModelThinkingLevelRemove(Self, String, String) -> Unit
+pub fn SettingsCallbacks::onOutputPadChange(Self, Int) -> Unit
+pub fn SettingsCallbacks::onQuietStartupChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onShowCacheMissNoticesChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onShowHardwareCursorChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onShowImagesChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onShowTerminalProgressChange(Self, Bool) -> Unit
+pub fn SettingsCallbacks::onSteeringModeChange(Self, String) -> Unit
+pub fn SettingsCallbacks::onThemeChange(Self, String) -> Unit
+pub fn SettingsCallbacks::onTransportChange(Self, Transport) -> Unit
+pub fn SettingsCallbacks::onTreeFilterModeChange(Self, String) -> Unit
+pub fn SettingsCallbacks::onTuiModeChange(Self, RendererTuiMode) -> Unit
+pub fn SettingsCallbacks::onWarningsChange(Self, WarningSettings) -> Unit
+
+pub(all) enum SettingsCallbacksOnDoubleEscapeActionChangeArg0 {
+  Fork
+  Tree
+  None
+}
+
+pub(all) enum SettingsCallbacksOnFollowUpModeChangeArg0 {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsCallbacksOnOutputPadChangeArg0 {
+  N0
+  N1
+}
+
+pub(all) enum SettingsCallbacksOnSteeringModeChangeArg0 {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsCallbacksOnTreeFilterModeChangeArg0 {
+  Default
+  No_tools
+  User_only
+  Labeled_only
+  All
+}
+
+pub(all) struct SettingsConfig {
+  autoCompact : Bool
+  defaultModel : String
+  currentModel : Model[JSValue]?
+  availableDefaultModels : Array[Model[JSValue]]
+  showImages : Bool
+  imageWidthCells : Double
+  autoResizeImages : Bool
+  blockImages : Bool
+  enableSkillCommands : Bool
+  steeringMode : SettingsConfigSteeringMode
+  followUpMode : SettingsConfigFollowUpMode
+  transport : Transport
+  httpIdleTimeoutMs : Double
+  thinkingLevel : ThinkingLevel
+  availableThinkingLevels : Array[ThinkingLevel]
+  modelThinkingLevels : StringRecordOfThinkingLevel
+  currentTheme : String
+  terminalTheme : TerminalTheme
+  availableThemes : Array[String]
+  hideThinkingBlock : Bool
+  mermaidRenderingMode : MermaidRenderingMode
+  showCacheMissNotices : Bool
+  collapseChangelog : Bool
+  enableInstallTelemetry : Bool
+  doubleEscapeAction : SettingsConfigDoubleEscapeAction
+  treeFilterMode : SettingsConfigTreeFilterMode
+  showHardwareCursor : Bool
+  editorPaddingX : Double
+  outputPad : SettingsConfigOutputPad
+  autocompleteMaxVisible : Double
+  quietStartup : Bool
+  defaultProjectTrust : DefaultProjectTrust
+  clearOnShrink : Bool
+  showTerminalProgress : Bool
+  tuiMode : RendererTuiMode
+  fullscreenExitOutput : FullscreenExitOutput
+  fullscreenScrollbar : ScrollViewScrollbar
+  fullscreenCopyOnSelect : Bool
+  warnings : WarningSettings
+}
+
+pub(all) enum SettingsConfigDoubleEscapeAction {
+  Fork
+  Tree
+  None
+}
+
+pub(all) enum SettingsConfigFollowUpMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsConfigOutputPad {
+  N0
+  N1
+}
+
+pub(all) enum SettingsConfigSteeringMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsConfigTreeFilterMode {
+  Default
+  No_tools
+  User_only
+  Labeled_only
+  All
+}
+
+pub(all) enum SettingsDoubleEscapeAction {
+  Fork
+  Tree
+  None
+}
+
+pub(all) struct SettingsError {
+  scope : SettingsScope
+  path : String?
+  error : Error_
+}
+
+pub(all) enum SettingsFollowUpMode {
+  All
+  One_at_a_time
+}
+
+#external
+pub type SettingsList
+
+#external
+pub type SettingsListTheme
+
+#external
+pub type SettingsManager
+pub fn SettingsManager::apply_overrides(Self, SettingsPartial) -> Unit
+pub fn SettingsManager::drain_errors(Self) -> Array[SettingsError]
+pub fn SettingsManager::flush(Self) -> Promise[Unit]
+pub fn SettingsManager::get_all_model_thinking_levels(Self) -> StringRecordOfThinkingLevel
+pub fn SettingsManager::get_autocomplete_max_visible(Self) -> Double
+pub fn SettingsManager::get_block_images(Self) -> Bool
+pub fn SettingsManager::get_branch_summary_settings(Self) -> JSValue
+pub fn SettingsManager::get_branch_summary_skip_prompt(Self) -> Bool
+pub fn SettingsManager::get_clear_on_shrink(Self) -> Bool
+pub fn SettingsManager::get_code_block_indent(Self) -> String
+pub fn SettingsManager::get_collapse_changelog(Self) -> Bool
+pub fn SettingsManager::get_compaction_enabled(Self) -> Bool
+pub fn SettingsManager::get_compaction_keep_recent_tokens(Self) -> Double
+pub fn SettingsManager::get_compaction_reserve_tokens(Self) -> Double
+pub fn SettingsManager::get_compaction_settings(Self) -> JSValue
+pub fn SettingsManager::get_default_model(Self) -> String?
+pub fn SettingsManager::get_default_project_trust(Self) -> DefaultProjectTrust
+pub fn SettingsManager::get_default_provider(Self) -> String?
+pub fn SettingsManager::get_default_thinking_level(Self) -> ThinkingLevel?
+pub fn SettingsManager::get_default_tools(Self) -> Array[String]?
+pub fn SettingsManager::get_double_escape_action(Self) -> SettingsManagerGetDoubleEscapeActionReturn
+pub fn SettingsManager::get_editor_padding_x(Self) -> Double
+pub fn SettingsManager::get_enable_analytics(Self) -> Bool
+pub fn SettingsManager::get_enable_install_telemetry(Self) -> Bool
+pub fn SettingsManager::get_enable_skill_commands(Self) -> Bool
+pub fn SettingsManager::get_enabled_models(Self) -> Array[String]?
+pub fn SettingsManager::get_extension_paths(Self) -> Array[String]
+pub fn SettingsManager::get_external_editor_command(Self) -> String
+pub fn SettingsManager::get_follow_up_mode(Self) -> SettingsManagerGetFollowUpModeReturn
+pub fn SettingsManager::get_fullscreen_copy_on_select(Self) -> Bool
+pub fn SettingsManager::get_fullscreen_exit_output(Self) -> FullscreenExitOutput
+pub fn SettingsManager::get_fullscreen_scrollbar(Self) -> ScrollViewScrollbar
+pub fn SettingsManager::get_global_settings(Self) -> Settings
+pub fn SettingsManager::get_hide_thinking_block(Self) -> Bool
+pub fn SettingsManager::get_http_idle_timeout_ms(Self) -> Double
+pub fn SettingsManager::get_image_auto_resize(Self) -> Bool
+pub fn SettingsManager::get_image_width_cells(Self) -> Double
+pub fn SettingsManager::get_last_changelog_version(Self) -> String?
+pub fn SettingsManager::get_mermaid_rendering_mode(Self) -> MermaidRenderingMode
+pub fn SettingsManager::get_model_thinking_level(Self, String, String) -> ThinkingLevel?
+pub fn SettingsManager::get_npm_command(Self) -> Array[String]?
+pub fn SettingsManager::get_output_pad(Self) -> SettingsManagerGetOutputPadReturn
+pub fn SettingsManager::get_packages(Self) -> Array[PackageSource]
+pub fn SettingsManager::get_project_settings(Self) -> Settings
+pub fn SettingsManager::get_prompt_template_paths(Self) -> Array[String]
+pub fn SettingsManager::get_provider_retry_settings(Self) -> JSValue
+pub fn SettingsManager::get_quiet_startup(Self) -> Bool
+pub fn SettingsManager::get_retry_enabled(Self) -> Bool
+pub fn SettingsManager::get_retry_settings(Self) -> JSValue
+pub fn SettingsManager::get_session_dir(Self) -> String?
+pub fn SettingsManager::get_shell_command_prefix(Self) -> String?
+pub fn SettingsManager::get_shell_path(Self) -> String?
+pub fn SettingsManager::get_show_cache_miss_notices(Self) -> Bool
+pub fn SettingsManager::get_show_hardware_cursor(Self) -> Bool
+pub fn SettingsManager::get_show_images(Self) -> Bool
+pub fn SettingsManager::get_show_terminal_progress(Self) -> Bool
+pub fn SettingsManager::get_skill_paths(Self) -> Array[String]
+pub fn SettingsManager::get_steering_mode(Self) -> SettingsManagerGetSteeringModeReturn
+pub fn SettingsManager::get_terminal_capability_overrides(Self) -> Partial
+pub fn SettingsManager::get_theme(Self) -> String?
+pub fn SettingsManager::get_theme_paths(Self) -> Array[String]
+pub fn SettingsManager::get_theme_setting(Self) -> String?
+pub fn SettingsManager::get_thinking_budgets(Self) -> ThinkingBudgetsSettings?
+pub fn SettingsManager::get_tracking_id(Self) -> String?
+pub fn SettingsManager::get_transport(Self) -> TransportSetting
+pub fn SettingsManager::get_tree_filter_mode(Self) -> SettingsManagerGetTreeFilterModeReturn
+pub fn SettingsManager::get_tui_mode(Self) -> RendererTuiMode
+pub fn SettingsManager::get_warnings(Self) -> WarningSettings
+pub fn SettingsManager::get_web_socket_connect_timeout_ms(Self) -> Double?
+pub fn SettingsManager::is_project_trusted(Self) -> Bool
+pub fn SettingsManager::reload(Self) -> Promise[Unit]
+pub fn SettingsManager::remove_model_thinking_level(Self, String, String) -> Unit
+pub fn SettingsManager::set_autocomplete_max_visible(Self, Double) -> Unit
+pub fn SettingsManager::set_block_images(Self, Bool) -> Unit
+pub fn SettingsManager::set_clear_on_shrink(Self, Bool) -> Unit
+pub fn SettingsManager::set_collapse_changelog(Self, Bool) -> Unit
+pub fn SettingsManager::set_compaction_enabled(Self, Bool) -> Unit
+pub fn SettingsManager::set_default_model(Self, String) -> Unit
+pub fn SettingsManager::set_default_model_and_provider(Self, String, String) -> Unit
+pub fn SettingsManager::set_default_project_trust(Self, DefaultProjectTrust) -> Unit
+pub fn SettingsManager::set_default_provider(Self, String) -> Unit
+pub fn SettingsManager::set_default_thinking_level(Self, ThinkingLevel) -> Unit
+pub fn SettingsManager::set_double_escape_action(Self, SettingsManagerSetDoubleEscapeActionAction) -> Unit
+pub fn SettingsManager::set_editor_padding_x(Self, Double) -> Unit
+pub fn SettingsManager::set_enable_analytics(Self, Bool) -> Unit
+pub fn SettingsManager::set_enable_install_telemetry(Self, Bool) -> Unit
+pub fn SettingsManager::set_enable_skill_commands(Self, Bool) -> Unit
+pub fn SettingsManager::set_enabled_models(Self, Array[String]?) -> Unit
+pub fn SettingsManager::set_extension_paths(Self, Array[String]) -> Unit
+pub fn SettingsManager::set_follow_up_mode(Self, SettingsManagerSetFollowUpModeMode) -> Unit
+pub fn SettingsManager::set_fullscreen_copy_on_select(Self, Bool) -> Unit
+pub fn SettingsManager::set_fullscreen_exit_output(Self, FullscreenExitOutput) -> Unit
+pub fn SettingsManager::set_fullscreen_scrollbar(Self, ScrollViewScrollbar) -> Unit
+pub fn SettingsManager::set_hide_thinking_block(Self, Bool) -> Unit
+pub fn SettingsManager::set_http_idle_timeout_ms(Self, Double) -> Unit
+pub fn SettingsManager::set_image_auto_resize(Self, Bool) -> Unit
+pub fn SettingsManager::set_image_width_cells(Self, Double) -> Unit
+pub fn SettingsManager::set_last_changelog_version(Self, String) -> Unit
+pub fn SettingsManager::set_mermaid_rendering_mode(Self, MermaidRenderingMode) -> Unit
+pub fn SettingsManager::set_model_thinking_level(Self, String, String, ThinkingLevel) -> Unit
+pub fn SettingsManager::set_npm_command(Self, Array[String]?) -> Unit
+pub fn SettingsManager::set_output_pad(Self, SettingsManagerSetOutputPadPadding) -> Unit
+pub fn SettingsManager::set_packages(Self, Array[PackageSource]) -> Unit
+pub fn SettingsManager::set_project_extension_paths(Self, Array[String]) -> Unit
+pub fn SettingsManager::set_project_packages(Self, Array[PackageSource]) -> Unit
+pub fn SettingsManager::set_project_prompt_template_paths(Self, Array[String]) -> Unit
+pub fn SettingsManager::set_project_skill_paths(Self, Array[String]) -> Unit
+pub fn SettingsManager::set_project_theme_paths(Self, Array[String]) -> Unit
+pub fn SettingsManager::set_project_trusted(Self, Bool) -> Unit
+pub fn SettingsManager::set_prompt_template_paths(Self, Array[String]) -> Unit
+pub fn SettingsManager::set_quiet_startup(Self, Bool) -> Unit
+pub fn SettingsManager::set_retry_enabled(Self, Bool) -> Unit
+pub fn SettingsManager::set_shell_command_prefix(Self, String?) -> Unit
+pub fn SettingsManager::set_shell_path(Self, String?) -> Unit
+pub fn SettingsManager::set_show_cache_miss_notices(Self, Bool) -> Unit
+pub fn SettingsManager::set_show_hardware_cursor(Self, Bool) -> Unit
+pub fn SettingsManager::set_show_images(Self, Bool) -> Unit
+pub fn SettingsManager::set_show_terminal_progress(Self, Bool) -> Unit
+pub fn SettingsManager::set_skill_paths(Self, Array[String]) -> Unit
+pub fn SettingsManager::set_steering_mode(Self, SettingsManagerSetSteeringModeMode) -> Unit
+pub fn SettingsManager::set_theme(Self, String) -> Unit
+pub fn SettingsManager::set_theme_paths(Self, Array[String]) -> Unit
+pub fn SettingsManager::set_transport(Self, TransportSetting) -> Unit
+pub fn SettingsManager::set_tree_filter_mode(Self, SettingsManagerSetTreeFilterModeMode) -> Unit
+pub fn SettingsManager::set_tui_mode(Self, RendererTuiMode) -> Unit
+pub fn SettingsManager::set_warnings(Self, WarningSettings) -> Unit
+
+pub(all) struct SettingsManagerCreateOptions {
+  projectTrusted : Bool?
+}
+
+pub(all) enum SettingsManagerGetDoubleEscapeActionReturn {
+  Fork
+  Tree
+  None
+}
+
+pub(all) enum SettingsManagerGetFollowUpModeReturn {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsManagerGetOutputPadReturn {
+  N0
+  N1
+}
+
+pub(all) enum SettingsManagerGetSteeringModeReturn {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsManagerGetTreeFilterModeReturn {
+  Default
+  No_tools
+  User_only
+  Labeled_only
+  All
+}
+
+pub(all) enum SettingsManagerSetDoubleEscapeActionAction {
+  Fork
+  Tree
+  None
+}
+
+pub(all) enum SettingsManagerSetFollowUpModeMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsManagerSetOutputPadPadding {
+  N0
+  N1
+}
+
+pub(all) enum SettingsManagerSetSteeringModeMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsManagerSetTreeFilterModeMode {
+  Default
+  No_tools
+  User_only
+  Labeled_only
+  All
+}
+
+pub(all) enum SettingsOutputPad {
+  N0
+  N1
+}
+
+pub(all) struct SettingsPartial {
+  lastChangelogVersion : String?
+  defaultProvider : String?
+  defaultModel : String?
+  defaultThinkingLevel : ThinkingLevel?
+  modelThinkingLevels : StringRecordOfThinkingLevel?
+  transport : TransportSetting?
+  steeringMode : SettingsPartialSteeringMode?
+  followUpMode : SettingsPartialFollowUpMode?
+  theme : String?
+  compaction : CompactionSettings?
+  branchSummary : BranchSummarySettings?
+  retry : RetrySettings?
+  hideThinkingBlock : Bool?
+  showCacheMissNotices : Bool?
+  externalEditor : String?
+  shellPath : String?
+  quietStartup : Bool?
+  defaultProjectTrust : DefaultProjectTrust?
+  shellCommandPrefix : String?
+  npmCommand : Array[String]?
+  collapseChangelog : Bool?
+  enableInstallTelemetry : Bool?
+  enableAnalytics : Bool?
+  trackingId : String?
+  packages : Array[PackageSource]?
+  extensions : Array[String]?
+  skills : Array[String]?
+  prompts : Array[String]?
+  themes : Array[String]?
+  enableSkillCommands : Bool?
+  terminal : TerminalSettings?
+  images : ImageSettings?
+  enabledModels : Array[String]?
+  defaultTools : Array[String]?
+  doubleEscapeAction : SettingsPartialDoubleEscapeAction?
+  treeFilterMode : SettingsPartialTreeFilterMode?
+  thinkingBudgets : ThinkingBudgetsSettings?
+  editorPaddingX : Double?
+  outputPad : SettingsPartialOutputPad?
+  autocompleteMaxVisible : Double?
+  showHardwareCursor : Bool?
+  markdown : MarkdownSettings?
+  warnings : WarningSettings?
+  sessionDir : String?
+  httpProxy : String?
+  httpIdleTimeoutMs : Double?
+  websocketConnectTimeoutMs : Double?
+  tuiMode : RendererTuiMode?
+  fullscreenExitOutput : FullscreenExitOutput?
+  fullscreenScrollbar : ScrollViewScrollbar?
+  fullscreenCopyOnSelect : Bool?
+}
+
+pub(all) enum SettingsPartialDoubleEscapeAction {
+  Fork
+  Tree
+  None
+}
+
+pub(all) enum SettingsPartialFollowUpMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsPartialOutputPad {
+  N0
+  N1
+}
+
+pub(all) enum SettingsPartialSteeringMode {
+  All
+  One_at_a_time
+}
+
+pub(all) enum SettingsPartialTreeFilterMode {
+  Default
+  No_tools
+  User_only
+  Labeled_only
+  All
+}
+
+#external
+pub type SettingsScope
+
+#external
+pub type SettingsSelectorComponent
+pub fn SettingsSelectorComponent::get_settings_list(Self) -> SettingsList
+
+pub(all) enum SettingsSteeringMode {
+  All
+  One_at_a_time
+}
+
+pub(all) struct SettingsStorage {
+  withLock : (SettingsScope, (String?) -> String?) -> Unit
+}
+pub fn SettingsStorage::withLock(Self, SettingsScope, (String?) -> String?) -> Unit
+
+pub(all) enum SettingsTreeFilterMode {
+  Default
+  No_tools
+  User_only
+  Labeled_only
+  All
+}
+
+pub(all) struct ShellConfig {
+  shell : String
+  args : Array[String]
+  commandTransport : ShellConfigCommandTransport?
+}
+
+pub(all) enum ShellConfigCommandTransport {
+  Argv
+  Stdin
+}
+
+#external
+pub type ShowImagesSelectorComponent
+pub fn ShowImagesSelectorComponent::get_select_list(Self) -> SelectList
+
+#external
+pub type ShutdownHandler
+
+#external
+pub type SimpleStreamOptions
+
+pub(all) struct Skill {
+  name : String
+  description : String
+  filePath : String
+  baseDir : String
+  sourceInfo : SourceInfo
+  disableModelInvocation : Bool
+}
+
+pub(all) struct SkillFrontmatter {
+  name : String?
+  description : String?
+  disable_model_invocation : Bool?
+}
+#alias("_[_]")
+pub fn SkillFrontmatter::index_get(Self, String) -> JSValue?
+#alias("_[_]=_")
+pub fn SkillFrontmatter::index_set(Self, String, JSValue) -> Unit
+
+#external
+pub type SkillInvocationMessageComponent
+pub fn SkillInvocationMessageComponent::invalidate(Self) -> Unit
+pub fn SkillInvocationMessageComponent::set_expanded(Self, Bool) -> Unit
+
+pub(all) struct SlashCommandInfo {
+  name : String
+  description : String?
+  source : SlashCommandSource
+  sourceInfo : SourceInfo
+}
+
+pub(all) enum SlashCommandSource {
+  Extension
+  Prompt
+  Skill
+}
+
+pub(all) struct SourceInfo {
+  path : String
+  source : String
+  scope : SourceScope
+  origin : SourceOrigin
+  baseDir : String?
+}
+
+#external
+pub type SourceOrigin
+
+#external
+pub type SourceScope
+
+#external
+pub type Static
+
+#external
+pub type StreamFn
+
+#external
+pub type StringRecordOfAgentTool
+
+#external
+pub type StringRecordOfString
+
+#external
+pub type StringRecordOfThinkingLevel
+
+#external
+pub type StringRecordOfUnknown
+
+#external
+pub type TDetails
+
+#external
+pub type TSchema
+
+#external
+pub type TState[CallStack, Visited]
+
+#external
+pub type TUI
+
+#external
+pub type TerminalInputHandler
+
+pub(all) struct TerminalSettings {
+  showImages : Bool?
+  imageWidthCells : Double?
+  clearOnShrink : Bool?
+  showTerminalProgress : Bool?
+  hyperlinks : Auto_BoolValue_or_TerminalSettingsHyperlinksMember1Value?
+  images : JSValue?
+  trueColor : Auto_BoolValue_or_TerminalSettingsTrueColorMember1Value?
+}
+
+pub(all) enum TerminalSettingsHyperlinksMember1 {
+  Auto
+}
+
+pub(all) enum TerminalSettingsImagesMember0 {
+  Kitty
+}
+
+pub(all) enum TerminalSettingsImagesMember1 {
+  Iterm2
+}
+
+pub(all) enum TerminalSettingsImagesMember2 {
+  Auto
+}
+
+pub(all) enum TerminalSettingsTrueColorMember1 {
+  Auto
+}
+
+#external
+pub type TerminalTheme
+
+#external
+pub type TextContent
+
+#external
+pub type Theme
+pub fn Theme::bg(Self, ThemeBg, String) -> String
+pub fn Theme::bold(Self, String) -> String
+pub fn Theme::fg(Self, ThemeColor, String) -> String
+pub fn Theme::get_bash_mode_border_color(Self) -> (String) -> String
+pub fn Theme::get_bg_ansi(Self, ThemeBg) -> String
+pub fn Theme::get_color_mode(Self) -> ColorMode
+pub fn Theme::get_fg_ansi(Self, ThemeColor) -> String
+pub fn Theme::get_theme_name(Self) -> String
+pub fn Theme::get_theme_source_info(Self) -> SourceInfo
+pub fn Theme::get_theme_source_path(Self) -> String
+pub fn Theme::get_thinking_border_color(Self, ThinkingLevel) -> (String) -> String
+pub fn Theme::inverse(Self, String) -> String
+pub fn Theme::italic(Self, String) -> String
+pub fn Theme::set_theme_source_info(Self, SourceInfo) -> Unit
+pub fn Theme::strikethrough(Self, String) -> String
+pub fn Theme::underline(Self, String) -> String
+
+#external
+pub type ThemeBg
+
+pub(all) enum ThemeColor {
+  Accent
+  Border
+  BorderAccent
+  BorderMuted
+  Success
+  Error_
+  Warning
+  Muted
+  Dim
+  Text
+  ThinkingText
+  ScrollbarTrack
+  ScrollbarThumb
+  SearchMatchText
+  UserMessageText
+  CustomMessageText
+  CustomMessageLabel
+  ToolTitle
+  ToolOutput
+  MdHeading
+  MdLink
+  MdLinkUrl
+  MdCode
+  MdCodeBlock
+  MdCodeBlockBorder
+  MdQuote
+  MdQuoteBorder
+  MdHr
+  MdListBullet
+  ToolDiffAdded
+  ToolDiffRemoved
+  ToolDiffContext
+  SyntaxComment
+  SyntaxKeyword
+  SyntaxFunction
+  SyntaxVariable
+  SyntaxString
+  SyntaxNumber
+  SyntaxType
+  SyntaxOperator
+  SyntaxPunctuation
+  ThinkingOff
+  ThinkingMinimal
+  ThinkingLow
+  ThinkingMedium
+  ThinkingHigh
+  ThinkingXhigh
+  ThinkingMax
+  BashMode
+}
+
+#external
+pub type ThemeSelectorComponent
+pub fn ThemeSelectorComponent::get_select_list(Self) -> SelectList
+
+pub(all) struct ThinkingBudgetsSettings {
+  minimal : Double?
+  low : Double?
+  medium : Double?
+  high : Double?
+}
+
+#external
+pub type ThinkingLevel
+
+pub(all) struct ThinkingLevelChangeEntry {
+  type_ : ThinkingLevelChangeEntryType
+  thinkingLevel : String
+  id : String
+  parentId : String?
+  timestamp : String
+}
+
+pub(all) enum ThinkingLevelChangeEntryType {
+  Thinking_level_change
+}
+
+pub(all) struct ThinkingLevelSelectEvent {
+  type_ : ThinkingLevelSelectEventType
+  level : ThinkingLevel
+  previousLevel : ThinkingLevel
+}
+
+pub(all) enum ThinkingLevelSelectEventType {
+  Thinking_level_select
+}
+
+#external
+pub type ThinkingSelectorComponent
+pub fn ThinkingSelectorComponent::focused(Self) -> Bool
+pub fn ThinkingSelectorComponent::get_select_list(Self) -> SelectList
+pub fn ThinkingSelectorComponent::get_thinking_selector_component_focused(Self) -> Bool
+pub fn ThinkingSelectorComponent::handle_input(Self, String) -> Unit
+pub fn ThinkingSelectorComponent::set_thinking_selector_component_focused(Self, Bool) -> Unit
+
+#external
+pub type Tool[TParameters]
+
+pub(all) enum ToolCallEvent {
+  BashToolCallEventValue(BashToolCallEvent)
+  PowerShellToolCallEventValue(PowerShellToolCallEvent)
+  ReadToolCallEventValue(ReadToolCallEvent)
+  EditToolCallEventValue(EditToolCallEvent)
+  WriteToolCallEventValue(WriteToolCallEvent)
+  GrepToolCallEventValue(GrepToolCallEvent)
+  FindToolCallEventValue(FindToolCallEvent)
+  LsToolCallEventValue(LsToolCallEvent)
+  CustomToolCallEventValue(CustomToolCallEvent)
+}
+
+pub(all) struct ToolCallEventResult {
+  block : Bool?
+  reason : String?
+  terminate : Bool?
+}
+
+pub(all) struct ToolDefinition[TParams, TDetails, TState] {
+  name : String
+  label : String
+  description : String
+  promptSnippet : String?
+  promptGuidelines : Array[String]?
+  parameters : TSchema
+  constrainedSampling : Auto_FalseValue_or_ConstrainedSamplingConfigValue?
+  renderShell : ToolDefinitionRenderShell?
+  prepareArguments : ((JSValue) -> Static)?
+  executionMode : ToolExecutionMode?
+  execute : (String, Static, AbortSignal?, AgentToolUpdateCallback?, ExtensionContext) -> Promise[AgentToolResult[TDetails]]
+  renderCall : ((Static, Theme, ToolRenderContext[TState, Static]) -> Component)?
+  renderResult : ((AgentToolResult[TDetails], ToolRenderResultOptions, Theme, ToolRenderContext[TState, Static]) -> Component)?
+}
+pub fn[TParams, TDetails, TState] ToolDefinition::execute(Self[TParams, TDetails, TState], String, Static, AbortSignal?, AgentToolUpdateCallback?, ExtensionContext) -> Promise[AgentToolResult[TDetails]]
+
+#alias(ToolInfo)
+#external
+pub type ToolDefinitionPickNameDescriptionParametersPromptGuidelines
+
+pub(all) enum ToolDefinitionRenderShell {
+  Default
+  Self
+}
+
+#external
+pub type ToolExecutionComponent
+pub fn ToolExecutionComponent::handle_mouse(Self, TuiMouseEvent) -> ReturnType
+pub fn ToolExecutionComponent::invalidate(Self) -> Unit
+pub fn ToolExecutionComponent::mark_execution_started(Self) -> Unit
+pub fn ToolExecutionComponent::render(Self, Double) -> Array[String]
+pub fn ToolExecutionComponent::set_args_complete(Self) -> Unit
+pub fn ToolExecutionComponent::set_expanded(Self, Bool) -> Unit
+pub fn ToolExecutionComponent::set_image_width_cells(Self, Double) -> Unit
+pub fn ToolExecutionComponent::set_show_images(Self, Bool) -> Unit
+pub fn ToolExecutionComponent::update_args(Self, JSValue) -> Unit
+pub fn ToolExecutionComponent::update_result(Self, ToolExecutionComponentUpdateResultResult, Bool?) -> Unit
+
+pub(all) struct ToolExecutionComponentUpdateResultResult {
+  content : Array[JSValue]
+  details : JSValue?
+  isError : Bool
+}
+
+pub(all) struct ToolExecutionEndEvent {
+  type_ : ToolExecutionEndEventType
+  toolCallId : String
+  toolName : String
+  result : JSValue
+  isError : Bool
+}
+
+pub(all) enum ToolExecutionEndEventType {
+  Tool_execution_end
+}
+
+pub(all) enum ToolExecutionMode {
+  Sequential
+  Parallel
+}
+
+pub(all) struct ToolExecutionOptions {
+  showImages : Bool?
+  imageWidthCells : Double?
+}
+
+pub(all) struct ToolExecutionStartEvent {
+  type_ : ToolExecutionStartEventType
+  toolCallId : String
+  toolName : String
+  args : JSValue
+}
+
+pub(all) enum ToolExecutionStartEventType {
+  Tool_execution_start
+}
+
+pub(all) struct ToolExecutionUpdateEvent {
+  type_ : ToolExecutionUpdateEventType
+  toolCallId : String
+  toolName : String
+  args : JSValue
+  partialResult : JSValue
+}
+
+pub(all) enum ToolExecutionUpdateEventType {
+  Tool_execution_update
+}
+
+pub(all) struct ToolRenderContext[TState, TArgs] {
+  args : TArgs
+  toolCallId : String
+  invalidate : () -> Unit
+  lastComponent : Component?
+  state : TState
+  cwd : String
+  executionStarted : Bool
+  argsComplete : Bool
+  isPartial : Bool
+  expanded : Bool
+  showImages : Bool
+  isError : Bool
+}
+pub fn[TState, TArgs] ToolRenderContext::invalidate(Self[TState, TArgs]) -> Unit
+
+pub(all) struct ToolRenderResultOptions {
+  expanded : Bool
+  isPartial : Bool
+}
+
+pub(all) struct ToolRenderers {
+  renderShell : ToolRenderersRenderShell?
+  renderCall : ((JSValue, Theme, ToolRenderContext[JSValue, JSValue]) -> Component)?
+  renderResult : ((AgentToolResult[JSValue], ToolRenderResultOptions, Theme, ToolRenderContext[JSValue, JSValue]) -> Component)?
+}
+
+pub(all) enum ToolRenderersRenderShell {
+  Default
+  Self
+}
+
+pub(all) enum ToolResultEvent {
+  BashToolResultEventValue(BashToolResultEvent)
+  PowerShellToolResultEventValue(PowerShellToolResultEvent)
+  ReadToolResultEventValue(ReadToolResultEvent)
+  EditToolResultEventValue(EditToolResultEvent)
+  WriteToolResultEventValue(WriteToolResultEvent)
+  GrepToolResultEventValue(GrepToolResultEvent)
+  FindToolResultEventValue(FindToolResultEvent)
+  LsToolResultEventValue(LsToolResultEvent)
+  CustomToolResultEventValue(CustomToolResultEvent)
+}
+
+pub(all) struct ToolResultEventResult {
+  content : Array[Auto_TextContentValue_or_ImageContentValue]?
+  details : JSValue?
+  isError : Bool?
+  usage : Usage?
+}
+
+#external
+pub type ToolResultMessage[TDetails]
+
+pub(all) struct ToolsOptions {
+  read : ReadToolOptions?
+  bash : BashToolOptions?
+  powershell : PowerShellToolOptions?
+  write : WriteToolOptions?
+  edit : EditToolOptions?
+  grep : GrepToolOptions?
+  find : FindToolOptions?
+  ls : LsToolOptions?
+}
+
+#external
+pub type Transport
+
+#external
+pub type TransportSetting
+
+#external
+pub type TreeList
+
+pub(all) struct TreePreparation {
+  targetId : String
+  oldLeafId : String?
+  commonAncestorId : String?
+  entriesToSummarize : Array[SessionEntry]
+  userWantsSummary : Bool
+  customInstructions : String?
+  replaceInstructions : Bool?
+  label : String?
+}
+
+#external
+pub type TreeSelectorComponent
+pub fn TreeSelectorComponent::focused(Self) -> Bool
+pub fn TreeSelectorComponent::get_tree_list(Self) -> TreeList
+pub fn TreeSelectorComponent::get_tree_selector_component_focused(Self) -> Bool
+pub fn TreeSelectorComponent::get_tree_selector_component_on_copy(Self) -> (String?) -> Unit
+pub fn TreeSelectorComponent::handle_input(Self, String) -> Unit
+pub fn TreeSelectorComponent::on_copy(Self, String?) -> Unit
+pub fn TreeSelectorComponent::set_tree_selector_component_focused(Self, Bool) -> Unit
+pub fn TreeSelectorComponent::set_tree_selector_component_on_copy(Self, (String?) -> Unit) -> Unit
+
+pub(all) struct TruncateLineResult {
+  text : String
+  wasTruncated : Bool
+}
+
+pub(all) struct TruncationOptions {
+  maxLines : Double?
+  maxBytes : Double?
+}
+
+pub(all) struct TruncationResult {
+  content : String
+  truncated : Bool
+  truncatedBy : TruncationResultTruncatedBy?
+  totalLines : Double
+  totalBytes : Double
+  outputLines : Double
+  outputBytes : Double
+  lastLinePartial : Bool
+  firstLineExceedsLimit : Bool
+  maxLines : Double
+  maxBytes : Double
+}
+
+pub(all) enum TruncationResultTruncatedBy {
+  Lines
+  Bytes
+}
+
+#external
+pub type TuiMouseEvent
+
+pub(all) struct TurnEndEvent {
+  type_ : TurnEndEventType
+  turnIndex : Double
+  message : AgentMessage
+  toolResults : Array[ToolResultMessage[JSValue]]
+}
+
+pub(all) enum TurnEndEventType {
+  Turn_end
+}
+
+pub(all) struct TurnStartEvent {
+  type_ : TurnStartEventType
+  turnIndex : Double
+  timestamp : Double
+}
+
+pub(all) enum TurnStartEventType {
+  Turn_start
+}
+
+pub(all) struct UIPromptEndEvent {
+  type_ : UIPromptEndEventType
+  reason : UIPromptEndEventReason
+  kind : UIPromptKind
+  title : String?
+}
+
+pub(all) enum UIPromptEndEventReason {
+  Ui_prompt
+}
+
+pub(all) enum UIPromptEndEventType {
+  Ui_prompt_end
+}
+
+pub(all) enum UIPromptKind {
+  Select
+  Confirm
+  Input
+  Editor
+  Custom
+}
+
+pub(all) struct UIPromptStartEvent {
+  type_ : UIPromptStartEventType
+  reason : UIPromptStartEventReason
+  kind : UIPromptKind
+  title : String?
+}
+
+pub(all) enum UIPromptStartEventReason {
+  Ui_prompt
+}
+
+pub(all) enum UIPromptStartEventType {
+  Ui_prompt_start
+}
+
+#external
+pub type Uint8Array
+
+#external
+pub type Usage
+
+pub(all) struct UserBashEvent {
+  type_ : UserBashEventType
+  command : String
+  excludeFromContext : Bool
+  cwd : String
+}
+
+pub(all) struct UserBashEventResult {
+  operations : BashOperations?
+  result : BashResult?
+}
+
+pub(all) enum UserBashEventType {
+  User_bash
+}
+
+#external
+pub type UserMessage
+
+#external
+pub type UserMessageComponent
+pub fn UserMessageComponent::render(Self, Double) -> Array[String]
+pub fn UserMessageComponent::set_output_pad(Self, Double) -> Unit
+
+pub(all) struct UserMessageItem {
+  id : String
+  text : String
+  timestamp : String?
+}
+
+#external
+pub type UserMessageList
+
+#external
+pub type UserMessageSelectorComponent
+pub fn UserMessageSelectorComponent::get_message_list(Self) -> UserMessageList
+
+pub(all) struct VisualTruncateResult {
+  visualLines : Array[String]
+  skippedCount : Double
+}
+
+pub(all) struct WarningSettings {
+  anthropicExtraUsage : Bool?
+}
+
+pub(all) enum WidgetPlacement {
+  AboveEditor
+  BelowEditor
+}
+
+pub(all) struct WorkingIndicatorOptions {
+  frames : Array[String]?
+  intervalMs : Double?
+}
+
+#external
+pub type WorkingStatusIndicator
+
+pub(all) struct WriteOperations {
+  writeFile : (String, String) -> Promise[Unit]
+  mkdir : (String) -> Promise[Unit]
+}
+pub fn WriteOperations::mkdir(Self, String) -> Promise[Unit]
+pub fn WriteOperations::writeFile(Self, String, String) -> Promise[Unit]
+
+pub(all) struct WriteToolCallEvent {
+  toolName : WriteToolCallEventToolName
+  input : WriteToolInput
+  type_ : WriteToolCallEventType
+  toolCallId : String
+}
+
+pub(all) enum WriteToolCallEventToolName {
+  Write
+}
+
+pub(all) enum WriteToolCallEventType {
+  Tool_call
+}
+
+#external
+pub type WriteToolInput
+
+pub(all) struct WriteToolOptions {
+  operations : WriteOperations?
+}
+
+#external
+pub type WriteToolResultEvent
+
+// Type aliases
+pub type AgentSessionEventListener = (AgentSessionEvent) -> Unit
+
+pub type AutocompleteProviderFactory = (AutocompleteProvider) -> AutocompleteProvider
+
+pub type BashSpawnHook = (BashSpawnContext) -> BashSpawnContext
+
+pub type MarkdownTransformer = (String, MarkdownTransformContext) -> String
+
+pub type PowerShellSpawnHook = (BashSpawnContext) -> BashSpawnContext
+
+pub type ProgressCallback = (ProgressEvent) -> Unit
+
+pub type ProjectTrustDecision = Bool?
+
+pub type RpcEventListener = (JsonAgentSessionEvent) -> Unit
+
+// Traits

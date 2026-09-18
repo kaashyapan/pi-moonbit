@@ -1,0 +1,63 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "kaashyapan/moonext/src"
+
+import {
+  "kaashyapan/moonext/internal/generated/earendil_works__pi_coding_agent",
+}
+
+// Values
+pub async fn check_moon_available(@earendil_works__pi_coding_agent.ExtensionAPI, @earendil_works__pi_coding_agent.AbortSignal?) -> MoonAvailability
+
+pub fn dependency_origin(String, String) -> String
+
+pub fn hidden_dep_summary(Array[CheckDiagnostic], String) -> String
+
+pub fn is_dependency_path(String, String) -> Bool
+
+pub fn main_(@earendil_works__pi_coding_agent.ExtensionAPI) -> @earendil_works__pi_coding_agent.Promise[Unit]
+
+pub fn parse_check_output(String) -> (Array[CheckDiagnostic], Array[String])
+
+pub fn partition_diagnostics(Array[CheckDiagnostic], String) -> (Array[CheckDiagnostic], Array[CheckDiagnostic])
+
+pub fn register_agent_prompt(@earendil_works__pi_coding_agent.ExtensionAPI) -> Unit
+
+pub fn register_bash_redirect(@earendil_works__pi_coding_agent.ExtensionAPI) -> Unit
+
+pub fn register_check_tool(@earendil_works__pi_coding_agent.ExtensionAPI) -> Unit
+
+pub fn register_error_tools(@earendil_works__pi_coding_agent.ExtensionAPI) -> Unit
+
+pub fn register_ide_tools(@earendil_works__pi_coding_agent.ExtensionAPI) -> Unit
+
+pub fn register_moon_doctor(@earendil_works__pi_coding_agent.ExtensionAPI, Bool) -> Unit
+
+pub fn register_test_tools(@earendil_works__pi_coding_agent.ExtensionAPI) -> Unit
+
+pub fn register_tool_result(@earendil_works__pi_coding_agent.ExtensionAPI) -> Unit
+
+pub fn run_moon(@earendil_works__pi_coding_agent.ExtensionAPI, Array[String], String, @earendil_works__pi_coding_agent.AbortSignal?, Double) -> @earendil_works__pi_coding_agent.Promise[@earendil_works__pi_coding_agent.ExecResult]
+
+pub fn run_moon_version(@earendil_works__pi_coding_agent.ExtensionAPI, @earendil_works__pi_coding_agent.AbortSignal?) -> @earendil_works__pi_coding_agent.Promise[@earendil_works__pi_coding_agent.ExecResult]
+
+// Errors
+
+// Types and methods
+pub(all) struct CheckDiagnostic {
+  level : String?
+  error_code : Int?
+  path : String?
+  loc : String?
+  message : String?
+  context : String?
+}
+
+pub(all) struct MoonAvailability {
+  available : Bool
+  version : String?
+  error : String?
+}
+
+// Type aliases
+
+// Traits

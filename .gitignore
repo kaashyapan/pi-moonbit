@@ -1,5 +1,7 @@
-node_modules/
-dist/
-*.tgz
 .DS_Store
-*/_build/
+_build/
+target/
+target
+.mooncakes/
+.moonagent/
+node_modules

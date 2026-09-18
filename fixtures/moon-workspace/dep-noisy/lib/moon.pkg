@@ -1,6 +1,0 @@
-supported_targets = "+all"
-
-import {
-  "moonbitlang/core/json",
-  "moonbitlang/core/buffer",
-}
