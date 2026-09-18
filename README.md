@@ -1,4 +1,4 @@
-# moonbit Pi extension
+# MoonBit Pi extension
 
 Wraps `moon ide` subcommands (plus `check`, `test`, and the `fmt`+`info`
 handoff) as discrete Pi tools, so the model reaches for compiler-aware
@@ -48,16 +48,16 @@ pi install https://github.com/kaashyapan/pi-moonbit.git
 ## Why these tools - Token efficiency
 
 1. Calling dedicated tools that return json instead of streaming to and from bash is more token efficient.
-2. Keeping in `pi` spirit with minimal prompting, the package includes ./extensions/AGENTS.md file.
+2. Keeping in `pi` spirit with minimal prompting, the package includes a tersely written system prompt describing the tools.
 3. Some QOL improvements, like moon check does not return diagnostic messages from dependencies.
 4. The error explain tool will placed to save a lot of tokens, where the model only needs to look up the error code necessary instead of running an explain on the entire project.
-5. Better tool reliability. You can be more sure that the model will use the tool for the purpose.
-Higher chances of it picking moon ide over grep on the entire codebase. Verify with tool-stats.
+5. Better tool reliability. Higher chances that the model will use the tool for the purpose.
+Higher chances of the model picking moon ide over grep on the entire codebase. Verify with tool-stats.
 
 ## Important
 
 - The package injects a system prompt that includes the necessary instructions to use the tool chain
 - It is important that your skills and AGENTS.md and other prompt files DO NOT mention 
-moon check, moon ide, moon test etc.. It will only confuse the model.
+moon check, moon ide, moon test etc.. It will only confuse the model. Refer to this project's AGENTS.md for a sample.
 - The package blocks running these commands over bash. Giving these instructions will most likely
 confuse the model.

@@ -65,17 +65,18 @@ let agents_prompt : String =
   #|   package. A package is a directory that directly contains a `moon.pkg`;
   #|   the module root usually is not one, so `moon_outline '.',` fails.
   #|3. Discover package APIs and types with `moon_outline <package-dir>`. Use
-  #|   `moon_workspace_symbols <name>` to find where a symbol lives.
-  #|4. Edit source files (`.mbt`). Identify the package they belong to.
-  #|5. `moon_check` — fix errors before moving on.
-  #|6. `moon_test -p package_name --target target` — fix failures before moving on.
-  #|7. `moon_fmt_info` before handoff.
+  #|   `moon_workspace_symbols <name>` to find where a symbol lives. 
+  #|4. Use `moon_doc` to discover the public API of package or dependency or  
+  #|   the documentation for function, type, trait or package. 
+  #|6. Edit source files (`.mbt`). Identify the package they belong to.
+  #|7. `moon_check` — fix errors before moving on.
+  #|8. `moon_test -p package_name --target target` — fix failures before moving on.
+  #|9. `moon_fmt_info` before handoff.
   #|
   #|### Rules
   #|
   #|- `.mbt` files are never read with grep/cat/sed to find a definition, find references, infer a
-  #|  type, or perform a rename — the tools above are compiler-resolved and more accurate. This
-  #|  applies to the sample repositories under `~/moonbit-docs/next/sources/` too: to learn how a
+  #|  type, or perform a rename — the tools above are compiler-resolved and more accurate. To learn how a
   #|  language feature is written, use `moon_outline` on that package, not a text search.
   #|- `moon_outline` takes a package directory (one holding a `moon.pkg`) or a single `.mbt` file.
   #|  It has no default: omitting `path` errors. Do not pass `.` or a bare `src/` unless that
@@ -84,8 +85,6 @@ let agents_prompt : String =
   #|  requires `symbol`, and a loc on a comment or blank line returns no information.
   #|- If a `moon_check` error/warning code's message isn't enough to know the fix, call `moon_explain_error`
   #|  with that code before guessing.
-  #|- If `/moon_doctor` reports the toolchain isn't reachable, say so — do not work around it by
-  #|  shelling out to `moon` directly.
   #|- Other `moon` subcommands (e.g. `moon add`, `moon remove`, `moon build`) are not intercepted —
   #|  bash is fine for those.
   #|
@@ -94,7 +93,7 @@ let agents_prompt : String =
   #|| `moon add <package_version>` | `moon add moonbitlang/x@0.5.5` | Add a package |
   #|| `moon -C <dir> clean` | `moon -C . clean` | Clean project build in the given path |
   #|| `moon update` | `moon update` | Update package registry index |
-  #|| `moon remove <package>` | `moon remove moonbitlang/x` | Add a package |
+  #|| `moon remove <package>` | `moon remove moonbitlang/x` | Remove a package |
   #|
 
 ///|
@@ -109,23 +108,27 @@ let system_prompt_marker : String = "## MoonBit tooling (enforced)"
 /// skimmed, so it is a decision list, not documentation. The full guide with
 /// the tool table goes in the injected message.
 fn tooling_rules() -> String {
-  "## MoonBit tooling (enforced)\n\n" +
-  "You MUST use the dedicated `moon_*` tools for MoonBit (`.mbt`) files.\n\n" +
-  "- Do not read `.mbt` files with grep, cat, or sed to find a definition, find\n" +
-  "  references, infer a type, or rename. Use `moon_peek_def`,\n" +
-  "  `moon_find_references`, `moon_type_info`, and `moon_rename` — they are\n" +
-  "  compiler-resolved and see trait impls and shadowing that text search misses.\n" +
-  "  This holds for the sample repos under `~/moonbit-docs/next/sources/` too:\n" +
-  "  to learn how a feature is written, `moon_outline` the package, don't grep.\n" +
-  "- Call `moon_outline` before reading a file in full. It requires a `path` that\n" +
-  "  is a package directory (containing `moon.pkg`) or a `.mbt` file; omitting\n" +
-  "  `path`, or passing '.', fails because the module root is not a package.\n" +
-  "- Use `moon_analyze` (no `path`) to list the module's local packages, and\n" +
-  "  `moon_workspace_symbols` to find which file defines a symbol name.\n" +
-  "- Do not run `moon check`, `moon test`, `moon fmt`, `moon info`, or `moon ide`\n" +
-  "  through bash — those calls are intercepted and blocked. Use `moon_check`,\n" +
-  "  `moon_test`, `moon_fmt_info`, or the `moon ide` tools.\n" +
-  "- Pass the absolute `moon_mod_filepath` on every call."
+  (
+    #|## MoonBit tooling (enforced)
+    #|You MUST use the dedicated `moon_*` tools for MoonBit (`.mbt`) files.
+    #|- Do not read `.mbt` files with grep, cat, or sed to find a definition, find
+    #|  references, infer a type, or rename. Use `moon_peek_def`
+    #|  `moon_find_references`, `moon_type_info`, and `moon_rename` — they are
+    #|  compiler-resolved and see trait impls and shadowing that text search misses.
+    #|  `moon_outline` the package, don't grep.
+    #|- Call `moon_outline` before reading a file in full. It requires a `path` that
+    #|  is a package directory (containing `moon.pkg`) or a `.mbt` file; omitting
+    #|  `path`, or passing '.', fails because the module root is not a package.
+    #|- Use `moon_analyze` (no `path`) to list the module's local packages, and
+    #|  `moon_workspace_symbols` to find which file defines a symbol name.
+    #|- Use `moon_doc` to discover the public API of a package, dependency package, symbol within the package. 
+    #|  e.g moon_doc queries are `@kaashyapan/moonext/src`, `@moonbitlang/core/string`, 
+    #|  `@kaashyapan/moonext.register_tool_result`, `StringView::clamped_view`
+    #|- Do not run `moon check`, `moon test`, `moon fmt`, `moon info`, or `moon ide`
+    #|  through bash — those calls are intercepted and blocked. Use `moon_check`
+    #|  `moon_test`, `moon_fmt_info`, or the `moon ide` tools
+    #|- Pass the absolute `moon_mod_filepath` on every call.
+  )
 }
 
 ///|

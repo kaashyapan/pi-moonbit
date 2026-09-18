@@ -7,9 +7,8 @@
 
 - MoonBit code samples repository
 
-   1. ~/moonbit-docs/next/sources/language
-   2. ~/moonbit-docs/next/sources/async
-   3. ~/moonbit-docs/next/sources/sudoku
+   1. ~/moonbit-docs/next/sources/async
+   2. ~/moonbit-docs/next/sources/sudoku
    3. ~/moonbit-docs/next/sources/fullstack-one-project
   
 ## build
