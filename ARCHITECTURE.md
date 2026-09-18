@@ -43,6 +43,7 @@ itself.
 - `moon_rename` — compute rename edits (dry run unless `apply: true`)
 - `moon_analyze` — public API usage counts
 - `moon_doc` — search exported APIs/docs
+- `moon_error_explain` - Explain an error code
 
 **Build / quality**
 

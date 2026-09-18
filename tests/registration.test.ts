@@ -1,16 +1,19 @@
 import { describe, expect, test, beforeAll } from "bun:test";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { FAILURE_FLAG, truncate } from "../extensions/shared.ts";
 import moonbitExtension, { registerMoonTools } from "../extensions/moonbit.ts";
 
 const tools = new Map<string, any>();
 const commands = new Map<string, any>();
-const listeners = new Map<string, (event: any) => any>();
+const listeners = new Map<string, (event: any, ctx?: any) => any>();
 
 function makeStubPi() {
     return {
         registerTool: (tool: any) => tools.set(tool.name, tool),
         registerCommand: (name: string, spec: any) => commands.set(name, spec),
-        on: (event: string, handler: (event: any) => any) => listeners.set(event, handler),
+        on: (event: string, handler: (event: any, ctx?: any) => any) => listeners.set(event, handler),
     };
 }
 
@@ -68,6 +71,39 @@ describe("registration", () => {
             reason: expect.stringContaining("moon_check"),
         });
         expect(handler?.({ toolName: "powershell", input: { command: "Get-ChildItem" } })).toBeUndefined();
+    });
+
+    test("before_agent_start loads the MoonBit tooling guide from disk", async () => {
+        const handler = listeners.get("before_agent_start");
+        expect(handler).toBeDefined();
+
+        // The handler reads ./AGENTS.md relative to the process CWD at event
+        // time, so run it against a temp dir with sentinel content to prove
+        // the guide is actually read from disk (not a hard-coded string).
+        const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "moonbit-guide-"));
+        const sentinel = "# MoonBit tooling guide (test sentinel)\nUse moon_check liberally.";
+        fs.writeFileSync(path.join(tmp, "AGENTS.md"), sentinel);
+        const prevCwd = process.cwd();
+        process.chdir(tmp);
+        try {
+            const result = await handler?.({}, { cwd: tmp });
+            expect(result?.message?.customType).toBe("pi-moonbit-guide");
+            expect(result?.message?.display).toBe(true);
+            expect(result?.message?.content).toBe(sentinel);
+        } finally {
+            process.chdir(prevCwd);
+            fs.rmSync(tmp, { recursive: true, force: true });
+        }
+
+        // Missing AGENTS.md surfaces the read failure instead of a fake guide.
+        const missing = fs.mkdtempSync(path.join(os.tmpdir(), "moonbit-guide-"));
+        process.chdir(missing);
+        try {
+            await expect(handler?.({}, { cwd: missing })).rejects.toThrow();
+        } finally {
+            process.chdir(prevCwd);
+            fs.rmSync(missing, { recursive: true, force: true });
+        }
     });
 
     test("tool_result listener flags FAILURE_FLAG results as errors and strips the marker", () => {
