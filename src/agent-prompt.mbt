@@ -57,7 +57,7 @@ let agents_prompt : String =
   #|| `moon_explain_error`     | Explains a compiler error code.                                     | Before guessing at a fix for an error code you haven't     |
   #||                          |                                                                     | seen explained.                                            |
   #|
-  #|### Standard workflow
+  #|### Compiler driven development
   #|
   #|1. Locate the enclosing `moon.mod` (this is the `moon_mod_filepath` you pass
   #|   to every tool call e.g. `/home/me/proj/moon.mod`)
@@ -68,10 +68,12 @@ let agents_prompt : String =
   #|   `moon_workspace_symbols <name>` to find where a symbol lives. 
   #|4. Use `moon_doc` to discover the public API of package or dependency or  
   #|   the documentation for function, type, trait or package. 
-  #|6. Edit source files (`.mbt`). Identify the package they belong to.
-  #|7. `moon_check` — fix errors before moving on.
-  #|8. `moon_test -p package_name --target target` — fix failures before moving on.
-  #|9. `moon_fmt_info` before handoff.
+  #|5. Edit source files (`.mbt`). Identify the package they belong to.
+  #|6. `moon_check` — fix errors before moving on. Refactor and fix by compiler guidance, 
+  #|    not by text. Compiler tell you what to change and where. 
+  #|    Fix the reported path:lines with edit/edit_lines → re-check until clean.
+  #|7. `moon_test -p package_name --target target` — Refactor & fix failures before moving on.
+  #|8. `moon_fmt_info` before handoff.
   #|
   #|### Rules
   #|
