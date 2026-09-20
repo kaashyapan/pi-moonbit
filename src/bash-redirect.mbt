@@ -67,6 +67,11 @@ fn bash_redirects() -> Array[BashRedirect] {
       note: "it runs fmt before info, which running info alone via bash would skip.",
     },
     {
+      pattern: "^moon\\s+explain\\b",
+      tool: "moon_explain_error",
+      note: "it will explain in detail the error code received from moon_check.",
+    },
+    {
       pattern: "^moon\\s+ide\\s+peek-def\\b",
       tool: "moon_peek_def",
       note: "it resolves the correct project root for the current session — a bare bash call " +

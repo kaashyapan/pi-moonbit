@@ -1,6 +1,6 @@
 {
     "name": "pi-moonbit",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Pi extension for MoonBit language. Brings moonbit tool chain goodies like peek-def and docs as harness tools.",
     "license": "BSD-3-Clause",
     "author": "kaashyapan",

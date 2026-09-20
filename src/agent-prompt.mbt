@@ -61,19 +61,21 @@ let agents_prompt : String =
   #|
   #|1. Locate the enclosing `moon.mod` (this is the `moon_mod_filepath` you pass
   #|   to every tool call e.g. `/home/me/proj/moon.mod`)
-  #|2. Find the packages: run `moon_analyze` with no `path`. It lists every local
+  #|2. From moon.mod and moon.pkg files identify the target backend - `preferred_targets` and `supported_targets`
+  #|   The default is `wasm-gc`, override when necessary. If it is `all`, then use `wasm-gc` for tool invocations.
+  #|3. Find the packages: run `moon_analyze` with no `path`. It lists every local
   #|   package. A package is a directory that directly contains a `moon.pkg`;
   #|   the module root usually is not one, so `moon_outline '.',` fails.
-  #|3. Discover package APIs and types with `moon_outline <package-dir>`. Use
+  #|4. Discover package APIs and types with `moon_outline <package-dir>`. Use
   #|   `moon_workspace_symbols <name>` to find where a symbol lives. 
-  #|4. Use `moon_doc` to discover the public API of package or dependency or  
+  #|5. Use `moon_doc` to discover the public API of package or dependency or  
   #|   the documentation for function, type, trait or package. 
-  #|5. Edit source files (`.mbt`). Identify the package they belong to.
-  #|6. `moon_check` — fix errors before moving on. Refactor and fix by compiler guidance, 
+  #|6. Edit source files (`.mbt`). Identify the package they belong to.
+  #|7. `moon_check` — fix errors before moving on. Refactor and fix by compiler guidance, 
   #|    not by text. Compiler tell you what to change and where. 
   #|    Fix the reported path:lines with edit/edit_lines → re-check until clean.
-  #|7. `moon_test -p package_name --target target` — Refactor & fix failures before moving on.
-  #|8. `moon_fmt_info` before handoff.
+  #|8. `moon_test -p package_name --target target` — Refactor & fix failures before moving on.
+  #|9. `moon_fmt_info` before handoff.
   #|
   #|### Rules
   #|

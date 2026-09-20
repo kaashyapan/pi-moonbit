@@ -1,6 +1,9 @@
 {
     "skills": [
         "~/myskills/skills/moonbit-agent-guide",
+        "~/myskills/skills/moonbit-language-reference",
+        "~/myskills/skills/moonbit-scripting-guide",
+        "~/myskills/skills/moonbit-style-guide",
         "~/myskills/skills/moonbit-js-interop"
     ],
     "packages": [
