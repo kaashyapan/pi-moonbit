@@ -30,7 +30,7 @@ const listeners = new Map<string, (event: any, ctx?: any) => any>();
 // table are the parts the model relies on, so drift there is what matters.
 const guideHeadings = [
   "## MoonBit tooling",
-  "### Standard workflow",
+  "### Compiler driven development",
   "### Rules",
   "## Available bash commands",
 ];

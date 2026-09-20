@@ -4,7 +4,7 @@
 // prose. The behaviour of `moon ide` itself belongs to the moon binary; what is
 // tested here is that the port does not promise something the binary refuses to
 // do. Two cases were observed against the sample repositories under
-// ~/moonbit-docs/next/sources and are pinned below:
+// ~/moonbit-docs/next/sources and are recreated by the checked-in fixture below:
 //
 //   - `moon ide outline` with no path errors with "at least one path is
 //     required", and `outline .` errors with "could not find package for
@@ -18,17 +18,26 @@
 // the test rather than the suite.
 
 import { describe, expect, test, beforeAll } from "bun:test";
+import path from "node:path";
 import extensionDefault from "../extensions/index.js";
 
-const SAMPLE_ROOT = "/home/moondev/moonbit-docs/next/sources";
-const LANGUAGE_MOD = `${SAMPLE_ROOT}/language/moon.mod`;
-const ASYNC_MOD = `${SAMPLE_ROOT}/async/moon.mod`;
+// A self-contained module checked in under tests/fixtures/moon-ide-sample.
+// It replaces the earlier dependency on the external moonbit-docs checkout:
+// the sample repositories there are edited by their own tooling (a stray
+// `moon fmt` rewrites them), which silently shifted the line numbers these
+// tests pinned against. This fixture is owned by the test suite.
+const FIXTURE_DIR = path.resolve(import.meta.dir, "fixtures/moon-ide-sample");
+const IDE_MOD = path.join(FIXTURE_DIR, "moon.mod");
+// `src` holds the async package; `types` holds the suberror/struct package.
+const SRC_PACKAGE = "./src";
+const TYPES_PACKAGE = "./types";
+const TYPES_MBT = `${TYPES_PACKAGE}/types.mbt`;
 
 const tools = new Map<string, any>();
 let execCommands: string[][] = [];
 
-// Stub ExtensionAPI with a real subprocess runner, so the sample repositories
-// are exercised through the installed `moon`.
+// Stub ExtensionAPI with a real subprocess runner, so the checked-in fixture
+// is exercised through the installed `moon`.
 function makeStubPi() {
   return {
     registerTool: (tool: any) => tools.set(tool.name, tool),
@@ -103,40 +112,43 @@ describe("ide tool schemas", () => {
   });
 });
 
-describe("ide tools against the sample repositories", () => {
+describe("ide tools against the checked-in fixture", () => {
   test("moon_analyze with no path lists the module's local packages", async () => {
     execCommands = [];
-    const res = await execute("moon_analyze", { moon_mod_filepath: LANGUAGE_MOD });
+    const res = await execute("moon_analyze", { moon_mod_filepath: IDE_MOD });
     expect(res.details.ok).toBe(true);
     const text = res.content[0].text;
-    // Several packages of the language sample must be named.
-    expect(text).toContain("package \"moonbit-community/language/error\"");
-    expect(text).toContain("package \"moonbit-community/language/attributes\"");
+    // Both packages of the fixture must be named.
+    expect(text).toContain("package \"kaashyapan/moon-ide-sample/src\"");
+    expect(text).toContain("package \"kaashyapan/moon-ide-sample/types\"");
   }, 180_000);
 
   test("moon_outline works on a package directory", async () => {
     const res = await execute("moon_outline", {
-      moon_mod_filepath: LANGUAGE_MOD,
-      path: "./src/error",
+      moon_mod_filepath: IDE_MOD,
+      path: TYPES_PACKAGE,
     });
     expect(res.details.ok).toBe(true);
-    // `suberror` only appears in that package's top.mbt.
-    expect(res.content[0].text).toContain("suberror E1");
+    // `suberror` only appears in that package's types.mbt.
+    expect(res.content[0].text).toContain("suberror SampleError");
   }, 180_000);
 
   test("moon_outline on a package-directory path succeeds where '.' fails", async () => {
-    const bad = await execute("moon_outline", { moon_mod_filepath: LANGUAGE_MOD, path: "." });
+    const bad = await execute("moon_outline", { moon_mod_filepath: IDE_MOD, path: "." });
     expect(bad.details.flagsDiagnosticFailure).toBe(true);
     expect(bad.content[0].text).toContain("could not find package");
 
-    const good = await execute("moon_outline", { moon_mod_filepath: ASYNC_MOD, path: "./src" });
+    const good = await execute("moon_outline", {
+      moon_mod_filepath: IDE_MOD,
+      path: SRC_PACKAGE,
+    });
     expect(good.details.ok).toBe(true);
     expect(good.content[0].text).toContain("async fn");
   }, 180_000);
 
   test("moon_workspace_symbols finds a symbol by name", async () => {
     const res = await execute("moon_workspace_symbols", {
-      moon_mod_filepath: ASYNC_MOD,
+      moon_mod_filepath: IDE_MOD,
       query: "my_async_function",
     });
     expect(res.details.ok).toBe(true);
@@ -148,15 +160,15 @@ describe("ide tools against the sample repositories", () => {
 
   test("moon_type_info needs a column, as the schema warns", async () => {
     const lineOnly = await execute("moon_type_info", {
-      moon_mod_filepath: LANGUAGE_MOD,
-      loc: "./src/error/top.mbt:18",
+      moon_mod_filepath: IDE_MOD,
+      loc: `${TYPES_MBT}:3`,
     });
     expect(lineOnly.details.flagsDiagnosticFailure).toBe(true);
     expect(lineOnly.content[0].text).toContain("requires a symbol");
 
     const withColumn = await execute("moon_type_info", {
-      moon_mod_filepath: LANGUAGE_MOD,
-      loc: "./src/error/top.mbt:18:4",
+      moon_mod_filepath: IDE_MOD,
+      loc: `${TYPES_MBT}:3:20`,
     });
     expect(withColumn.details.ok).toBe(true);
   }, 180_000);
